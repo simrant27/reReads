@@ -1,0 +1,40 @@
+body {
+  margin: 1rem;
+  padding: 1rem;
+  margin-top: 5rem;
+  background-color: #f2f3ec;
+}
+.sign {
+  width: 382px;
+  /* overflow: hidden; */
+  margin: auto;
+  margin: 20 0 0 450px;
+  padding: 80px;
+  border-radius: 15px;
+}
+.reReads {
+  text-align: center;
+  font-family: " Lucida Handwriting";
+}
+
+#Pass,
+#name,
+#Address,
+#PhoneNumber,
+#email,
+#signup {
+  width: 300px;
+  height: 40px;
+  border: solid 2px black;
+  border-radius: 7px;
+  background-color: #fbf7ef;
+  padding-left: 8px;
+  font-family: "Lucida Console";
+}
+#signup {
+  background-color: #c6b5f3;
+  color: black;
+}
+a {
+  text-decoration: none;
+}

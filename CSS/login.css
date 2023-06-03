@@ -1,0 +1,38 @@
+body {
+  margin: 2rem;
+  padding: 1rem;
+  margin-top: 10rem;
+  background-color: #f2f3ec;
+}
+.login {
+  /* width: 382px; */
+  overflow: hidden;
+  margin: auto;
+  margin: 20 0 0 450px;
+  padding: 80px;
+  border-radius: 15px;
+}
+.reReads {
+  text-align: center;
+  font-family: " Lucida Handwriting";
+}
+
+#Pass,
+#email,
+#log {
+  width: 300px;
+  height: 40px;
+  border: solid 2px black;
+  border-radius: 7px;
+  background-color: #fbf7ef;
+  padding-left: 8px;
+  font-family: "Lucida Console";
+}
+#log {
+  background-color: #c6b5f3;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
