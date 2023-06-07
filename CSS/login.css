@@ -1,26 +1,23 @@
 body {
-  margin: 2rem;
-  padding: 1rem;
-  margin-top: 10rem;
-  background-color: #f2f3ec;
-}
-.login {
-  /* width: 382px; */
-  overflow: hidden;
-  margin: auto;
-  margin: 20 0 0 450px;
-  padding: 80px;
-  border-radius: 15px;
-}
-.reReads {
-  text-align: center;
-  font-family: " Lucida Handwriting";
+  padding: 2rem;
+  margin-top: 5rem;
 }
 
-#Pass,
+.reReads {
+  font-family: " Lucida Handwriting";
+}
+#mainAll {
+  height: fit-content;
+  /* width: fit-content; */
+  border: solid 1px rebeccapurple;
+  padding: 20px;
+  position: relative;
+  background-color: #f2f3ec;
+}
+#password,
 #email,
 #log {
-  width: 300px;
+  width: 250px;
   height: 40px;
   border: solid 2px black;
   border-radius: 7px;
@@ -30,9 +27,17 @@ body {
 }
 #log {
   background-color: #c6b5f3;
+  width: 265px;
+
   color: black;
 }
 
 a {
   text-decoration: none;
+}
+.right img {
+  float: right;
+  padding: 2vh;
+  height: 39vh;
+  width: 33vh;
 }
