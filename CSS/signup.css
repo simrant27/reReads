@@ -2,18 +2,20 @@ body {
   margin: 1rem;
   padding: 1rem;
   margin-top: 5rem;
+  position: relative;
 }
 
 .reReads {
-  text-align: center;
   font-family: " Lucida Handwriting";
 }
 #mainAll {
+  text-align: center;
   height: fit-content;
-  /* width: 90vh; */
+  width: 50%;
   border: solid 1px rebeccapurple;
   padding: 20px;
-  position: relative;
+  position: absolute;
+  margin-left: 25%;
   background-color: #f2f3ec;
 }
 #Cpassword,
@@ -45,4 +47,8 @@ a {
   padding: 5vh;
   height: 50vh;
   width: 35vh;
+}
+.left {
+  float: left;
+  margin-left: 11%;
 }

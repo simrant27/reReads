@@ -1,17 +1,20 @@
 body {
   padding: 2rem;
   margin-top: 5rem;
+  position: relative;
 }
 
 .reReads {
   font-family: " Lucida Handwriting";
 }
 #mainAll {
+  position: absolute;
+  text-align: center;
   height: fit-content;
-  /* width: fit-content; */
+  width: 50%;
   border: solid 1px rebeccapurple;
   padding: 20px;
-  position: relative;
+  margin-left: 25%;
   background-color: #f2f3ec;
 }
 #password,
@@ -40,4 +43,8 @@ a {
   padding: 2vh;
   height: 39vh;
   width: 33vh;
+}
+.left {
+  float: left;
+  margin-left: 11%;
 }
