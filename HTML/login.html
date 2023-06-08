@@ -5,33 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="../CSS/login.css" />
   </head>
   <body>
-    <span id="re" class="reReads"
-      >re<span id="Reads" class="reReads">Reads</span>
-    </span>
+    <main id="mainAll">
+      <aside class="right">
+        <img src="../assets/IMG_0523.jpeg" alt="simran" />
+      </aside>
+      <section id="SectionSignUp">
+        <span id="Reads" class="reReads">reReads</span>
+        <br /><br />
+        <div class="login">
+          <form id="login" method="get" action="">
+            <input
+              type="text"
+              name="email"
+              id="email"
+              required=""
+              placeholder="Enter your Email"
+            />
+            <br /><br />
+            <div class="password-container">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required=""
+                id="password"
+              />
+              <i
+                class="far fa-eye"
+                id="togglePassword"
+                style="margin-left: -30px; cursor: pointer"
+              ></i>
+            </div>
+            <br /><br />
 
-    <br /><br />
-    <div class="login">
-      <form id="login" method="get" action="">
-        <input
-          type="text"
-          name="email"
-          id="email"
-          placeholder="Enter your Email"
-        />
-        <br /><br />
-        <input type="Password" name="Pass" id="Pass" placeholder="Password" />
-        <br /><br />
-
-        <a href="#">Forgot Password?</a>
-        <br /><br />
-        <input type="button" name="log" id="log" value="Log in" />
-        <br /><br />
-        <br /><br />
-        <div>Not a Member? <a href="signup.html">Sign Up</a></div>
-      </form>
-    </div>
+            <a href="#" class="left">Forgot Password?</a>
+            <br /><br />
+            <input type="submit" name="log" id="log" value="Log in" />
+            <br /><br />
+            <br /><br />
+            <div class="left">
+              Not a Member? <a href="signup.html">Sign Up</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
   </body>
+  <script src="../JS/login.js"></script>
 </html>

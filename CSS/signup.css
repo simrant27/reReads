@@ -2,28 +2,30 @@ body {
   margin: 1rem;
   padding: 1rem;
   margin-top: 5rem;
-  background-color: #f2f3ec;
-}
-.sign {
-  width: 382px;
-  /* overflow: hidden; */
-  margin: auto;
-  margin: 20 0 0 450px;
-  padding: 80px;
-  border-radius: 15px;
-}
-.reReads {
-  text-align: center;
-  font-family: " Lucida Handwriting";
+  position: relative;
 }
 
-#Pass,
+.reReads {
+  font-family: " Lucida Handwriting";
+}
+#mainAll {
+  text-align: center;
+  height: fit-content;
+  width: 50%;
+  border: solid 1px rebeccapurple;
+  padding: 20px;
+  position: absolute;
+  margin-left: 25%;
+  background-color: #f2f3ec;
+}
+#Cpassword,
+#password,
 #name,
 #Address,
 #PhoneNumber,
 #email,
 #signup {
-  width: 300px;
+  width: 250px;
   height: 40px;
   border: solid 2px black;
   border-radius: 7px;
@@ -31,10 +33,22 @@ body {
   padding-left: 8px;
   font-family: "Lucida Console";
 }
+
 #signup {
+  width: 265px;
   background-color: #c6b5f3;
   color: black;
 }
 a {
   text-decoration: none;
+}
+.right img {
+  float: right;
+  padding: 5vh;
+  height: 50vh;
+  width: 35vh;
+}
+.left {
+  float: left;
+  margin-left: 11%;
 }
