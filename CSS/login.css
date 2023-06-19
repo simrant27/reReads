@@ -48,3 +48,21 @@ a {
   float: left;
   margin-left: 11%;
 }
+
+.arrow {
+  position: absolute;
+
+  vertical-align: middle;
+  z-index: 3;
+  background-color: transparent;
+  color: rgb(180, 170, 170);
+}
+.arrow-left {
+  left: 600;
+}
+.arrow-right {
+  right: 200;
+}
+.arrow:hover {
+  transform: scale(1.5);
+}
