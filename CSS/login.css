@@ -4,8 +4,18 @@ body {
   position: relative;
 }
 
-.reReads {
-  font-family: " Lucida Handwriting";
+.logo {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+}
+.logo .re {
+  color: #c3c2bc;
+}
+.logo .Reads {
+  color: #7c7b76;
 }
 #mainAll {
   position: absolute;
