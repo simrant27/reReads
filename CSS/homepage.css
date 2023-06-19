@@ -5,31 +5,67 @@
 
 .navbar {
   /* display: flex; */
+  height: fit-content;
+  background-color: #f3f2ed;
+  padding: 8px;
+
+  /* ma */
 }
 .upper-nav {
-  /* width: 50%; */
   display: flex;
-  background-color: aqua;
-  justify-content: space-between;
 }
 .logo {
   display: flex;
-  /* width: 20%; */
+
   justify-content: center;
   align-items: center;
+  font-size: 28px;
+}
+.logo .re {
+  color: #c3c2bc;
+}
+.logo .Reads {
+  color: #7c7b76;
 }
 .search {
+  width: 40%;
+  height: 20px;
+  border: 1px solid #c3c2bc;
+  padding: 1px 8px;
+  margin: 2px 8px;
+  border-radius: 30px;
+  margin-left: auto;
+}
+.search-icon {
+  color: #c3c2bc;
+  font-size: 20px;
+}
+.search input {
+  background: transparent;
+  border: 0px;
+  outline: 0px;
+  width: 92%;
+  text-align: center;
+}
+.profile-icon {
+  color: #7c7b76;
+}
+.lower-nav {
+  height: 10px;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
 }
 .nav-list {
-  display: flex;
-  /* width: 50%; */
-  background-color: yellow;
+  background-color: #ededea;
 }
 
 .nav-list li {
+  list-style: none;
+  padding: 0px 40px;
 }
 
 .nav-list li a {
+  text-decoration: none;
+  color: #7c7b76;
 }
