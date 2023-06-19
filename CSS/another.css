@@ -1,0 +1,122 @@
+.hey {
+    width: 33.33%;
+    float: left;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-left: 200px;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+a {
+
+    text-transform: capitalize;
+    color: rgb(120, 119, 119);
+    text-decoration: none;
+    font-size: medium;
+    font-weight: 470;
+}
+
+.nav li {
+    display: inline;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin-left: 10px;
+
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    text-decoration: solid;
+    font-weight: 540;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: gray;
+    color: rgb(73, 70, 70);
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+}
+
+.Pagal {
+    background-color: lightgray;
+    height: 300px;
+    width: 500px;
+    float: left;
+    box-sizing: border-box;
+}
+
+.Pagal h3 {
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800;
+    font-style: normal;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-transform: capitalize;
+}
+
+#Favourite {
+    margin-left: 150px;
+}
+
+#section1 {
+
+    margin-left: 200px;
+    margin-right: 200px;
+}
+#section2 {
+    margin-left: 20px;
+}
+
+input {
+    width: 300px;
+    margin-top: 10px;
+    margin-left: 100px;
+}
+
+.hey img {
+    margin-left: 300px;
+    border-radius: 10px;
+}
+
+.Pagal img {
+    margin-left: 100px;
+}
+
+.Pagal h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    color: rgb(137, 68, 68);
+    padding-left: 100px;
+}
+
+.hey h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.Pagal span {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(118, 116, 116);
+}
+
+.Pagal pre {
+    margin-top: 15px;
+
+}
+
+.Pagal h3 {
+    margin-left: 250px;
+}
