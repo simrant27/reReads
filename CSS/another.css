@@ -51,14 +51,14 @@ button {
 
 .Pagal {
     background-color: lightgray;
-    height: 300px;
-    width: 500px;
+    height: 200pt;
+    width: 700pt;
     float: left;
     box-sizing: border-box;
 }
 
 .Pagal h3 {
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     font-weight: 800;
     font-style: normal;
@@ -67,7 +67,7 @@ button {
 }
 
 #Favourite {
-    margin-left: 150px;
+    margin-left: 150pt;
 }
 
 #section1 {
@@ -91,7 +91,7 @@ input {
 }
 
 .Pagal img {
-    margin-left: 100px;
+ margin-left: 100pt;
 }
 
 .Pagal h4 {
@@ -118,5 +118,5 @@ input {
 }
 
 .Pagal h3 {
-    margin-left: 250px;
+    margin-left: 300pt;
 }
