@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  background-color: #f3f2ed;
 }
 
 .navbar {
@@ -20,6 +21,7 @@
   justify-content: center;
   align-items: center;
   font-size: 28px;
+  margin-left: 2%;
 }
 .logo .re {
   color: #c3c2bc;
@@ -39,6 +41,8 @@
 .search-icon {
   color: #c3c2bc;
   font-size: 20px;
+  /* justify-content: center; */
+  text-align: center;
 }
 .search input {
   background: transparent;
@@ -51,21 +55,30 @@
   color: #7c7b76;
 }
 .lower-nav {
-  height: 10px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  /* height: 10px;
+  display: flex; */
+  /* justify-content: flex-end; */
+  /* align-items: center; */
 }
 .nav-list {
+  display: flex;
   background-color: #ededea;
+
+  justify-content: space-evenly;
+  align-items: center;
+  height: 5vh;
 }
 
 .nav-list li {
+  background: transparent;
   list-style: none;
   padding: 0px 40px;
+  /* justify-content: space-between; */
 }
 
 .nav-list li a {
+  background: transparent;
+
   text-decoration: none;
   color: #7c7b76;
 }
