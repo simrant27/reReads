@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   background-color: #f3f2ed;
+  background: transparent;
 }
 
 .navbar {
@@ -45,7 +46,6 @@
   text-align: center;
 }
 .search input {
-  background: transparent;
   border: 0px;
   outline: 0px;
   width: 92%;
@@ -54,11 +54,15 @@
 .profile-icon {
   color: #7c7b76;
 }
-.lower-nav {
-  /* height: 10px;
-  display: flex; */
-  /* justify-content: flex-end; */
-  /* align-items: center; */
+@media screen and (max-width: 500px) {
+  .navbar .upper-nav,
+  .lower-nav .nav-list {
+    flex-direction: column;
+  }
+
+  .lower-nav .nav-list li {
+    padding: 10px 0;
+  }
 }
 .nav-list {
   display: flex;
@@ -77,8 +81,47 @@
 }
 
 .nav-list li a {
-  background: transparent;
-
   text-decoration: none;
   color: #7c7b76;
+}
+
+.booklist {
+  background-color: #dcdcdc;
+  display: flex;
+
+  text-align: center;
+
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  gap: 10px;
+  padding: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px 10px;
+}
+.singlebook {
+  background-color: #dcdcdc;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.singlebook > img {
+  flex-shrink: 0;
+  width: 150px; /* Set your desired fixed width */
+  height: auto;
+}
+
+.singlebook .bookname {
+  color: #42423e;
+  font-weight: bold;
+}
+.singlebook .bookprice {
+  color: #0e0e0e;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.singlebook .location {
+  color: #8b8b8a;
 }
