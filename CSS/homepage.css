@@ -13,6 +13,7 @@
 
   /* ma */
 }
+
 .upper-nav {
   display: flex;
 }
@@ -54,14 +55,10 @@
 .profile-icon {
   color: #7c7b76;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 450px) {
   .navbar .upper-nav,
   .lower-nav .nav-list {
     flex-direction: column;
-  }
-
-  .lower-nav .nav-list li {
-    padding: 10px 0;
   }
 }
 .nav-list {
@@ -103,13 +100,14 @@
   background-color: #dcdcdc;
   text-align: center;
 
+  margin: 10px 20px;
   display: flex;
   flex-direction: column;
 }
 
 .singlebook > img {
   flex-shrink: 0;
-  width: 150px; /* Set your desired fixed width */
+  width: 130px; /* Set your desired fixed width */
   height: auto;
 }
 
