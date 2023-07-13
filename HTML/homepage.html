@@ -30,7 +30,39 @@
           <a href="#"><i class="fa fa-search search-icon"></i></a>
         </div>
         <div class="profile">
-          <i class="fa fa-user search-icon"></i>
+          <!-- <i class="fa fa-user search-icon"></i> -->
+
+          <img
+            src="../Assets/IMG_0523.jpeg"
+            alt=""
+            class="userpic"
+            onclick="toggleMenu()"
+          />
+          <div class="sub-menu-wrap" id="subMenu">
+            <div class="sub-menu">
+              <div class="user-info">
+                <img src="../Assets/IMG_0523.jpeg" alt="" />
+                <h3>Simran Tamang</h3>
+              </div>
+              <hr />
+              <a href="#" class="sub-menu-link">
+                <p>Your profile</p>
+                <span>></span>
+              </a>
+              <a href="#" class="sub-menu-link">
+                <p>Favourite</p>
+                <span>></span>
+              </a>
+              <a href="#" class="sub-menu-link">
+                <p>Add books</p>
+                <span>></span>
+              </a>
+              <a href="../HTML/login.html" class="sub-menu-link">
+                <p>Logout</p>
+                <span>></span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="navbar lower-nav">
@@ -109,4 +141,5 @@
       </div>
     </section>
   </body>
+  <script src="../JS/open-menu.js"></script>
 </html>

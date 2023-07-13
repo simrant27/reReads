@@ -1,21 +1,26 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #f3f2ed;
+
   background: transparent;
+}
+body {
+  background-color: #f3f2ed;
 }
 
 .navbar {
   /* display: flex; */
-  height: fit-content;
+  /* height: fit-content; */
   background-color: #f3f2ed;
   padding: 8px;
+  position: relative;
 
   /* ma */
 }
 
 .upper-nav {
   display: flex;
+  position: relative;
 }
 .logo {
   display: flex;
@@ -32,11 +37,13 @@
   color: #7c7b76;
 }
 .search {
+  display: flex;
+
   width: 40%;
   height: 20px;
-  border: 1px solid #c3c2bc;
-  padding: 1px 8px;
   margin: 2px 8px;
+  padding: 1px 8px;
+  border: 1px solid #c3c2bc;
   border-radius: 30px;
   margin-left: auto;
 }
@@ -47,18 +54,90 @@
   text-align: center;
 }
 .search input {
+  /* flex: 1;
+  border: none;
+  outline: none;
+  padding-right: 8px; */
   border: 0px;
   outline: 0px;
   width: 92%;
   text-align: center;
 }
+
+.profile {
+  position: relative;
+}
+.userpic {
+  width: 25px;
+  border-radius: 100%;
+  cursor: pointer;
+  margin: 0px 20px;
+}
+.sub-menu-wrap {
+  position: absolute;
+  top: 100%;
+  right: 3%;
+  width: 220px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s;
+  z-index: 9999;
+}
+.sub-menu-wrap.open-menu {
+  max-height: 400px;
+}
+.sub-menu {
+  background: #ececeb;
+  padding: 10px;
+  margin: 5px;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+}
+.user-info h3 {
+  font-size: large;
+  font-weight: 500;
+}
+.user-info img {
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.sub-menu hr {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background: #ccc;
+  margin: 15px 0 10px;
+}
+.sub-menu-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #525252;
+  margin: 12px 0;
+}
+.sub-menu-link p {
+  width: 100%;
+}
+.sub-menu-link span {
+  font-size: 16px;
+  transition: trasform 0.5s;
+}
+.sub-menu-link:hover span {
+  transform: translateX(5px);
+}
+.sub-menu-link:hover p {
+  font-weight: 600;
+}
 .profile-icon {
   color: #7c7b76;
 }
 @media screen and (max-width: 450px) {
-  .navbar .upper-nav,
   .lower-nav .nav-list {
     flex-direction: column;
+    height: fit-content;
   }
 }
 .nav-list {
@@ -67,7 +146,8 @@
 
   justify-content: space-evenly;
   align-items: center;
-  height: 5vh;
+  height: 6vh;
+  /* position: relative; */
 }
 
 .nav-list li {
