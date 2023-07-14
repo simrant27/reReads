@@ -1,18 +1,18 @@
 /* Global Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color:aliceblue;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  display: flex;
+  display:flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items:first baseline;
+  justify-content:right;
   height: 100vh;
-}
+
 
 /* Profile Section */
 .profile {
@@ -63,19 +63,26 @@ body {
   cursor: pointer;
   border-radius: 4px;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration:underline;
   margin-right: 10px;
 }
 
 .profile-actions .edit-button:hover {
-  background-color: #45A049;
+  color: #45A049;
 }
 
 .profile-actions a {
-  color: #4CAF50;
-  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #45A049;
+  color:white;
+  cursor: pointer;
+  border-radius: 4px;
   font-weight: bold;
+  text-decoration:underline;
   transition: color 0.3s ease;
+  margin-right: 10px;
+
 }
 
 .profile-actions a:hover {
@@ -84,7 +91,7 @@ body {
 
 /* Favorite Book Section */
 .favorite-book {
-  text-align: center;
+  text-align:left;
   margin-bottom: 30px;
 }
 
@@ -99,21 +106,27 @@ body {
 
 /* Upload Book Section */
 .upload-book {
-  text-align: center;
+  text-align:left;
 }
 
 .upload-book input[type="file"] {
-  display: none;
+  display:none;
 }
 
 .upload-book label {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #45A049;
+  color:white;
   cursor: pointer;
   border-radius: 4px;
   font-weight: bold;
+  text-decoration:underline;
+  transition: color 0.3s ease;
+  margin-right: 10px;
+}
+.upload-book label:hover {
+  color: #45A049;
 }
 
 /* Media Queries */
