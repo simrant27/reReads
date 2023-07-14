@@ -1,56 +1,104 @@
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color:body {
   font-family: Arial, sans-serif;
-  background-color:aliceblue ;
+  background-color: #f2f2f2;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
+/* Profile Section */
 .profile {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
-.profile img {
+.profile-image {
+  margin-right: 20px;
+}
+
+.profile-image img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  margin-bottom: 10px;
 }
 
-.profile h2 {
+.profile-details {
+  text-align: center;
+}
+
+.profile-details h2 {
+  font-size: 24px;
   margin-bottom: 5px;
 }
 
-.profile p {
+.profile-details p {
   color: #888;
   margin: 0;
+  margin-bottom: 10px;
 }
 
+.profile-details .id {
+  font-weight: bold;
+}
 
-
-.contact {
+.profile-actions {
   margin-top: 20px;
-  text-align: center;
 }
 
-.contact p {
-  margin: 5px 0;
+.profile-actions .edit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 10px;
 }
 
+.profile-actions .edit-button:hover {
+  background-color: #45A049;
+}
+
+.profile-actions a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.profile-actions a:hover {
+  color: #45A049;
+}
+
+/* Favorite Book Section */
 .favorite-book {
-  margin-top: 20px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
+.favorite-book img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Upload Book Section */
 .upload-book {
-  margin-top: 20px;
   text-align: center;
 }
 
@@ -61,106 +109,24 @@ body {
 .upload-book label {
   display: inline-block;
   padding: 10px 20px;
-  background-color: gray;
-  color: black;
+  background-color: #4CAF50;
+  color: white;
   cursor: pointer;
   border-radius: 4px;
   font-weight: bold;
 }
 
+/* Media Queries */
 @media only screen and (max-width: 480px) {
-  .profile img {
-    width: 120px;
-    height: 120px;
+  .profile {
+    flex-direction: column;
+  }
+  
+  .profile-image {
+    margin-bottom: 20px;
+  }
+  
+  .profile-actions {
+    margin-top: 10px;
   }
 }
-;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .profile {
-    text-align: center;
-  }
-  
-  .profile img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  .profile h2 {
-    margin-bottom: 5px;
-  }
-  
-  .profile p {
-    color: #888;
-    margin: 0;
-  }
-  
-  
-  
-  .contact {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .contact p {
-    margin: 5px 0;
-  }
-  
-  
-
-
-.favorite-book {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .favorite-book img {
-    width: 200px; 
-    height: auto;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .favorite-book h3,
-  .favorite-book p {
-    margin: 0;
-  }
-  
-  
-  
-  .upload-book {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .upload-book input[type="file"] {
-    display: none;
-  }
-  
-  .upload-book label {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: gray;
-    color:black;
-    cursor: pointer;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-  
-  @media only screen and (max-width: 480px) {
-    .profile img {
-      width: 120px;
-      height: 120px;
-    }
-  }
