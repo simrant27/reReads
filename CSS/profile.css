@@ -1,0 +1,166 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color:body {
+  font-family: Arial, sans-serif;
+  background-color:aliceblue ;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile h2 {
+  margin-bottom: 5px;
+}
+
+.profile p {
+  color: #888;
+  margin: 0;
+}
+
+
+
+.contact {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.contact p {
+  margin: 5px 0;
+}
+
+.favorite-book {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.upload-book {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.upload-book input[type="file"] {
+  display: none;
+}
+
+.upload-book label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 480px) {
+  .profile img {
+    width: 120px;
+    height: 120px;
+  }
+}
+;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile {
+    text-align: center;
+  }
+  
+  .profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .profile h2 {
+    margin-bottom: 5px;
+  }
+  
+  .profile p {
+    color: #888;
+    margin: 0;
+  }
+  
+  
+  
+  .contact {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .contact p {
+    margin: 5px 0;
+  }
+  
+  
+
+
+.favorite-book {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .favorite-book img {
+    width: 200px; 
+    height: auto;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .favorite-book h3,
+  .favorite-book p {
+    margin: 0;
+  }
+  
+  
+  
+  .upload-book {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .upload-book input[type="file"] {
+    display: none;
+  }
+  
+  .upload-book label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: gray;
+    color:black;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .profile img {
+      width: 120px;
+      height: 120px;
+    }
+  }

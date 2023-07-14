@@ -1,74 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="../CSS/profile.css">
+</head>
+<body>
+  <div class="container">
+    <div class="profile">
+      <img src="../assets/simran.jpg" alt="Profile Photo">
+      <h2>Simran</h2>
+      
+      <p>Phone Number: 1234567890</p>
+      <p>Email: Simran Tamang</p>
+      <p>Address:Nepal,Pokhara</p>
+      <a href="logout">Logout</a>
+    </div>
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.
-    0">
-    <link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="../CSS/profile.css">
-
-    </head>
-    <body>
-        <div class="container">
-            <div class="main">
-                <div class="topbar">
-                    <a href="">Logout</a>
-                    <a href="">Support</a>
-                    <a href="">Work</a>
-                    <a href="">Home</a>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mt-1">
-                        <div class="card text-center sidebar">
-                         <div class="card-body">
-                            <img src="../assets/profile.png" class="rounded-circle" width="150">
-                               <div class="mt-3">
-                               <h3>
-                               profile
-                               </h3>
-                               <a href="">Home</a>
-                               <a href="">Work</a>
-                               <a href="">Support</a>
-                               <a href="">Setting</a>
-                               <a href="">Signout</a>
-
-                                </div>
-                         </div>   
-                        </div>
-                    </div>
-                    <div class="'col-md-8 mt-1">
-                        <div class=" card mb-3 content">
-                            <h1 class="m-3 pt-3">About</h1>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col md-3">
-                                        <h5> Full Name</h5>
-
-                                    </div>
-                                    <div class="col-md-9 text-secondary">
-                                        Simran Tamang
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div  class="col-md-3">
-                                            <h5>
-                                                Email
-                                            </h5>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </body>
+    <div class="favorite-book">
+        <h3>Favorite Book</h3>
+        <img src="../assets/Pagal-basti.jpg" alt="Favorite Book">
+        <p>Pagal-basti</p>
+      </div>
     
+    <div class="upload-book">
+      <h3>Upload Book</h3>
+      <input type="file" id="book-file">
+      <label for="book-file">Choose File</label>
+    </div>
+  </div>
+</body>
 </html>
