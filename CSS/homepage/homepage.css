@@ -97,6 +97,8 @@ body {
 }
 .user-info h3 {
   font-size: large;
+  color: #7c7b76;
+
   font-weight: 500;
 }
 .user-info img {
@@ -115,7 +117,8 @@ body {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #525252;
+  color: #7c7b76;
+
   margin: 12px 0;
 }
 .sub-menu-link p {
@@ -202,4 +205,8 @@ body {
 }
 .singlebook .location {
   color: #8b8b8a;
+}
+.free {
+  margin-left: 40px;
+  color: #7c7b76;
 }
