@@ -1,44 +1,48 @@
-.hey {
-    width: 33.33%;
-    float: left;
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-}
-
-h2 {
+  }
+  
+  body {
+    background-color: aliceblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Header styles */
+  h2 {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
     margin-top: 10px;
-    margin-left: 200px;
-}
-
-body {
-    background-color: aliceblue;
-}
-
-a {
-
+    text-align: center;
+  }
+  
+  /* Navigation styles */
+  .nav {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .nav ul {
+    list-style: none;
+  }
+  
+  .nav li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  .nav a {
     text-transform: capitalize;
     color: rgb(120, 119, 119);
     text-decoration: none;
     font-size: medium;
     font-weight: 470;
-}
-
-.nav li {
-    display: inline;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-margin-left: 10px;
-
-
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-button {
-    text-decoration: solid;
+  }
+  
+  /* Button styles */
+  button {
     font-weight: 540;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
@@ -47,76 +51,68 @@ button {
     border-radius: 5px;
     width: 100px;
     height: 40px;
-}
-
-.Pagal {
+  }
+  
+  /* Content section styles */
+  #section1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 10px;
+  }
+  
+  .Pagal {
     background-color: lightgray;
-    height: 200pt;
-    width: 700pt;
-    float: left;
+    height: 300px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 5px 20px;
+    border-radius: 5px;
+    padding: 20px;
     box-sizing: border-box;
-}
-
-.Pagal h3 {
-    text-align: left;
-    text-decoration: none;
-    font-weight: 800;
-    font-style: normal;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    text-transform: capitalize;
-}
-
-#Favourite {
-    margin-left: 150pt;
-}
-
-#section1 {
-
-    margin-left: 200px;
-    margin-right: 200px;
-}
-#section2 {
-    margin-left: 20px;
-}
-
-input {
-    width: 300px;
-    margin-top: 10px;
-    margin-left: 100px;
-}
-
-.hey img {
-    margin-left: 300px;
+  }
+  
+  .Pagal img {
+    display: inline-block;
+    margin: 0 auto;
     border-radius: 10px;
-}
-
-.Pagal img {
- margin-left: 100pt;
-}
-
-.Pagal h4 {
-    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .Pagal h3 {
+    text-align: center;
+    font-weight: 800;
+    text-transform: capitalize;
+    margin-top: 10px;
+  }
+  
+  .Pagal h4 {
     text-align: justify;
     color: rgb(137, 68, 68);
-    padding-left: 100px;
-}
-
-.hey h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-decoration: none;
-    font-weight: 400;
-}
-
-.Pagal span {
-    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+  }
+  
+  .Pagal span {
     color: rgb(118, 116, 116);
-}
-
-.Pagal pre {
-    margin-top: 15px;
-
-}
-
-.Pagal h3 {
-    margin-left: 300pt;
-}
+  }
+  
+  .Pagal pre {
+    margin-top: 10px;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 767px) {
+    .Pagal {
+      width: calc(50% - 20px);
+      margin: 0 10px 20px;
+    }
+  }
+  
+  @media screen and (max-width: 479px) {
+    .Pagal {
+      width: 100%;
+      margin: 0 0 20px;
+    }
+  }
+  
