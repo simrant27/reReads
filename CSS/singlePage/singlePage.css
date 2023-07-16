@@ -1,118 +1,83 @@
-/* Reset default margin and padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: aliceblue;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  /* Header styles */
-  h2 {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 600;
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  /* Navigation styles */
-  .nav {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .nav ul {
-    list-style: none;
-  }
-  
-  .nav li {
-    display: inline;
-    margin-right: 10px;
-  }
-  
-  .nav a {
-    text-transform: capitalize;
-    color: rgb(120, 119, 119);
-    text-decoration: none;
-    font-size: medium;
-    font-weight: 470;
-  }
-  
-  /* Button styles */
-  button {
-    font-weight: 540;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    background-color: gray;
-    color: rgb(73, 70, 70);
-    border-radius: 5px;
-    width: 100px;
-    height: 40px;
-  }
-  
-  /* Content section styles */
-  #section1 {
+
+
+.container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 10px;
-  }
-  
-  .Pagal {
-    background-color: lightgray;
-    height: 300px;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 5px 20px;
+    justify-content: space-around;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+.item2 input {
+    width: 250px;
     border-radius: 5px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  .Pagal img {
-    display: inline-block;
-    margin: 0 auto;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 200px;
-  }
-  
-  .Pagal h3 {
+    border: 1px solid black;
     text-align: center;
-    font-weight: 800;
-    text-transform: capitalize;
-    margin-top: 10px;
-  }
-  
-  .Pagal h4 {
+}
+
+.item2 li a {
+    text-decoration: none;
+}
+
+.item2 ul li {
+    display: inline;
+    text-decoration: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+h3 {
+    position: fixed;
+    left: 390px;
+    top: 73px;
+    font-size: larger;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.photo {
+    margin: auto;
+    width: 600px;
+    height: 490px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    background-color: lightgray
+}
+
+.it1 img {
+    margin-top: 40px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.it1 pre {
     text-align: justify;
-    color: rgb(137, 68, 68);
-    margin-top: 10px;
-  }
-  
-  .Pagal span {
-    color: rgb(118, 116, 116);
-  }
-  
-  .Pagal pre {
-    margin-top: 10px;
-  }
-  
-  /* Responsive styles */
-  @media screen and (max-width: 767px) {
-    .Pagal {
-      width: calc(50% - 20px);
-      margin: 0 10px 20px;
-    }
-  }
-  
-  @media screen and (max-width: 479px) {
-    .Pagal {
-      width: 100%;
-      margin: 0 0 20px;
-    }
-  }
-  
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: medium;
+   margin-left: 50px;
+
+}
+
+.it2 {
+    margin-top: -20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 200px;
+}
+
+.it3 {
+    text-align: justify;
+    margin-top: 70px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+}
+
+.it3 button {
+    width: 150px;
+    height: 40px;
+    background-color: gray;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+}
