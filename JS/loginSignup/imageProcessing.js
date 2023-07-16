@@ -1,9 +1,9 @@
 //　for image
 var image = document.getElementById("Imagecontainer");
 var images = [
-  "../assets/download (1).jpeg",
-  "../assets/download (2).jpeg",
-  "../assets/download.jpeg",
+  "../../assets/download (1).jpeg",
+  "../../assets/download (2).jpeg",
+  "../../assets/download.jpeg",
 ]; // Array of image URLs
 var currentIndex = 0;
 
