@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile Page</title>
   <link rel="stylesheet" href="/CSS/profile/profile.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Add Font Awesome CSS -->
-  <script src="/JS/profile.js"></script> <!-- Add script.js file for handling the profile functionality -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Add Font Awesome CSS -->
+  <script src="/JS/profile.js"></script>
+  <!-- Add script.js file for handling the profile functionality -->
+  <style>
+    #upload-book-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
 </head>
+
 <body>
   <div class="container">
     <div class="profile">
@@ -15,7 +30,7 @@
         <img src="/assets/simran.jpg" alt="Profile Photo" id="profile-photo">
         <label for="profile-photo-input" class="edit-icon">
           <input type="file" id="profile-photo-input" accept="image/*" onchange="handleProfilePhotoChange(event)">
-          <i class="fas fa-camera"></i> <!-- Use the camera icon from Font Awesome -->
+          <i class="fas fa-camera"></i>
         </label>
       </div>
       <div class="profile-details">
@@ -24,6 +39,7 @@
         <p id="profile-email">Email: yourname@example.com</p>
         <p id="profile-address">Address: 123 Main St, City, State</p>
         <button id="edit-button" onclick="openEditForm()">Edit Profile</button>
+        <button id="upload-book-button" onclick="openUploadBookForm()">Upload Book</button>
       </div>
     </div>
 
@@ -47,4 +63,5 @@
     </div>
   </div>
 </body>
+
 </html>
