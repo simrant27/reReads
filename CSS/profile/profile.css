@@ -1,31 +1,30 @@
 /* Global Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: aliceblue;
+  background-color: #f2f2f2;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 /* Profile Section */
 .profile {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  text-align: center;
   margin-top: 40px;
 }
 
 .profile-image {
-  margin-bottom: 20px; /* Add margin-bottom to create space between photo and details */
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .profile-image img {
@@ -34,105 +33,108 @@ body {
   border-radius: 50%;
 }
 
+.edit-icon {
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .profile-details {
   text-align: center;
+  margin-top: 20px;
 }
 
 .profile-details h2 {
   font-size: 24px;
   margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
 }
 
 .profile-details p {
-  color: #888;
+  color: #777;
   margin: 0;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 
-.profile-details .id {
-  font-weight: bold;
-}
-
-.profile-actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.profile-actions .edit-button,
-.profile-actions a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #45A049;
-  color: white;
-  cursor: pointer;
-  border-radius: 4px;
-  font-weight: bold;
-  text-decoration: underline;
-  transition: color 0.3s ease;
-  margin-right: 10px;
-}
-
-.profile-actions .edit-button:hover,
-.profile-actions a:hover {
-  color: #45A049;
-}
-
-/* Favorite Book Section */
-.favorite-book {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.favorite-book img {
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-  border: solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Upload Book Section */
-.upload-book {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.upload-book input[type="file"] {
+.edit-form-container {
   display: none;
+  margin-top: 40px;
 }
 
-.upload-book label {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #45A049;
-  color: white;
-  cursor: pointer;
+.edit-form {
+  text-align: center;
+}
+
+.edit-form label,
+.edit-form input,
+.edit-form textarea {
+  display: block;
+  margin-bottom: 15px;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.edit-form textarea {
+  height: 80px;
+}
+
+.edit-form button {
+  margin-top: 10px;
+  font-family: Arial, sans-serif;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
   font-weight: bold;
-  text-decoration: underline;
-  transition: color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.edit-form button:hover {
+  background-color: #45a049;
+}
+
+.edit-form button[type="button"] {
+  background-color: #bbb;
   margin-right: 10px;
 }
 
-.upload-book label:hover {
-  color: #45A049;
+.edit-form button[type="button"]:hover {
+  background-color: #999;
 }
 
-/* Media Queries */
-@media only screen and (max-width: 480px) {
-  .profile {
-    flex-direction: column;
-    text-align: center;
-  }
+#edit-button {
+  margin-top: 10px;
+  font-family: Arial, sans-serif;
+  padding: 10px 20px;
+  background-color:blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
 
-  .profile-image {
-    margin-bottom: 20px;
-  }
-
-  .profile-actions {
-    margin-top: 10px;
-  }
+#edit-button:hover {
+  background-color: #d32f2f;
 }

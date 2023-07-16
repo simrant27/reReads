@@ -5,36 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile Page</title>
   <link rel="stylesheet" href="/CSS/profile/profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Add Font Awesome CSS -->
+  <script src="/JS/profile.js"></script> <!-- Add script.js file for handling the profile functionality -->
 </head>
 <body>
   <div class="container">
     <div class="profile">
       <div class="profile-image">
-        <img src="/assets/simran.jpg" alt="Profile Photo">
+        <img src="/assets/simran.jpg" alt="Profile Photo" id="profile-photo">
+        <label for="profile-photo-input" class="edit-icon">
+          <input type="file" id="profile-photo-input" accept="image/*" onchange="handleProfilePhotoChange(event)">
+          <i class="fas fa-camera"></i> <!-- Use the camera icon from Font Awesome -->
+        </label>
       </div>
       <div class="profile-details">
-        <h2>Simran Tamang</h2>
-        
-        <p>Phone Number: 1234567890</p>
-        <p>Email: Simran.Tamang@example.com</p>
-        <p>Address: Nepal,Pokhara</p>
-        <div class="profile-actions">
-          <a href="Edit" class="edit-button">Edit</a>
-          <a href="logout.html">Logout</a>
-        </div>
+        <h2 id="profile-name">Your Name</h2>
+        <p id="profile-number">Phone Number: 1234567890</p>
+        <p id="profile-email">Email: yourname@example.com</p>
+        <p id="profile-address">Address: 123 Main St, City, State</p>
+        <button id="edit-button" onclick="openEditForm()">Edit Profile</button>
       </div>
     </div>
-    
-    <div class="favorite-book">
-      <h3>Favorite Book</h3>
-      <img src="/assets/Pagal-basti.jpg" alt="Favorite Book">
-      <p>Pagal-basti</p>
-    </div>
-    
-    <div class="upload-book">
-      <h3>Upload Book</h3>
-      <input type="file" id="book-file">
-      <label for="book-file">Choose File</label>
+
+    <div class="edit-form-container" id="edit-form-container">
+      <form id="edit-form" class="edit-form" onsubmit="saveProfileChanges(event)">
+        <label for="edit-name">Name:</label>
+        <input type="text" id="edit-name" name="edit-name">
+
+        <label for="edit-number">Phone Number:</label>
+        <input type="tel" id="edit-number" name="edit-number">
+
+        <label for="edit-email">Email:</label>
+        <input type="email" id="edit-email" name="edit-email">
+
+        <label for="edit-address">Address:</label>
+        <textarea id="edit-address" name="edit-address"></textarea>
+
+        <button type="submit">Save Changes</button>
+        <button type="button" onclick="cancelEditForm()">Cancel</button>
+      </form>
     </div>
   </div>
 </body>
