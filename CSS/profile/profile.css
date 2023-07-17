@@ -187,9 +187,9 @@ body {
   gap: 10px;
 }
 
-.popup-content input[type="file"],
 .popup-content input[type="text"],
-.popup-content input[type="date"],
+.popup-content input[type="number"],
+.popup-content input[type="email"],
 .popup-content textarea {
   width: 100%;
   padding: 10px;

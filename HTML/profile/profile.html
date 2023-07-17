@@ -37,8 +37,8 @@
           <input type="text" id="book-name" name="book-name" placeholder="Book Name" required>
           <input type="text" id="author-name" name="author-name" placeholder="Author Name" required>
           <input type="text" id="book-language" name="book-language" placeholder="Language" required>
-          <input type="date" id="published-date" name="published-date" required>
-          <input type="text" id="book-publisher" name="book-publisher" placeholder="Publisher" required>
+          <input type="number" id="published-year" name="published-year" min="1900" max="2099" placeholder="Publication Year" >
+          <input type="text" id="book-publisher" name="book-publication" placeholder="book-publication" >
           <input type="radio" id="donate-radio" name="price-type" value="donate" onclick="togglePriceFields(false)" required>
           <label for="donate-radio">Donate</label>
           <input type="radio" id="sale-radio" name="price-type" value="sale" onclick="togglePriceFields(true)" required>
