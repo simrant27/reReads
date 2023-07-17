@@ -9,17 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <!-- Add Font Awesome CSS -->
   <script src="/JS/profile.js"></script>
-  <!-- Add script.js file for handling the profile functionality -->
-  <style>
-    #upload-book-button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
+  
+ 
   </style>
 </head>
 
@@ -43,6 +34,8 @@
       </div>
     </div>
 
+
+
     <div class="edit-form-container" id="edit-form-container">
       <form id="edit-form" class="edit-form" onsubmit="saveProfileChanges(event)">
         <label for="edit-name">Name:</label>
@@ -59,9 +52,11 @@
 
         <button type="submit">Save Changes</button>
         <button type="button" onclick="cancelEditForm()">Cancel</button>
+        
       </form>
     </div>
   </div>
 </body>
 
 </html>
+
