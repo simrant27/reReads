@@ -32,11 +32,33 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
     // Check for email
-    if (empty(trim($_POST["email"]))) {
-        $email_err = "Email cannot be blank";
-    } else {
-        $email = trim($_POST['email']);
+  if (empty(trim($_POST["email"]))) {
+    $email_err = "Email cannot be blank";
+} else {
+    $sql = "SELECT user_id FROM users WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "s", $param_email);
+
+        // Set the value of param email
+        $param_email = trim($_POST['email']);
+
+        // Try to execute this statement
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_store_result($stmt);
+            if (mysqli_stmt_num_rows($stmt) == 1) {
+                $email_err = "This email is already taken";
+            } else {
+                $email = trim($_POST['email']);
+            }
+        } else {
+            echo "Something went wrong";
+        }
     }
+}
+
+mysqli_stmt_close($stmt);
+
 
     // Check for Address
     if (empty(trim($_POST['Address']))) {
@@ -58,26 +80,32 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     // If there were no errors, go ahead and insert into the database
     if (empty($name_err) && empty($password_err) && empty($confirm_Password_err) && empty($email_err) && empty($Address_err) && empty($PhoneNumber_err)) {
-        $sql = "INSERT INTO users (fullName, password, email, Address, phoneNo) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (fullName, email, address, password, phoneNo) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $sql);
         if ($stmt) {
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            mysqli_stmt_bind_param($stmt, "sssss", $name, $hashed_password, $email, $Address, $PhoneNumber);
+            mysqli_stmt_bind_param($stmt, "sssss", $param_name, $param_email, $param_Address, $param_password,  $param_PhoneNumber);
+            $param_name = $name;
+            $param_Address = $Address;
+            $param_email = $email;
+            $param_PhoneNumber = $PhoneNumber;
+
+            $param_password = password_hash($password, PASSWORD_DEFAULT);
 
             // Try to execute the query
             if (mysqli_stmt_execute($stmt)) {
-                header("location: login.php");
+                echo "Registration successful!";
+                header("location:http://localhost/reReads/HTML/loginSignup/login.php");
+                // exit; // Always include an exit after the header redirect to prevent further execution of the script.
             } else {
                 echo "Something went wrong... cannot redirect!";
             }
+            mysqli_stmt_close($stmt);
         }
-        mysqli_stmt_close($stmt);
     }
+
     mysqli_close($conn);
 }
-
 ?>
-
 
 
 <!DOCTYPE html>
@@ -179,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             <br /><br />
             <div class="left">
-              Already Sign In? <a href="../loginSignup/login.html">Log In</a>
+              Already Sign In? <a href="../loginSignup/login.php">Log In</a>
             </div>
             <br /><br />
           </form>
@@ -189,5 +217,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   </body>
   <script src="../../JS/loginSignup/eyeicon.js"></script>
   <script src="../../JS/loginSignup/imageProcessing.js"></script>
-  <script src="../../JS/loginSignup/validation.js"></script>
+    <!-- <script src="../../JS/loginSignup/validation.js"></script> -->
+
 </html>

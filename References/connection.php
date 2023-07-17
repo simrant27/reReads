@@ -1,10 +1,22 @@
 <?php
-    $hostname = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "reReads";
+/*
+This file contains database configuration assuming you are running mysql using user "root" and password ""
+*/
 
-    $con = mysqli_connect($hostname, $username, $password, $db) or die("Conncetion failed");
-    
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'reReads');
+
+// Try connecting to the Database
+$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
+//Check the connection
+if (!$conn) {
+    die('Error: Cannot connect');
+}
+// else{
+//     echo"connection Establish";
+// }
 
 ?>
