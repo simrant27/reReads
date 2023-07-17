@@ -1,3 +1,32 @@
+<?php
+include "../main/connection.php";
+//connect to database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "rereads";
+
+//creating connection
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+$user_id = 1;
+$sql = "SELECT * FROM users WHERE user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+// Fetch the user's information
+$row = $result->fetch_assoc();
+$user_name = $row['fullName'];
+$email = $row['email'];
+$profile_image = $row['user_img'];
+$phoneNo = $row['phoneNo'];
+$address = $row['address'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +34,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile Page</title>
-  <link rel="stylesheet" href="/CSS/profile/profile.css">
+  <link rel="stylesheet" href="../../CSS/profile/profile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
@@ -13,17 +42,17 @@
   <div class="container">
     <div class="profile">
       <div class="profile-image">
-        <img src="/assets/simran.jpg" alt="Profile Photo" id="profile-photo">
+        <img src="../../assets/simran.jpg" alt="Profile Photo" id="profile-photo">
         <label for="profile-photo-input" class="edit-icon">
           <input type="file" id="profile-photo-input" accept="image/*" onchange="handleProfilePhotoChange(event)">
           <i class="fas fa-camera"></i>
         </label>
       </div>
       <div class="profile-details">
-        <h2 id="profile-name">Your Name</h2>
-        <p id="profile-number">Phone Number: 1234567890</p>
-        <p id="profile-email">Email: yourname@example.com</p>
-        <p id="profile-address">Address: 123 Main St, City, State</p>
+        <h2 id="profile-name"><?php echo $user_name ?></h2>
+        <p id="profile-number">Phone Number:<?php echo $phoneNo ?></p>
+        <p id="profile-email">Email: <?php echo $email ?> </p>
+        <p id="profile-address">Address:<?php echo $address ?> </p>
         <button id="edit-button" onclick="openEditForm()">Edit Profile</button>
         <button id="upload-book-button" onclick="openUploadBookForm()">Upload Book</button>
       </div>
@@ -47,7 +76,7 @@
             <input type="number" id="actual-price" name="actual-price" placeholder="Actual Price" required>
             <input type="number" id="selling-price" name="selling-price" placeholder="Selling Price" required>
           </div>
-          <button type="submit">Upload</button>
+          <button type="submit" onclick="closeUploadBookPopup()">Upload</button>
           <button type="button" onclick="closeUploadBookPopup()">Cancel</button>
         </form>
       </div>
@@ -69,7 +98,7 @@
     </div>
   </div>
 
-  <script src="/JS/profile.js"></script>
+  <script src="../../JS/profile.js"></script>
 </body>
 
 </html>
