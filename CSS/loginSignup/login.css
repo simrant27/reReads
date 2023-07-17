@@ -1,27 +1,13 @@
 body {
-  padding: 2rem;
-  margin-top: 5rem;
   position: relative;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", "sans-serif";
-}
-.container {
-  height: 100vh;
-  width: 100%;
-  display: flex;
 
-  justify-content: center;
-  align-items: center;
-}
 .logo {
   display: flex;
 
   justify-content: center;
   align-items: center;
+
   font-size: 28px;
 }
 .logo .re {
@@ -43,8 +29,8 @@ body {
 #password,
 #email,
 #log {
-  width: 250px;
-  height: 40px;
+  width: 45%;
+  height: 45px;
   border: solid 2px black;
   border-radius: 7px;
   background-color: #fbf7ef;
@@ -53,7 +39,7 @@ body {
 }
 #log {
   background-color: #c6b5f3;
-  width: 265px;
+  width: 45%;
 
   color: black;
 }
@@ -64,8 +50,8 @@ a {
 .right img {
   float: right;
   padding: 2vh;
-  height: 39vh;
-  width: 33vh;
+  height: 20%;
+  width: 20%;
 }
 .left {
   float: left;

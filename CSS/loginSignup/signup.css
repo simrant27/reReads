@@ -34,7 +34,7 @@ body {
 #PhoneNumber,
 #email,
 #signup {
-  width: 250px;
+  width: 50%;
   height: 40px;
   border: solid 2px black;
   border-radius: 7px;
@@ -44,7 +44,7 @@ body {
 }
 
 #signup {
-  width: 265px;
+  /* width: 90%; */
   background-color: #c6b5f3;
   color: black;
 }
@@ -54,8 +54,8 @@ a {
 .right img {
   float: right;
   padding: 5vh;
-  height: 50vh;
-  width: 35vh;
+  height: 50%;
+  width: 50%;
 }
 .left {
   float: left;

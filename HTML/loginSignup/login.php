@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../CSS/loginSignup/login.css" />
   </head>
   <body>
-    <section class="container forms">
+    <section class="container forms"id="login-form">
     <main id="mainAll">
       <aside class="right">
         <div class="Image">
@@ -27,6 +27,7 @@
         <div class="login">
           <form id="myForm" method="get" action="">
             <input
+            class="left"
               type="text"
               name="email"
               id="email"
@@ -34,8 +35,10 @@
               placeholder="Enter your Email"
             />
             <br /><br />
+            <br /><br />
             <div class="password-container">
               <input
+              class="left"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -43,12 +46,13 @@
                 id="password"
               />
               <i
-                class="far fa-eye"
+                class="far fa-eye left"
                 id="togglePassword"
                 style="margin-left: -30px; cursor: pointer"
               ></i>
             </div>
             <br /><br />
+            <br>
 
             <a href="#" class="left">Forgot Password?</a>
             <br /><br />
