@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once "../../References/connection.php";
 
 $name = $Address = $email = $PhoneNumber = $password = $confirm_Password = "";
@@ -15,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Check for password
     if (empty(trim($_POST['password']))) {
         $password_err = "Password cannot be blank";
-    } else if (strlen(trim($_POST['password'])) < 5) {
-        $password_err = "Password cannot be less than 5 characters";
+    } else if (strlen(trim($_POST['password'])) < 8) {
+        $password_err = "Password cannot be less than 8 characters";
     } else {
         $password = trim($_POST['password']);
     }
@@ -90,7 +93,6 @@ mysqli_stmt_close($stmt);
             $param_PhoneNumber = $PhoneNumber;
 
             $param_password = password_hash($password, PASSWORD_DEFAULT);
-
             // Try to execute the query
             if (mysqli_stmt_execute($stmt)) {
                 echo "Registration successful!";
