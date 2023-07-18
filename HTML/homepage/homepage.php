@@ -1,11 +1,11 @@
 <?php
 session_start();
+include "../../References/connection.php";
 // $user_name = "Guest"; // Default name for non-logged in users
 
 // Check if the user is logged in
 if (isset($_SESSION['email']) && isset($_SESSION['user_id'])) {
     // Get the user's name from the database based on the user_id
-    require_once "../../References/connection.php";
     $user_id = $_SESSION['user_id'];
     $sql = "SELECT fullName FROM users WHERE user_id = ?";
     $stmt = $conn->prepare($sql);
@@ -26,6 +26,12 @@ if (isset($_GET['logout'])) {
     header("Location: ../../HTML/loginSignup/login.php");
     exit;
 }
+
+//fetching data from the table books
+$sell_sql = "SELECT * FROM books WHERE donate =0 ORDER BY book_id DESC ";
+$sell_result = $conn->query($sell_sql);
+// $address = "SELECT address from user where user_id = $user_id";
+// $address_result = $conn->query($address);
 ?>
 
 
@@ -82,7 +88,7 @@ if (isset($_GET['logout'])) {
 
               </div>
               <hr />
-              <a href="#" class="sub-menu-link">
+              <a href="../profile/profile.php" class="sub-menu-link">
                 <p>Your profile</p>
                 <span>></span>
               </a>
@@ -118,36 +124,24 @@ if (isset($_GET['logout'])) {
       </div>
     </nav>
     <section class="booklist">
-      <div class="singlebook">
-        <img src="../../Assets/Pagal-basti.jpg" alt="book photo" />
+      <?php while ($row = $sell_result->fetch_assoc()) {?>
 
-        <span class="bookname">Pagal basti</span>
-        <span class="bookprice">150</span>
+
+      <div class="singlebook">
+
+        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
+
+        <span class="bookname"><?php echo $row['book_name']; ?></span>
+        <span class="bookprice"><?php echo $row['selling_price']; ?></span>
         <span class="location">
           <a href="#"><i class="fa fa-map-marker"></i></a>
-          Pokhara,Bagar
+          <?php
+// echo $address_result;
+    ?>
         </span>
       </div>
+<?php }?>
 
-      <div class="singlebook">
-        <img src="../../Assets/Pagal-basti.jpg" alt="book photo" />
-
-        <span class="bookname">Pagal basti</span>
-        <span class="bookprice">150</span>
-        <span class="location">
-          <a href="#"><i class="fa fa-map-marker"></i></a>
-          Pokhara,Bagar
-        </span>
-      </div>
-      <div class="singlebook">
-        <img src="../../Assets/Pagal-basti.jpg" alt="book photo" />
-
-        <span class="bookname">Pagal basti</span>
-        <span class="bookprice">150</span>
-        <span class="location">
-          <a href="#"><i class="fa fa-map-marker"></i></a>
-          Pokhara,Bagar
-        </span>
       </div>
     </section>
     <h2 class="free">Free</h2>
