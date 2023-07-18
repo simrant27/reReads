@@ -11,18 +11,36 @@ function handleProfilePhotoChange(event) {
 }
 
 function openEditForm() {
-  console.log("here");
-
-  const editFormContainer = document.getElementById("edit-form-container");
-  editFormContainer.style.display = "block";
+  const editProfilePopup = document.getElementById("edit-profile-popup");
+  editProfilePopup.style.display = "block";
 
   const profileDetails = document.querySelector(".profile-details");
   profileDetails.style.display = "none";
+
+  // Populate form fields with current profile data
+  const profileName = document.getElementById("profile-name").textContent;
+  const profileNumber = document.getElementById("profile-number").textContent;
+  const profileEmail = document.getElementById("profile-email").textContent;
+  const profileAddress = document.getElementById("profile-address").textContent;
+
+  document.getElementById("edit-name").value = profileName;
+  document.getElementById("edit-number").value = profileNumber.replace(
+    "Phone Number: ",
+    ""
+  );
+  document.getElementById("edit-email").value = profileEmail.replace(
+    "Email: ",
+    ""
+  );
+  document.getElementById("edit-address").value = profileAddress.replace(
+    "Address: ",
+    ""
+  );
 }
 
-function cancelEditForm() {
-  const editFormContainer = document.getElementById("edit-form-container");
-  editFormContainer.style.display = "none";
+function closeEditProfilePopup() {
+  const editProfilePopup = document.getElementById("edit-profile-popup");
+  editProfilePopup.style.display = "none";
 
   const profileDetails = document.querySelector(".profile-details");
   profileDetails.style.display = "block";
@@ -36,18 +54,19 @@ function saveProfileChanges(event) {
   const emailInput = document.getElementById("edit-email");
   const addressInput = document.getElementById("edit-address");
 
-  const profileName = document.getElementById("profiFle-name");
+  const profileName = document.getElementById("profile-name");
   const profileNumber = document.getElementById("profile-number");
   const profileEmail = document.getElementById("profile-email");
   const profileAddress = document.getElementById("profile-address");
 
   profileName.textContent = nameInput.value;
-  profileNumber.textContent = `Phone Number: ${numberInput.value}`;
-  profileEmail.textContent = `Email: ${emailInput.value}`;
-  profileAddress.textContent = `Address: ${addressInput.value}`;
+  profileNumber.textContent = `${numberInput.value}`;
+  profileEmail.textContent = `${emailInput.value}`;
+  profileAddress.textContent = `${addressInput.value}`;
 
-  cancelEditForm();
+  closeEditProfilePopup();
 }
+
 function openUploadBookForm() {
   document.getElementById("upload-book-popup").style.display = "block";
 }
@@ -57,20 +76,18 @@ function closeUploadBookPopup() {
 }
 
 function handleUploadBook(event) {
-  console.log("ia m in upload");
-
   event.preventDefault();
 
   const bookPhoto = document.getElementById("book-photo").files[0];
   const bookName = document.getElementById("book-name").value;
   const authorName = document.getElementById("author-name").value;
   const bookLanguage = document.getElementById("book-language").value;
-  console.log("I am in upload tada");
   const publishedYear = document.getElementById("published-year").value;
   const bookPublisher = document.getElementById("book-publisher").value;
   const priceType = document.querySelector(
     'input[name="price-type"]:checked'
   ).value;
+
   let actualPrice = "";
   let sellingPrice = "";
 
@@ -79,54 +96,55 @@ function handleUploadBook(event) {
     sellingPrice = document.getElementById("selling-price").value;
   }
 
-  // Perform necessary actions with the book details
-  // Example: send data to server, update UI, etc.
-
-  closeUploadBookPopup(); // Close the popup after handling the submission// Close the popup after handling the submission// Close the popup after handling the submission
+  closeUploadBookPopup();
 }
 
 function togglePriceFields(show) {
   const priceFields = document.querySelector(".price-fields");
   priceFields.style.display = show ? "block" : "none";
+
+  const actualPriceInput = document.getElementById("actual-price");
+  actualPriceInput.required = show;
+
+  const sellingPriceInput = document.getElementById("selling-price");
+  sellingPriceInput.required = show;
 }
 
-function openEditForm() {
-  const editFormContainer = document.getElementById("edit-form-container");
-  editFormContainer.style.display = "block";
+// Add event listener to upload button
+document
+  .getElementById("upload-button")
+  .addEventListener("click", function (event) {
+    const priceType = document.querySelector(
+      'input[name="price-type"]:checked'
+    ).value;
 
-  // Populate the form fields with current profile details
-  const profileName = document.getElementById("profile-name").textContent;
-  const profileNumber = document.getElementById("profile-number").textContent;
-  const profileEmail = document.getElementById("profile-email").textContent;
-  const profileAddress = document.getElementById("profile-address").textContent;
+    if (priceType === "donate") {
+      handleDonateBook(event);
+    } else if (priceType === "sale") {
+      handleUploadBook(event);
+    }
+  });
 
-  document.getElementById("edit-name").value = profileName;
-  document.getElementById("edit-number").value = profileNumber;
-  document.getElementById("edit-email").value = profileEmail;
-  document.getElementById("edit-address").value = profileAddress;
-}
+// Add event listener to price type radio buttons
+const donateRadio = document.getElementById("donate-radio");
+donateRadio.addEventListener("change", function () {
+  togglePriceFields(false);
+});
 
-function saveProfileChanges(event) {
-  console.log("iam in edit");
-  event.preventDefault();
+const saleRadio = document.getElementById("sale-radio");
+saleRadio.addEventListener("change", function () {
+  togglePriceFields(true);
+});
 
-  // Get the updated values from the form fields
-  const updatedName = document.getElementById("edit-name").value;
-  const updatedNumber = document.getElementById("edit-number").value;
-  const updatedEmail = document.getElementById("edit-email").value;
-  const updatedAddress = document.getElementById("edit-address").value;
+// Add event listener to edit button
+document.getElementById("edit-button").addEventListener("click", openEditForm);
 
-  // Update the profile details with the new values
-  document.getElementById("profile-name").textContent = updatedName;
-  document.getElementById("profile-number").textContent = updatedNumber;
-  document.getElementById("profile-email").textContent = updatedEmail;
-  document.getElementById("profile-address").textContent = updatedAddress;
+// Add event listener to cancel button in edit form
+document
+  .getElementById("edit-form")
+  .addEventListener("submit", saveProfileChanges);
 
-  // Close the edit form
-  cancelEditForm();
-}
-
-function cancelEditForm() {
-  const editFormContainer = document.getElementById("edit-form-container");
-  editFormContainer.style.display = "none";
-}
+// Add event listener to cancel button in edit form
+document
+  .getElementById("cancel-button")
+  .addEventListener("click", closeEditProfilePopup);

@@ -1,16 +1,16 @@
 <?php
 session_start();
-if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
-    header(("location:../loginsignup.login/php"));
+
+include "../main/connection.php";
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    header("Location: ../homepage/homepage.php");
     exit;
 }
-?>
 
-<?php
-include "../main/connection.php";
 //connect to database
 
-$user_id = 1;
+$user_id = $_SESSION['user_id'];
+
 $sql = "SELECT * FROM users WHERE user_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
@@ -25,6 +25,34 @@ $email = $row['email'];
 $profile_image = $row['user_img'];
 $phoneNo = $row['phoneNo'];
 $address = $row['address'];
+
+//edit and update database
+if (isset($_POST['update_profile'])) {
+    $user_id = $_SESSION['user_id'];
+    $name = $_POST['edit-name'];
+    $number = $_POST['edit-number'];
+    $email = $_POST['edit-email'];
+    $address = $_POST['edit-address'];
+
+    // Perform the SQL update query
+    $sql = "UPDATE users SET fullName=?, email=?, address=?, phoneNo=? WHERE user_id=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssi", $name, $email, $address, $number, $user_id);
+
+    if ($stmt->execute()) {
+        // Update successful
+        header("Location: profile.php"); // Redirect back to the profile page
+        exit;
+    } else {
+        // Error occurred during the update
+        // You can handle the error accordingly, for example:
+        echo "Error updating user profile: " . $stmt->error;
+    }
+
+    // Close the statement and connection
+    $stmt->close();
+
+}
 
 ?>
 
@@ -49,7 +77,7 @@ $address = $row['address'];
           <i class="fas fa-camera"></i>
         </label>
       </div>
-      <div class="profile-details">
+      <div class="profile-details" id="profile-details">
 
         <span>Name: </span>
       <span id="profile-name"><?php echo $user_name ?></span>
@@ -64,8 +92,11 @@ $address = $row['address'];
       <span id="profile-address"><?php echo $address ?></span>
 <br>
         <button id="edit-button" onclick="openEditForm()">Edit Profile</button>
-        <button id="upload-book-button" onclick="openUploadBookForm()">Upload Book</button>
       </div>
+    </div>
+    <div id="uploads" class="uploads">
+      <button id="upload-book-button" onclick="openUploadBookForm()">Upload Book</button>
+
     </div>
 
     <div id="upload-book-popup" class="popup">
@@ -86,42 +117,28 @@ $address = $row['address'];
             <input type="number" id="actual-price" name="actual-price" placeholder="Actual Price" required>
             <input type="number" id="selling-price" name="selling-price" placeholder="Selling Price" required>
           </div>
-          <button type="submit" onclick="closeUploadBookPopup()">Upload</button>
+          <button type="submit" name="upload_book" onclick="closeUploadBookPopup()">Upload</button>
           <button type="button" onclick="closeUploadBookPopup()">Cancel</button>
         </form>
       </div>
     </div>
 
-    <div class="edit-form-container" id="edit-form-container">
-      <form id="edit-form" class="edit-form" onsubmit="saveProfileChanges(event)" action="">
-
-        <label for="edit-name">Name:</label>
-        <input type="text" id="edit-name" name="edit-name">
-        <label for="edit-number">Phone Number:</label>
-        <input type="tel" id="edit-number" name="edit-number">
-        <label for="edit-email">Email:</label>
-         <input type="email" id="edit-email" name="edit-email">
-        <label for="edit-address">Address:</label>
-        <textarea id="edit-address" name="edit-address"></textarea>
-        <button type="submit" name = "update">Save Changes</button>
-        <button type="button" onclick="cancelEditForm()">Cancel</button>
-      </form>
-
-<?php
-
-include "../main/connection.php";
-
-if (isset($_POST['update'])) {
-    $name = $_POST['edit-name'];
-    $number = $_POST['edit-number'];
-    $email = $_POST['edit-email'];
-    $address = $_POST['edit-address'];
-
-    $sql = "  UPDATE users SET ,fullName='$name',email='$email',address='$address',phoneNo='$number' WHERE user_id = 1";
-    $query_rum = mysqli_query($conn, $sql);
-
-}
-?>
+    <div id="edit-profile-popup" class="popup">
+      <div class="popup-content">
+        <h2>Edit Profile</h2>
+        <form id="edit-form" onsubmit="saveProfileChanges(event)">
+          <label for="edit-name">Name:</label>
+          <input type="text" id="edit-name" name="edit-name">
+          <label for="edit-number">Phone Number:</label>
+          <input type="text" id="edit-number" name="edit-number" placeholder="Phone Number">
+          <label for="edit-email">Email:</label>
+          <input type="email" id="edit-email" name="edit-email">
+          <label for="edit-address">Address:</label>
+          <textarea id="edit-address" name="edit-address"></textarea>
+          <button type="submit">Save Changes</button>
+          <button type="button" onclick="closeEditProfilePopup()">Cancel</button>
+        </form>
+      </div>
     </div>
   </div>
 
