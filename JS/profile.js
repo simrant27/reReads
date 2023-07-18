@@ -46,26 +46,26 @@ function closeEditProfilePopup() {
   profileDetails.style.display = "block";
 }
 
-function saveProfileChanges(event) {
-  event.preventDefault();
+// function saveProfileChanges(event) {
+//   event.preventDefault();
 
-  const nameInput = document.getElementById("edit-name");
-  const numberInput = document.getElementById("edit-number");
-  const emailInput = document.getElementById("edit-email");
-  const addressInput = document.getElementById("edit-address");
+//   const nameInput = document.getElementById("edit-name");
+//   const numberInput = document.getElementById("edit-number");
+//   const emailInput = document.getElementById("edit-email");
+//   const addressInput = document.getElementById("edit-address");
 
-  const profileName = document.getElementById("profile-name");
-  const profileNumber = document.getElementById("profile-number");
-  const profileEmail = document.getElementById("profile-email");
-  const profileAddress = document.getElementById("profile-address");
+//   const profileName = document.getElementById("profile-name");
+//   const profileNumber = document.getElementById("profile-number");
+//   const profileEmail = document.getElementById("profile-email");
+//   const profileAddress = document.getElementById("profile-address");
 
-  profileName.textContent = nameInput.value;
-  profileNumber.textContent = `${numberInput.value}`;
-  profileEmail.textContent = `${emailInput.value}`;
-  profileAddress.textContent = `${addressInput.value}`;
+//   profileName.textContent = nameInput.value;
+//   profileNumber.textContent = `${numberInput.value}`;
+//   profileEmail.textContent = `${emailInput.value}`;
+//   profileAddress.textContent = `${addressInput.value}`;
 
-  closeEditProfilePopup();
-}
+//   closeEditProfilePopup();
+// }
 
 function openUploadBookForm() {
   document.getElementById("upload-book-popup").style.display = "block";
@@ -75,29 +75,29 @@ function closeUploadBookPopup() {
   document.getElementById("upload-book-popup").style.display = "none";
 }
 
-function handleUploadBook(event) {
-  event.preventDefault();
+// function handleUploadBook(event) {
+//   event.preventDefault();
 
-  const bookPhoto = document.getElementById("book-photo").files[0];
-  const bookName = document.getElementById("book-name").value;
-  const authorName = document.getElementById("author-name").value;
-  const bookLanguage = document.getElementById("book-language").value;
-  const publishedYear = document.getElementById("published-year").value;
-  const bookPublisher = document.getElementById("book-publisher").value;
-  const priceType = document.querySelector(
-    'input[name="price-type"]:checked'
-  ).value;
+//   const bookPhoto = document.getElementById("book-photo").files[0];
+//   const bookName = document.getElementById("book-name").value;
+//   const authorName = document.getElementById("author-name").value;
+//   const bookLanguage = document.getElementById("genre").value;
+//   const publishedYear = document.getElementById("published-year").value;
+//   const bookPublisher = document.getElementById("book-publisher").value;
+//   const priceType = document.querySelector(
+//     'input[name="price-type"]:checked'
+//   ).value;
 
-  let actualPrice = "";
-  let sellingPrice = "";
+//   let actualPrice = "";
+//   let sellingPrice = "";
 
-  if (priceType === "sale") {
-    actualPrice = document.getElementById("actual-price").value;
-    sellingPrice = document.getElementById("selling-price").value;
-  }
+//   if (priceType === "sale") {
+//     actualPrice = document.getElementById("actual-price").value;
+//     sellingPrice = document.getElementById("selling-price").value;
+//   }
 
-  closeUploadBookPopup();
-}
+//   closeUploadBookPopup();
+// }
 
 function togglePriceFields(show) {
   const priceFields = document.querySelector(".price-fields");
@@ -140,9 +140,9 @@ saleRadio.addEventListener("change", function () {
 document.getElementById("edit-button").addEventListener("click", openEditForm);
 
 // Add event listener to cancel button in edit form
-document
-  .getElementById("edit-form")
-  .addEventListener("submit", saveProfileChanges);
+// document
+//   .getElementById("edit-form")
+//   .addEventListener("submit", saveProfileChanges);
 
 // Add event listener to cancel button in edit form
 document
