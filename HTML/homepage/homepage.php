@@ -30,8 +30,10 @@ if (isset($_GET['logout'])) {
 //fetching data from the table books
 $sell_sql = "SELECT * FROM books WHERE donate =0 ORDER BY book_id DESC ";
 $sell_result = $conn->query($sell_sql);
-// $address = "SELECT address from user where user_id = $user_id";
-// $address_result = $conn->query($address);
+
+$donate_sql = "SELECT * FROM books WHERE donate =1 ORDER BY book_id DESC ";
+$donate_result = $conn->query($donate_sql);
+
 ?>
 
 
@@ -132,11 +134,28 @@ $sell_result = $conn->query($sell_sql);
         <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
 
         <span class="bookname"><?php echo $row['book_name']; ?></span>
-        <span class="bookprice"><?php echo $row['selling_price']; ?></span>
+        <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>
         <span class="location">
           <a href="#"><i class="fa fa-map-marker"></i></a>
           <?php
-// echo $address_result;
+$user_id = $row['user_id'];
+    $user_address_query = "SELECT address FROM users WHERE user_id = ?";
+    $stmt_address = $conn->prepare($user_address_query);
+    $stmt_address->bind_param("i", $user_id);
+    $stmt_address->execute();
+    $address_result = $stmt_address->get_result();
+
+    // Check if the address is fetched successfully
+    if ($address_result->num_rows === 1) {
+        $address_row = $address_result->fetch_assoc();
+        $user_address = $address_row['address'];
+    } else {
+        // If the user's address is not found or there's an error, display a default message or handle the error as desired
+        $user_address = "Address not available";
+    }
+
+    // Display the user's address in the location span
+    echo $user_address;
     ?>
         </span>
       </div>
@@ -146,38 +165,42 @@ $sell_result = $conn->query($sell_sql);
     </section>
     <h2 class="free">Free</h2>
     <section class="freebooks booklist">
-      <div class="singlebook">
-        <img src="../../Assets/Pagal-basti.jpg" alt="book photo" />
+      <?php
 
-        <span class="bookname">Pagal basti</span>
+while ($row = $donate_result->fetch_assoc()) {?>
+      <div class="singlebook">
+
+      <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
+
+
+        <span class="bookname"><?php echo $row['book_name']; ?></span>
 
         <span class="location">
           <a href="#"><i class="fa fa-map-marker"></i></a>
-          Pokhara,Bagar
+<?php
+$user_id = $row['user_id'];
+    $user_address_query = "SELECT address FROM users WHERE user_id = ?";
+    $stmt_address = $conn->prepare($user_address_query);
+    $stmt_address->bind_param("i", $user_id);
+    $stmt_address->execute();
+    $address_result = $stmt_address->get_result();
+    if ($address_result->num_rows === 1) {
+        $address_row = $address_result->fetch_assoc();
+        $user_address = $address_row['address'];
+    } else {
+        // If the user's address is not found or there's an error, display a default message or handle the error as desired
+        $user_address = "Address not available";
+    }
+    echo $user_address;
+
+    ?>
         </span>
-      </div>
+        </div>
+        <?php }?>
 
-      <div class="singlebook">
-        <img src="../../Assets/Pagal-basti.jpg" alt="book photo" />
 
-        <span class="bookname">Pagal basti</span>
-
-        <span class="location">
-          <a href="#"><i class="fa fa-map-marker"></i></a>
-          Pokhara,Bagar
-        </span>
-      </div>
-      <div class="singlebook">
-        <img src="../../Assets/Pagal-basti.jpg" alt="book photo" />
-
-        <span class="bookname">Pagal basti</span>
-
-        <span class="location">
-          <a href="#"><i class="fa fa-map-marker"></i></a>
-          Pokhara,Bagar
-        </span>
-      </div>
     </section>
+
   </body>
   <script src="../../JS/homepage/open-menu.js"></script>
   <script>

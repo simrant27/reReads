@@ -97,8 +97,8 @@ if (isset($_POST["upload_book"])) {
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
             $stmt = $conn->prepare($sql);
             // Convert boolean $donate to string representation '1' or ''
-            $donateString = $donate ? '1' : '';
-            $stmt->bind_param("bssssssddi", $newImageName, $bookName, $authorName, $genre, $publicationYear, $publication, $donateString, $actualPrice, $sellingPrice, $user_id);
+            $donateString = $donate ? '1' : '0';
+            $stmt->bind_param("sssssssddi", $newImageName, $bookName, $authorName, $genre, $publicationYear, $publication, $donateString, $actualPrice, $sellingPrice, $user_id);
             if ($stmt->execute()) {
                 // Book upload successful
                 header("Location: ./profile.php"); // Redirect to a success page
