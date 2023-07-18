@@ -1,13 +1,14 @@
 <?php
+session_start();
+if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    header(("location:../loginsignup.login/php"));
+    exit;
+}
+?>
+
+<?php
 include "../main/connection.php";
 //connect to database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "rereads";
-
-//creating connection
-$conn = mysqli_connect($servername, $username, $password, $database);
 
 $user_id = 1;
 $sql = "SELECT * FROM users WHERE user_id = ?";
@@ -49,11 +50,7 @@ $address = $row['address'];
         </label>
       </div>
       <div class="profile-details">
-        <!-- <h2 id="profile-name"><?php echo $user_name ?></h2>
 
-        <p id="profile-number"><?php echo $phoneNo ?></p>
-        <p id="profile-email"> <?php echo $email ?> </p>
-        <p id="profile-address"><?php echo $address ?> </p> -->
         <span>Name: </span>
       <span id="profile-name"><?php echo $user_name ?></span>
       <br>

@@ -1,3 +1,34 @@
+<?php
+session_start();
+// $user_name = "Guest"; // Default name for non-logged in users
+
+// Check if the user is logged in
+if (isset($_SESSION['email']) && isset($_SESSION['user_id'])) {
+    // Get the user's name from the database based on the user_id
+    require_once "../../References/connection.php";
+    $user_id = $_SESSION['user_id'];
+    $sql = "SELECT fullName FROM users WHERE user_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+        $user_name = $row['fullName'];
+    }
+}
+
+// Logout process
+if (isset($_GET['logout'])) {
+    // Destroy the session and redirect to the login page
+    session_destroy();
+    header("Location: ../../HTML/loginSignup/login.php");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,35 +64,47 @@
           <!-- <i class="fa fa-user search-icon"></i> -->
 
           <img
-            src="../../Assets/IMG_0523.jpeg"
-            alt=""
-            class="userpic"
+        src="../../Assets/IMG_0523.jpeg"
+        alt=""
+        class="userpic"
+        <?php if (isset($_SESSION['email']) && isset($_SESSION['user_id'])): ?>
             onclick="toggleMenu()"
-          />
+        <?php else: ?>
+            onclick="redirectToLogin()"
+        <?php endif;?>
+    />
           <div class="sub-menu-wrap" id="subMenu">
             <div class="sub-menu">
-              <div class="user-info">
-                <img src="../../Assets/IMG_0523.jpeg" alt="" />
-                <!-- <h3>Simran Tamang</h3> -->
-                <h3><a href="../loginSignup/login.php">Login</a></h3>
+            <?php if (isset($_SESSION['email']) && isset($_SESSION['user_id'])): ?>
+                <div class="user-info">
+                    <img src="../../Assets/IMG_0523.jpeg" alt="" />
+                    <h3><?php echo $user_name; ?></h3>
+
               </div>
               <hr />
-              <!-- <a href="#" class="sub-menu-link">
+              <a href="#" class="sub-menu-link">
                 <p>Your profile</p>
                 <span>></span>
-              </a> -->
-              <!-- <a href="#" class="sub-menu-link">
+              </a>
+              <a href="#" class="sub-menu-link">
                 <p>Favourite</p>
                 <span>></span>
-              </a> -->
-              <!-- <a href="#" class="sub-menu-link">
+              </a>
+              <a href="#" class="sub-menu-link">
                 <p>Add books</p>
                 <span>></span>
-              </a> -->
-              <!-- <a href="../../HTML/loginSignup/login.html" class="sub-menu-link">
+              </a>
+              <a href="?logout=true" class="sub-menu-link">
                 <p>Logout</p>
                 <span>></span>
-              </a> -->
+              </a>
+              <?php else: ?>
+                <!-- Show a link to the login page for non-logged-in users -->
+                <a href="../loginSignup/login.php" class="sub-menu-link">
+                    <p>Login</p>
+                    <span>></span>
+                </a>
+            <?php endif;?>
             </div>
           </div>
         </div>
@@ -143,4 +186,9 @@
     </section>
   </body>
   <script src="../../JS/homepage/open-menu.js"></script>
+  <script>
+  function redirectToLogin() {
+    window.location.href = "../../HTML/loginSignup/login.php";
+  }
+</script>
 </html>
