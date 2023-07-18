@@ -11,6 +11,8 @@ function handleProfilePhotoChange(event) {
 }
 
 function openEditForm() {
+  console.log("here");
+
   const editFormContainer = document.getElementById("edit-form-container");
   editFormContainer.style.display = "block";
 
@@ -55,12 +57,16 @@ function closeUploadBookPopup() {
 }
 
 function handleUploadBook(event) {
+  console.log("ia m in upload");
+
   event.preventDefault();
+
   const bookPhoto = document.getElementById("book-photo").files[0];
   const bookName = document.getElementById("book-name").value;
   const authorName = document.getElementById("author-name").value;
   const bookLanguage = document.getElementById("book-language").value;
-  const publishedDate = document.getElementById("published-date").value;
+  console.log("I am in upload tada");
+  const publishedYear = document.getElementById("published-year").value;
   const bookPublisher = document.getElementById("book-publisher").value;
   const priceType = document.querySelector(
     'input[name="price-type"]:checked'
@@ -76,7 +82,7 @@ function handleUploadBook(event) {
   // Perform necessary actions with the book details
   // Example: send data to server, update UI, etc.
 
-  closeUploadBookPopup(); // Close the popup after handling the submission
+  closeUploadBookPopup(); // Close the popup after handling the submission// Close the popup after handling the submission// Close the popup after handling the submission
 }
 
 function togglePriceFields(show) {
@@ -101,6 +107,7 @@ function openEditForm() {
 }
 
 function saveProfileChanges(event) {
+  console.log("iam in edit");
   event.preventDefault();
 
   // Get the updated values from the form fields
@@ -111,12 +118,9 @@ function saveProfileChanges(event) {
 
   // Update the profile details with the new values
   document.getElementById("profile-name").textContent = updatedName;
-  document.getElementById("profile-number").textContent =
-    "Phone Number: " + updatedNumber;
-  document.getElementById("profile-email").textContent =
-    "Email: " + updatedEmail;
-  document.getElementById("profile-address").textContent =
-    "Address: " + updatedAddress;
+  document.getElementById("profile-number").textContent = updatedNumber;
+  document.getElementById("profile-email").textContent = updatedEmail;
+  document.getElementById("profile-address").textContent = updatedAddress;
 
   // Close the edit form
   cancelEditForm();

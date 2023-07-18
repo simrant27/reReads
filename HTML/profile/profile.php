@@ -49,10 +49,23 @@ $address = $row['address'];
         </label>
       </div>
       <div class="profile-details">
-        <h2 id="profile-name"><?php echo $user_name ?></h2>
-        <p id="profile-number">Phone Number:<?php echo $phoneNo ?></p>
-        <p id="profile-email">Email: <?php echo $email ?> </p>
-        <p id="profile-address">Address:<?php echo $address ?> </p>
+        <!-- <h2 id="profile-name"><?php echo $user_name ?></h2>
+
+        <p id="profile-number"><?php echo $phoneNo ?></p>
+        <p id="profile-email"> <?php echo $email ?> </p>
+        <p id="profile-address"><?php echo $address ?> </p> -->
+        <span>Name: </span>
+      <span id="profile-name"><?php echo $user_name ?></span>
+      <br>
+      <span>Phone number: </span>
+      <span id="profile-number"><?php echo $phoneNo ?></span>
+      <br>
+      <span>Email: </span>
+      <span id="profile-email"><?php echo $email ?></span>
+      <br>
+ <span>Address: </span>
+      <span id="profile-address"><?php echo $address ?></span>
+<br>
         <button id="edit-button" onclick="openEditForm()">Edit Profile</button>
         <button id="upload-book-button" onclick="openUploadBookForm()">Upload Book</button>
       </div>
@@ -83,22 +96,40 @@ $address = $row['address'];
     </div>
 
     <div class="edit-form-container" id="edit-form-container">
-      <form id="edit-form" class="edit-form" onsubmit="saveProfileChanges(event)">
+      <form id="edit-form" class="edit-form" onsubmit="saveProfileChanges(event)" action="">
+
         <label for="edit-name">Name:</label>
         <input type="text" id="edit-name" name="edit-name">
         <label for="edit-number">Phone Number:</label>
         <input type="tel" id="edit-number" name="edit-number">
         <label for="edit-email">Email:</label>
-        <input type="email" id="edit-email" name="edit-email">
+         <input type="email" id="edit-email" name="edit-email">
         <label for="edit-address">Address:</label>
         <textarea id="edit-address" name="edit-address"></textarea>
-        <button type="submit">Save Changes</button>
+        <button type="submit" name = "update">Save Changes</button>
         <button type="button" onclick="cancelEditForm()">Cancel</button>
       </form>
+
+<?php
+
+include "../main/connection.php";
+
+if (isset($_POST['update'])) {
+    $name = $_POST['edit-name'];
+    $number = $_POST['edit-number'];
+    $email = $_POST['edit-email'];
+    $address = $_POST['edit-address'];
+
+    $sql = "  UPDATE users SET ,fullName='$name',email='$email',address='$address',phoneNo='$number' WHERE user_id = 1";
+    $query_rum = mysqli_query($conn, $sql);
+
+}
+?>
     </div>
   </div>
 
   <script src="../../JS/profile.js"></script>
+
 </body>
 
 </html>
