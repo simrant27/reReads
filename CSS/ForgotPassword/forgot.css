@@ -1,8 +1,6 @@
 body {
-  margin: 1rem;
-  padding: 1rem;
-  margin-top: 5rem;
   position: relative;
+  margin-top: 30%;
 }
 
 .logo {
@@ -29,10 +27,10 @@ body {
   margin-left: 25%;
   background-color: #f2f3ec;
 }
-#password,
+
 #email,
-#log {
-  width: 45%;
+#code {
+  width: 50%;
   height: 45px;
   border: solid 2px black;
   border-radius: 7px;
@@ -40,41 +38,13 @@ body {
   padding-left: 8px;
   font-family: "Lucida Console";
 }
-#log {
+#code {
   background-color: #c6b5f3;
-  width: 45%;
+  width: 55%;
 
   color: black;
 }
 
 a {
   text-decoration: none;
-}
-.right img {
-  float: right;
-  padding: 2vh;
-  height: 20%;
-  width: 20%;
-}
-.left {
-  float: left;
-  margin-left: 11%;
-}
-
-.arrow {
-  position: absolute;
-
-  vertical-align: middle;
-  z-index: 3;
-  background-color: transparent;
-  color: rgb(180, 170, 170);
-}
-.arrow-left {
-  left: 600;
-}
-.arrow-right {
-  right: 200;
-}
-.arrow:hover {
-  transform: scale(1.5);
 }

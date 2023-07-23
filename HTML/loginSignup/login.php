@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <aside class="right">
         <div class="Image">
           <div class="mySlides" class="right">
-            <img src="../../assets/flower-purple-lical-blosso.jpeg" alt="Image1"id="Imagecontainer" />
+            <img src="../../assets/backgroundImage/download3.jpeg" alt="Image1"id="Imagecontainer" />
         </div>
       </aside>
       <section id="SectionSignUp" >
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <br /><br />
             <br>
 
-            <a href="#" class="left">Forgot Password?</a>
+            <a href="../ForgotPassword/forgot.html" class="left">Forgot Password?</a>
             <br /><br />
             <button type="submit"  id="log" > Log In </button>
             <br /><br />

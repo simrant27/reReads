@@ -1,18 +1,17 @@
-//　for image
-var image = document.getElementById("Imagecontainer");
 var images = [
   "../../assets/backgroundImage/download4.jpeg",
   "../../assets/backgroundImage/images.jpeg",
   "../../assets/backgroundImage/download5.jpeg",
+  "../../assets/backgroundImage/download3.jpeg",
   "../../assets/backgroundImage/download.jpeg",
   "../../assets/backgroundImage/download1.jpeg",
-  "../../assets/backgroundImage/download3.jpeg",
-]; // Array of image URLs
+];
 var currentIndex = 0;
-
+var bgimg = document.getElementById("bg-img");
 function changeImage() {
-  image.src = images[currentIndex];
-  currentIndex = (currentIndex + 1) % images.length; // Update current index
+  bgimg.style.backgroundImage = `url(${images[currentIndex]})`;
+
+  currentIndex = (currentIndex + 1) % images.length;
 }
 
-setInterval(changeImage, 3000);
+setInterval(changeImage, 5000);
