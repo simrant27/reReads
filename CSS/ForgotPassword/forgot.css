@@ -25,7 +25,7 @@ body {
   border: solid 1px rebeccapurple;
   padding: 20px;
   margin-left: 25%;
-  background-color: #f2f3ec;
+  background-color: #fff;
 }
 
 #email,
@@ -34,7 +34,6 @@ body {
   height: 45px;
   border: solid 2px black;
   border-radius: 7px;
-  background-color: #fbf7ef;
   padding-left: 8px;
   font-family: "Lucida Console";
 }

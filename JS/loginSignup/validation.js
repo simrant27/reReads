@@ -7,7 +7,7 @@ var phoneNumber = document.getElementById("PhoneNumber");
 var address = document.getElementById("Address");
 var signupButton = document.getElementById("signup");
 
-signupButton.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   validateInputs().then((isValid) => {

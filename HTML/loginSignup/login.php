@@ -62,77 +62,73 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="../../CSS/loginSignup/login.css" />
+    <link rel="stylesheet" href="../../CSS/loginSignup/login_signup.css" />
   </head>
  <body
     id="bg-img"
     style="background-image: url('../../assets/backgroundImage/download5.jpeg')"
   >    
-    <main id="mainAll">
-      <aside class="right">
-          <div class="mySlides" class="right">
-            <img src="../../assets/backgroundImage/download3.jpeg" alt="Image1"id="Imagecontainer" />
+    
+ <div class="wrapper">
+    <div class="container main">
+      <div class="row">
+        <div class="col-md-6 side-image">
+          <!-- Image -->
+          <!-- <img src="" alt="Image1" id="Imagecontainer" /> -->
+          <div class="text">
+            <p>Join the community of developers <i>- ludiflex</i></p>
+          </div>
         </div>
-      </aside>
-      <section id="SectionSignUp" >
-          <div class="logo">
+
+        <div class="col-md-6 right">
+          <!-- Form -->
+          <form class="input-box" action="/submit" method="post">
+            <div class="logo">
               <span class="re">re</span> <span class="Reads">Reads</span>
-          </div>        <br /><br />
-        <div class="login">
-          <form id="myForm" method="post" action="">
-            <div class="input-control">
-              <input
-            class="left"
-              type="text"
-              name="email"
-              id="email"
-              required=""
-              placeholder="Enter your Email"
-            />
-                          <div class="error"></div>
-
-            </div>
-            <br><br>
-            <br>
-         
-            <div class="input-control">
-              <input
-              class="left"
-                type="password"
-                name="password"
-                placeholder="Password"
-                required=""
-                id="password"
+            </div>  
+            <div class="input-field">
+              <input type="text" class="input" id="email" required="" 
               />
-               <i
-                    class="far fa-eye left"
-                    id="togglePassword"
-                    style="margin-left: -30px;margin-top: 15px; cursor: pointer"
-                  ></i>
-              <div class="error"></div>
+             
+              <label for="email">Email</label>
             </div>
-            <br /><br />
+            <div class="input-field">
+              <input type="password" class="input" id="password" required="" />
+              <label for="password">Password</label>
+               <i
+              class="far fa-eye left"
+              id="togglePassword"
+              style="margin-left: 280px; margin-top:-45px; cursor: pointer"
+              ></i>
+            </div>
             <br>
-
-            <a href="../ForgotPassword/forgot.html" class="left">Forgot Password?</a>
-            <br /><br />
-            <button type="submit"  id="log" > Log In </button>
-            <br /><br />
-            <br /><br />
-            <div class="left">
-              Not a Member? <a href="../loginSignup/signup.php">Sign Up</a>
+            <span>           
+              <a href="../ForgotPassword/forgot.html" class="left">Forgot Password?</a>
+            </span>
+            <br>
+            <div class="input-field">
+              <input type="submit" class="submit" value=" Log In" />
+            </div>
+            <div class="signin">
+              <span>Not a Member?  <a href="../loginSignup/signup.php">Sign Up Here</a></span>
             </div>
           </form>
         </div>
-      </section>
-    </main>
-    </section>
-     <script src="../../JS/loginSignup/eyeicon.js"></script>
-        <script src="../../JS/loginSignup/imageProcessing.js"></script>
+      </div>
+    </div>
+  </div>
+
+        <script src="../../JS/loginSignup/eyeicon.js"></script>
         <script src="../../JS/Background/background.js"></script>
         <script src="../../JS/loginSignup/validation.js"></script>
   </body>
