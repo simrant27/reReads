@@ -55,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69,22 +68,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     />
     <link rel="stylesheet" href="../../CSS/loginSignup/login.css" />
   </head>
-  <body>
-    <section class="container forms"id="login-form">
+ <body
+    id="bg-img"
+    style="background-image: url('../../assets/backgroundImage/download5.jpeg')"
+  >    
     <main id="mainAll">
       <aside class="right">
-        <div class="Image">
           <div class="mySlides" class="right">
             <img src="../../assets/backgroundImage/download3.jpeg" alt="Image1"id="Imagecontainer" />
         </div>
       </aside>
       <section id="SectionSignUp" >
-<div class="logo">
-          <span class="re">re</span> <span class="Reads">Reads</span>
-        </div>        <br /><br />
+          <div class="logo">
+              <span class="re">re</span> <span class="Reads">Reads</span>
+          </div>        <br /><br />
         <div class="login">
           <form id="myForm" method="post" action="">
-            <input
+            <div class="input-control">
+              <input
             class="left"
               type="text"
               name="email"
@@ -92,9 +93,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               required=""
               placeholder="Enter your Email"
             />
-            <br /><br />
-            <br /><br />
-            <div class="password-container">
+                          <div class="error"></div>
+
+            </div>
+            <br><br>
+            <br>
+         
+            <div class="input-control">
               <input
               class="left"
                 type="password"
@@ -103,11 +108,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 required=""
                 id="password"
               />
-              <i
-                class="far fa-eye left"
-                id="togglePassword"
-                style="margin-left: -30px; cursor: pointer"
-              ></i>
+               <i
+                    class="far fa-eye left"
+                    id="togglePassword"
+                    style="margin-left: -30px;margin-top: 15px; cursor: pointer"
+                  ></i>
+              <div class="error"></div>
             </div>
             <br /><br />
             <br>
@@ -125,7 +131,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       </section>
     </main>
     </section>
+     <script src="../../JS/loginSignup/eyeicon.js"></script>
+        <script src="../../JS/loginSignup/imageProcessing.js"></script>
+        <script src="../../JS/Background/background.js"></script>
+        <script src="../../JS/loginSignup/validation.js"></script>
   </body>
-  <!-- <script src="../../JS/loginSignup/validation.js"></script> -->
-<script src="../../JS/loginSignup/eyeicon.js"></script>
-  <script src="../../JS/loginSignup/imageProcessing.js"></script></html>
+  </html>

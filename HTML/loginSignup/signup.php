@@ -120,10 +120,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
   </head>
-  <body>
+  <body
+    id="bg-img"
+    style="background-image: url('../../assets/backgroundImage/download5.jpeg')"
+  >  
     <main id="mainAll">
        <aside class="right">
-        <div class="Image">
           <div class="mySlides right" >
             <img src="../../assets/backgroundImage/download3.jpeg" alt="Image1"id="Imagecontainer" />
         </div>
@@ -135,8 +137,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <br>
         <div class="signup">
 <form id="myForm" method="post" name="myForm"  enctype="multipart/form-data" action="signup.php" onsubmit="return validateInputs()">
+<br>
+<br>
             <div class="input-control">
               <input
+                class="left"
                 type="text"
                 name="name"
                 required=""
@@ -145,9 +150,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               />
               <div class="error"></div>
             </div>
+<br><br>
 <br>
             <div class="input-control">
               <input
+              class="left"
                 type="text"
                 name="Address"
                 id="Address"
@@ -156,10 +163,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               />
               <div class="error"></div>
             </div>
+<br><br>
 <br>
-
             <div class="input-control">
               <input
+              class="left"
                 type="text"
                 required=""
                 name="email"
@@ -168,10 +176,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               /> 
               <div class="error"></div>
             </div>
+<br><br>
 <br>
-
             <div class="input-control">
               <input
+              class="left"
                 type="text"
                 name="PhoneNumber"
                 required=""
@@ -180,50 +189,49 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               /> 
               <div class="error"></div>
             </div>
+<br><br>
 <br>
 
             <div class="input-control">
-                <div class="password-container">
                   <input
+                  class="left"
                     type="password"
                     name="password"
                     placeholder="Password"
                     required=""
                     id="password"
                   />
-                  <i
-                    class="far fa-eye"
+                 <i
+                    class="far fa-eye left"
                     id="togglePassword"
-                    style="margin-left: -30px; cursor: pointer"
+                    style="margin-left: -30px;margin-top: 15px; cursor: pointer"
                   ></i>
-                </div> 
                 <div class="error"></div>
             </div>
-<br>
+<br><br><br>
 
             <div class="input-control">
-              <div class="password-container">
                 <input
+                class="left"
                   type="password"
                   name="confirm_Password"
                   placeholder="Confirm Password"
                   required=""
                   id="Cpassword"
                 />
-                <i
-                  class="far fa-eye"
-                  id="CtogglePassword"
-                  style="margin-left: -30px; cursor: pointer"
-                ></i>
-              </div>
+                  <i
+                    class="far fa-eye left"
+                    id="CtogglePassword"
+                    style="margin-left: -30px;margin-top: 15px; cursor: pointer"
+                  ></i>
                <div class="error"></div>
                
-               <br /><br />
               </div>
-              <button type="submit" id="signup">Sign Up </button>
+<br><br>
+<br>              <button type="submit" class="left" id="signup">Sign Up </button>
               
-              <br /><br />
-              <div class="left">
+<br>
+<br>              <div class="left">
                 Already Sign In? <a href="../loginSignup/login.php">Log In</a>
               </div>
               <br /><br />
@@ -232,9 +240,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </section>
       </main>
         <script src="../../JS/loginSignup/eyeicon.js"></script>
-<script src="../../JS/loginSignup/imageProcessing.js"></script>
-    
-<script src="../../JS/loginSignup/validation.js"></script>
+        <script src="../../JS/loginSignup/imageProcessing.js"></script>
+        <script src="../../JS/Background/background.js"></script>
+        <script src="../../JS/loginSignup/validation.js"></script>
   </body>
 
 
