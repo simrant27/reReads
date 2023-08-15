@@ -11,18 +11,21 @@ if (isset($_SESSION['email'])) {
 require_once "../../References/connection.php";
 
 $email = $password = "";
-$err = "";
+$email_err = $password_err = "";
+
+// ...
+
+$email = $password = "";
+$email_err = $password_err = "";
 
 // if request method is post
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (empty(trim($_POST['email'])) || empty(trim($_POST['password']))) {
-        $err = "Please enter email + password";
-    } else {
-        $email = trim($_POST['email']);
-        $password = trim($_POST['password']);
-    }
 
-    if (empty($err)) {
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+
+
+    if (empty($email_err)) {
         $sql = "SELECT user_id, email, password FROM users WHERE email = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "s", $param_email);
@@ -35,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 mysqli_stmt_bind_result($stmt, $user_id, $email, $hashed_password);
                 if (mysqli_stmt_fetch($stmt)) {
                     if (password_verify($password, $hashed_password)) {
-                        // this means the password is corrct. Allow user to login
+                        // this means the password is correct. Allow user to login
                         session_start();
                         $_SESSION["email"] = $email;
                         $_SESSION["user_id"] = $user_id;
@@ -43,16 +46,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                         //Redirect user to welcome page
                         header("location:http://localhost/reReads/HTML/homepage/homepage.php");
-
+                    } else {
+                        $password_err = "Invalid password";
                     }
                 }
-
+            } else {
+                $email_err = "Email not found";
             }
-
+        } else {
+            echo "Something went wrong";
         }
     }
-
 }
+
+// ...
+
 
 ?>
 <!DOCTYPE html>
@@ -76,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   </head>
  <body
     id="bg-img"
-    style="background-image: url('../../assets/backgroundImage/download5.jpeg')"
+    style="background-image: url('../../assets/backgroundImage/download1.jpeg')"
   >    
     
  <div class="wrapper">
@@ -92,28 +100,47 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         <div class="col-md-6 right">
           <!-- Form -->
-          <form class="input-box" action="/submit" method="post">
+          <form class="input-box" action="" method="post">
             <div class="logo">
               <span class="re">re</span> <span class="Reads">Reads</span>
             </div>  
-            <div class="input-field">
-              <input type="text" class="input" id="email" required="" 
+           <div class="input-field">
+              <input 
+              name="email"
+              type="text" 
+              class="input" 
+              id="email" 
+              required="" 
+              autocomplete="off" 
+              value="<?php echo isset($email) ? $email : ''; ?>"
               />
              
               <label for="email">Email</label>
+             <?php if (!empty($email_err)) { ?>
+                <span class="error"><?php echo $email_err; ?></span>
+              <?php } ?>
             </div>
-            <div class="input-field">
-              <input type="password" class="input" id="password" required="" />
+              <div class="input-field">
+              <input 
+              type="password" 
+              class="input" 
+              id="password" 
+              name="password"
+              required="" />
               <label for="password">Password</label>
+              <?php if (!empty($password_err)) { ?>
+                  <span class="error"><?php echo $password_err; ?></span>
+                <?php } ?>
                <i
               class="far fa-eye left"
               id="togglePassword"
               style="margin-left: 280px; margin-top:-45px; cursor: pointer"
               ></i>
+
             </div>
             <br>
             <span>           
-              <a href="../ForgotPassword/forgot.html" class="left">Forgot Password?</a>
+              <a href="../ForgotPassword/forgot.php" class="left">Forgot Password?</a>
             </span>
             <br>
             <div class="input-field">
@@ -130,6 +157,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         <script src="../../JS/loginSignup/eyeicon.js"></script>
         <script src="../../JS/Background/background.js"></script>
-        <script src="../../JS/loginSignup/validation.js"></script>
   </body>
   </html>

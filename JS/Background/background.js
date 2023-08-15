@@ -1,7 +1,6 @@
 var images = [
   "../../assets/backgroundImage/download4.jpeg",
   "../../assets/backgroundImage/images.jpeg",
-  "../../assets/backgroundImage/download5.jpeg",
   "../../assets/backgroundImage/download3.jpeg",
   "../../assets/backgroundImage/download.jpeg",
   "../../assets/backgroundImage/download1.jpeg",

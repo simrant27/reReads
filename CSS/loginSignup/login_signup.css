@@ -119,11 +119,11 @@ img {
   transition: 0.5s;
 }
 .input-field input:focus ~ label {
-  top: -10px;
+  top: -7px;
   font-size: 13px;
 }
 .input-field input:valid ~ label {
-  top: -10px;
+  top: -7px;
   font-size: 13px;
   color: #5d5076;
 }
@@ -133,7 +133,7 @@ img {
   margin: 10px;
 }
 .submit {
-  margin: 10px;
+  margin-top: 10px;
   border: none;
   outline: none;
   height: 45px;
@@ -184,4 +184,8 @@ span a:hover {
     max-width: 420px;
     width: 100%;
   }
+}
+.error {
+  font-size: 10px;
+  color: red;
 }
