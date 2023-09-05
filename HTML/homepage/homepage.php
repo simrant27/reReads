@@ -133,8 +133,10 @@ $donate_result = $conn->query($donate_sql);
 
         <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
 
+
         <span class="bookname"><?php echo $row['book_name']; ?></span>
-        <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>
+        <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>`
+
         <span class="location">
           <a href="#"><i class="fa fa-map-marker"></i></a>
           <?php
@@ -159,6 +161,7 @@ $user_id = $row['user_id'];
     ?>
         </span>
       </div>
+
 <?php }?>
 
       </div>

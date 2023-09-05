@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include "../main/connection.php";
+include "../../References/connection.php";
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     header("Location: ../homepage/homepage.php");
     exit;

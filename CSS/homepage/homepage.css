@@ -190,8 +190,11 @@ body {
 
 .singlebook > img {
   flex-shrink: 0;
-  width: 130px; /* Set your desired fixed width */
+  max-height: 200px;
+  min-height: 100px;
+  width: 130px;
   height: auto;
+  box-shadow: #42423e 2px;
 }
 
 .singlebook .bookname {
