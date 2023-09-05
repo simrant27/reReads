@@ -27,17 +27,18 @@ body {
   margin-left: 25%;
   background-color: #fff;
 }
-
+#back,
 #email,
 #code {
-  width: 50%;
+  width: 45%;
   height: 45px;
   border: solid 2px black;
   border-radius: 7px;
+  margin: 5px;
   padding-left: 8px;
   font-family: "Lucida Console";
 }
-#code {
+button {
   background-color: #c6b5f3;
   width: 55%;
 
@@ -61,4 +62,8 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+.error-message {
+  font-size: 10px;
+  color: red;
 }

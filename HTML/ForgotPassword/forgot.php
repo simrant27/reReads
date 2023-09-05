@@ -19,7 +19,8 @@
       <br /><br />
 
       <div>
-        <form id="myForm" method="post" action="">
+    <form method="POST" action="send_recovery_mail.php" enctype="multipart/form-data">
+
           <label>
             <u>Give Your Email To Recover the Account</u> <br /><br
           /></label>
@@ -32,6 +33,10 @@
             placeholder="Enter your Email"
           />
           <br /><br />
+        
+           <?php if (!empty($error_message)) { ?>
+                    <span class="error_message"><?php echo $error_message; ?></span>
+                <?php } ?>
 
           <br />
           <label style="font-size: small"
@@ -42,7 +47,10 @@
           >
 
           <br /><br />
-          <button type="submit" id="code">Send Code</button>
+         <span> <button type="submit" class="submit"  name="submit" id="code">Send Code</button>
+           <!-- <button id="back" ><a href="../loginSignup/login.php"></a> Back to login</button> -->
+          </span>
+
         </form>
       </div>
     </main>
