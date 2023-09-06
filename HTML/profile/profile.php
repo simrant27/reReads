@@ -208,5 +208,6 @@ if (isset($_POST["upload_book"])) {
   <script src="../../JS/profile.js"></script>
 
 </body>
+<script src="../../JS/homepage/open-menu.js"></script>
 
 </html>

@@ -65,9 +65,15 @@ $donate_result = $conn->query($donate_sql);
           <span class="re">re</span> <span class="Reads">Reads</span>
         </div>
         <div class="search">
-          <input type="text" name="search" id="search" placeholder="search" />
-          <a href="#"><i class="fa fa-search search-icon"></i></a>
-        </div>
+  <form action="../search/search.php" method="post">
+
+      <input type="text" name="search" id="search" placeholder="search" />
+      <button type="submit" class="btn" name="submit"><i class="fa fa-search search-icon"></i></button>
+
+  </form>
+</div>
+
+
         <div class="profile">
           <!-- <i class="fa fa-user search-icon"></i> -->
 
@@ -135,8 +141,7 @@ $donate_result = $conn->query($donate_sql);
 
 
         <span class="bookname"><?php echo $row['book_name']; ?></span>
-        <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>`
-
+        <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>z
         <span class="location">
           <a href="#"><i class="fa fa-map-marker"></i></a>
           <?php
@@ -206,9 +211,6 @@ $user_id = $row['user_id'];
 
   </body>
   <script src="../../JS/homepage/open-menu.js"></script>
-  <script>
-  function redirectToLogin() {
-    window.location.href = "../../HTML/loginSignup/login.php";
-  }
-</script>
+  <script src="../../JS/homepage/redirectlogin.js"></script>
+
 </html>

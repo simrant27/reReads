@@ -36,9 +36,9 @@ body {
 .logo .Reads {
   color: #7c7b76;
 }
+
 .search {
   display: flex;
-
   width: 40%;
   height: 20px;
   margin: 2px 8px;
@@ -46,21 +46,22 @@ body {
   border: 1px solid #c3c2bc;
   border-radius: 30px;
   margin-left: auto;
+  position: relative; /* Add position: relative to the search container */
 }
+
 .search-icon {
   color: #c3c2bc;
   font-size: 20px;
-  /* justify-content: center; */
-  text-align: center;
+  position: absolute; /* Add position: absolute to the search icon */
+  right: 10px; /* Adjust the right value to control the distance from the right edge */
+  top: 50%; /* Vertically center the icon */
+  transform: translateY(-50%); /*Center the icon vertically*/
 }
+
 .search input {
-  /* flex: 1;
-  border: none;
-  outline: none;
-  padding-right: 8px; */
   border: 0px;
   outline: 0px;
-  width: 92%;
+  width: 100%; /* Adjust width to 100% to fill the container */
   text-align: center;
 }
 
@@ -137,6 +138,7 @@ body {
 .profile-icon {
   color: #7c7b76;
 }
+
 @media screen and (max-width: 450px) {
   .lower-nav .nav-list {
     flex-direction: column;
