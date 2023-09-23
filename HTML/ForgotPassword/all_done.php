@@ -20,7 +20,7 @@
 
       <div>
    
- <label> <u>Hi! <?php echo $_GET['fullName']; ?> Your Password has Changed Successfully!</u> <br><br></label>
+ <label> <u> Your Password has Changed Successfully!</u> <br><br></label>
                 <label style="font-size: small;">Your password has been updated. From now onwards use this password to login. <br>Remember not share your password with anyone else. Keep strong password <br>but make sure you had remembered or kept safe somewhere.</label>
                 <br><br><br>
                 <label style="color: red;"> Check out mail for your Security Updates!</label>

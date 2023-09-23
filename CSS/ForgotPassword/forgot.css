@@ -28,7 +28,7 @@ body {
   background-color: #fff;
 }
 #back,
-#email,
+input,
 #code {
   width: 45%;
   height: 45px;
@@ -63,7 +63,7 @@ html {
   background-size: cover;
   background-position: center;
 }
-.error-message {
+.error {
   font-size: 10px;
   color: red;
 }

@@ -8,106 +8,141 @@ $name = $address = $email = $phoneNumber = $password = $confirmPassword = "";
 $name_err = $address_err = $email_err = $phoneNumber_err = $password_err = $confirmPassword_err = "";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-      // for name 
+    // Sanitize and validate input data
+
+    // Name
     if (isset($_POST['name'])) {
         $name = trim($_POST['name']);
     }
 
-        // Check for password
-    if (isset($_POST['password']) && strlen(trim($_POST['password'])) < 8) {
-        $password_err = "Password cannot be less than 8 characters";
-    } else {
-        $password = trim($_POST['password']);
+    // Address
+    if (isset($_POST['Address'])) {
+        $address = trim($_POST['Address']);
     }
 
-        // Check for confirm password field
+    // Email
+    if (isset($_POST['email'])) {
+        $email = trim($_POST['email']);
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $email_err = "Invalid email format";
+        } else {
+            $sql = "SELECT user_id FROM users WHERE email = ?";
+            $stmt = mysqli_prepare($conn, $sql);
+            if ($stmt) {
+                mysqli_stmt_bind_param($stmt, "s", $param_email);
+                $param_email = $email;
+
+                if (mysqli_stmt_execute($stmt)) {
+                    mysqli_stmt_store_result($stmt);
+                    if (mysqli_stmt_num_rows($stmt) > 0) {
+                        $email_err = "This email is already taken";
+                    }
+                } else {
+                    echo "Something went wrong";
+                }
+                mysqli_stmt_close($stmt);
+            }
+        }
+    }
+
+    // Phone Number
+    if (isset($_POST['PhoneNumber'])) {
+        $phoneNumber = trim($_POST['PhoneNumber']);
+        if (!preg_match('/^[0-9]{10}$/', $phoneNumber)) {
+            $phoneNumber_err = "Invalid phone number format.";
+        }
+    }
+
+    // Password
+    if (isset($_POST['password'])) {
+        $password = trim($_POST['password']);
+        if (strlen($password) < 8) {
+            $password_err = "Password cannot be less than 8 characters";
+        }
+    }
+
+    // Confirm Password
     if (isset($_POST['confirm_Password'])) {
         $confirmPassword = trim($_POST['confirm_Password']);
         if ($password !== $confirmPassword) {
             $confirmPassword_err = "Passwords do not match";
         }
     }
-      // Check for email
-     if (isset($_POST['email'])) {
-    $email = trim($_POST['email']);
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $email_err = "Invalid email format";
-    } else {
-        $sql = "SELECT user_id FROM users WHERE email = ?";
+    // If there were no errors, proceed to insert into the database
+    if (empty($name_err) && empty($password_err) && empty($confirmPassword_err) && empty($email_err) && empty($address_err) && empty($phoneNumber_err)) {
+        $sql = "INSERT INTO users (fullName, email, address, password, phoneNo) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $sql);
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "s", $param_email);
-            $param_email = $email;
 
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "sssss", $param_name, $param_email, $param_address, $param_password, $param_phoneNumber);
+
+            // Set the parameters
+            $param_name = $name;
+            $param_address = $address;
+            $param_email = $email;
+            $param_phoneNumber = $phoneNumber;
+            $param_password = password_hash($password, PASSWORD_DEFAULT);
+
+            // Try to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                mysqli_stmt_store_result($stmt);
-                if (mysqli_stmt_num_rows($stmt) > 0) {
-                    $email_err = "This email is already taken";
-                } else {
-                    // Proceed with setting $email as it's valid and not taken
-                    $email = trim($_POST['email']);
+                // Generate a verification code
+                $verify_email = rand(100000, 999999);
+
+                // Update the verification code in the database
+                $update_sql = "UPDATE users SET verify_email = ? WHERE email = ?";
+                $update_stmt = mysqli_prepare($conn, $update_sql);
+                if ($update_stmt) {
+                    mysqli_stmt_bind_param($update_stmt, "is", $verify_email, $email);
+                    if (mysqli_stmt_execute($update_stmt)) {
+                        // Include the email sending code here to send a verification email
+                        // You can use a library like PHPMailer to send emails
+
+                        // Include the email sending code you provided
+                        include "../ForgotPassword/mail.php";
+
+                        // Send the email
+                        $mail->AddAddress($email);
+                        $mail->AddReplyTo($email);
+
+                        $subject = "Account Verification Code";
+                        $mail->Subject = $subject;
+
+                        $content = "<b>The verification code to verify your email: $verify_email</b>";
+                        $mail->MsgHTML($content);
+
+                        if (!$mail->Send()) {
+                            $error_message = "Error while sending Email.";
+                            // Handle the error or provide feedback to the user
+                            echo $error_message;
+                        } else {
+
+                            header("location: http://localhost/reReads/HTML/loginSignup/verify_email.php?email=". urlencode($email));
+                            exit;
+                        }
+                    } else {
+                        echo "Error updating verify code: " . mysqli_error($conn);
+                    }
                 }
             } else {
-                echo "Something went wrong";
+                echo "Something went wrong... cannot redirect!";
+                // You can also output the exact error for debugging purposes
+                // echo "Error: " . mysqli_stmt_error($stmt);
             }
+
             mysqli_stmt_close($stmt);
-        }
-    }
-}
-
-
-
-        // Check for Address
-    if (isset($_POST['Address']) && strlen(trim($_POST['Address'])) < 5) {
-        $address_err = "Address cannot be less than 5 characters";
-    } else {
-        $address = trim($_POST['Address']);
-    }
-
-        // Check for Phone Number
-    if (isset($_POST['PhoneNumber']) && !preg_match('/^[0-9]{10}$/', $_POST['PhoneNumber'])) {
-        $phoneNumber_err = "Invalid phone number format. ";
-    } else {
-        $phoneNumber = trim($_POST['PhoneNumber']);
-    }
-
-   // If there were no errors, go ahead and insert into the database
-if (empty($name_err) && empty($password_err) && empty($confirmPassword_err) && empty($email_err) && empty($address_err) && empty($phoneNumber_err)) {
-    $sql = "INSERT INTO users (fullName, email, address, password, phoneNo) VALUES (?, ?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $sql);
-    
-    if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "sssss", $param_name, $param_email, $param_address, $param_password, $param_phoneNumber);
-        
-        // Set the parameters
-        $param_name = $name;
-        $param_address = $address;
-        $param_email = $email;
-        $param_phoneNumber = $phoneNumber;
-        $param_password = password_hash($password, PASSWORD_DEFAULT);
-        
-        // Try to execute the prepared statement
-        if (mysqli_stmt_execute($stmt)) {
-            echo "Registration successful!";
-            header("location: http://localhost/reReads/HTML/loginSignup/login.php");
-            exit; // Always include an exit after the header redirect to prevent further execution of the script.
         } else {
-            echo "Something went wrong... cannot redirect!";
-            // You can also output the exact error for debugging purposes
-            // echo "Error: " . mysqli_stmt_error($stmt);
+            echo "Something went wrong... cannot prepare the statement!";
         }
-        
-        mysqli_stmt_close($stmt);
-    } else {
-        echo "Something went wrong... cannot prepare the statement!";
     }
-}
-
 
     mysqli_close($conn);
 }
 ?>
+
+<!-- HTML form remains the same -->
+
 
 
 <!DOCTYPE html>
@@ -146,7 +181,7 @@ if (empty($name_err) && empty($password_err) && empty($confirmPassword_err) && e
 
         <div class="col-md-6 right">
           <!-- Form -->
-          <form class="input-box" action="" method="post">
+          <form class="input-box" action="#" method="post">
             <div class="logo">
               <span class="re">re</span> <span class="Reads">Reads</span>
             </div>  
