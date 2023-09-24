@@ -163,3 +163,14 @@ button {
 button:hover {
     background-color: #388e3c; /* Darker green background color on hover */
 }
+/* Style for the book description */
+.book-description {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.book-description p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+    color: #555; /* Color for the description text */
+}
