@@ -89,6 +89,12 @@ ul li {
     text-align: center;
 }
 
+.book-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333; /* Dark text color */
+    text-align: center;
+}
 
 .book-info {
     display: flex;
