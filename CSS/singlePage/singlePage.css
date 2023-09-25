@@ -1,21 +1,21 @@
-/* style.css */
+
 body {
     font-family: 'Helvetica', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2; /* Light gray background */
+    background-color: #f4f4f4; /* Light gray background */
     color: #333; /* Dark text color  */
     background-image: url('/assets/background-pattern.png'); /* Background pattern */
     background-repeat: repeat;
     overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
-/* Header container styling */
+/* Header container  */
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    background-color: #4caf50; /* Green background */
+    background-color: #4A90E2; /* Blue background */
     color: #fff; /* White text color */
     padding: 10px;
 }
@@ -46,7 +46,12 @@ ul {
 ul li {
     display: inline;
     margin-right: 20px;
-    color: #ff5722; /* Orange for link */
+    color: #FF6B6B; 
+    transition: color 0.3s ease; 
+}
+
+ul li:hover {
+    color: #FF4057; 
 }
 
 @keyframes slideRightToLeft {
@@ -59,13 +64,13 @@ ul li {
 }
 
 .sale {
-    background-color: #ff5722; /* Orange background color */
+    background-color: #FF4057; /* Coral background color */
     text-align: center;
     padding: 20px;
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-    animation: slideRightToLeft 15s linear infinite alternate; /* Adjust duration as needed */
+    animation: slideRightToLeft 15s linear infinite alternate; /* Slide animation */
 }
 
 .sale h3 {
@@ -74,9 +79,9 @@ ul li {
     color: #fff; /* White text color */
 }
 
-/* background color */
+/* Background color */
 .photo {
-    background-color: #ffeb3b; 
+    background-color: #F1C40F; /* Bright yellow background color */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     max-width: 800px;
@@ -87,15 +92,24 @@ ul li {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: background-color 0.3s ease; /* Smooth color transition */
 }
 
+.photo:hover {
+    background-color: #FFD700; /* Darker yellow on hover */
+}
+
+
 .book-title {
-    font-size: 1.5rem;
+    font-size: 2rem; /* Font size */
+    font-family: 'Courier New', Courier, monospace, sans-serif; 
     margin-bottom: 10px;
-    color: #333; /* Dark text color */
+    color: #333; 
     text-align: center;
 }
 
+
+/* Book info container */
 .book-info {
     display: flex;
     flex-direction: row;
@@ -104,19 +118,19 @@ ul li {
     margin-top: 20px;
 }
 
-
+/* Book image */
 .book-image img {
     margin-right: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
-
+/* Zoom in on the book image on hover */
 .book-image img:hover {
     transform: scale(1.05); 
     transition: transform 0.3s ease-in-out; 
 }
 
-
+/* Book price and location container */
 .book-price-location {
     display: flex;
     flex-direction: column;
@@ -126,29 +140,30 @@ ul li {
     margin-top: 20px;
 }
 
+/* Book price */
 .book-price {
     font-size: 1.5rem;
     color: #333; /* Dark text color */
 }
 
-
+/* Book location */
 .book-location {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
-    color: #555; /* Slightly darker text color */
+    color: #555; 
 }
 
+/* Location icon */
 .location-icon {
     width: 15px;
     height: 15px;
     margin-right: 5px;
-    
 }
 
-
+/* Add to Favorites button */
 button {
-    background-color: #4caf50; 
+    background-color: #4A90E2; /* Blue background */
     border: none;
     color: #fff; 
     padding: 10px 20px;
@@ -161,8 +176,9 @@ button {
 
 /* Change button background color on hover */
 button:hover {
-    background-color: #388e3c; /* Darker green background color on hover */
+    background-color: #357ABD; /* Darker*/
 }
+
 /* Style for the book description */
 .book-description {
     margin-top: 20px;
@@ -172,5 +188,5 @@ button:hover {
 .book-description p {
     margin: 5px 0;
     font-size: 1.2rem;
-    color: #555; /* Color for the description text */
+    color: #555; /* Color - description text */
 }
