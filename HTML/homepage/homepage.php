@@ -47,6 +47,7 @@ $donate_result = $conn->query($donate_sql);
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -71,7 +72,13 @@ $donate_result = $conn->query($donate_sql);
 
   </form>
 </div>
+<div class="notification">
+<button type="button" class="icon-button">
+    <span class="material-icons">notifications</span>
+    <span class="icon-button__badge">2</span>
+  </button>
 
+</div>
 
         <div class="profile">
           <!-- <i class="fa fa-user search-icon"></i> -->
