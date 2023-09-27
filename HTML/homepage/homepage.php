@@ -1,7 +1,6 @@
 <?php
 session_start();
 include "../../References/connection.php";
-// $user_name = "Guest"; // Default name for non-logged in users
 
 // Check if the user is logged in
 if (isset($_SESSION['email']) && isset($_SESSION['user_id'])) {
@@ -141,7 +140,7 @@ $donate_result = $conn->query($donate_sql);
 
 
         <span class="bookname"><?php echo $row['book_name']; ?></span>
-        <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>z
+        <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>
         <span class="location">
           <a href="#"><i class="fa fa-map-marker"></i></a>
           <?php

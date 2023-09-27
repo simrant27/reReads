@@ -25,7 +25,15 @@ $email = $row['email'];
 $profile_image = $row['user_img'];
 $phoneNo = $row['phoneNo'];
 $address = $row['address'];
-// echo "Name received from form: " . $user_name . "<br>";
+
+//fetching the uploaded books
+
+$upload_sql = "SELECT * FROM books WHERE user_id = ? ORDER BY book_id DESC";
+$stmt_upload = $conn->prepare($upload_sql);
+$stmt_upload->bind_param("i", $user_id);
+$stmt_upload->execute();
+$upload_result = $stmt_upload->get_result();
+
 //edit and update database
 if (isset($_POST['update_profile'])) {
     echo "Name " . "<br>";
@@ -122,6 +130,8 @@ if (isset($_POST["upload_book"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile Page</title>
   <link rel="stylesheet" href="../../CSS/profile/profile.css">
+  <link rel="stylesheet" href="../../CSS/homepage/homepage.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
@@ -132,11 +142,11 @@ if (isset($_POST["upload_book"])) {
   <div class="container">
     <div class="profile">
       <div class="profile-image">
-        <img src="../../assets/simran.jpg" alt="Profile Photo" id="profile-photo">
-        <label for="profile-photo-input" class="edit-icon">
+      <img src="<?php echo $user_photo ?>" alt="Profile Photo" id="profile-photo">
+        <!-- <label for="profile-photo-input" class="edit-icon">
           <input type="file" id="profile-photo-input" accept="image/*" onchange="handleProfilePhotoChange(event)">
           <i class="fas fa-camera"></i>
-        </label>
+        </label> -->
       </div>
       <div class="profile-details" id="profile-details">
 
@@ -187,24 +197,44 @@ if (isset($_POST["upload_book"])) {
     <div id="edit-profile-popup" class="popup" >
       <div class="popup-content">
         <h2>Edit Profile</h2>
-        <form id="edit-form"  method="post" action="./profile.php">
+        <form id="edit-form"  method="post" action="./profile.php" enctype="multipart/form-data">
+          <label for="edit-photo">Profile picture</label>
+        <input type="file" id="edit-photo" name="edit-photo" accept=".jpg, .jpeg, .png" >
+
           <label for="edit-name">Name:</label>
           <input type="text" id="edit-name" name="edit-name">
           <label for="edit-number">Phone Number:</label>
           <input type="text" id="edit-number" name="edit-number" placeholder="Phone Number">
-          <label for="edit-email">Email:</label>
-          <input type="email" id="edit-email" name="edit-email">
-          <label for="edit-address">Address:</label>
-          <textarea id="edit-address" name="edit-address"></textarea>
+
+          <label for="edit-address"> Address:</label>
+          <input type="text" id="edit-address" name="edit-address" placeholder=" Address" value="<?php echo $address ?>">
           <button type="submit" name="update_profile">Save Changes</button>
           <button type="button" onclick="closeEditProfilePopup()">Cancel</button>
 
         </form>
       </div>
+
     </div>
   </div>
+  <section class="booklist">
+
+<div class="your_uploads">
+  <h3>Uploads</h3>
+  <?php while ($row = $upload_result->fetch_assoc()) {?>
+
+  <div class="singlebook">
+
+<img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
 
 
+<span class="bookname"><?php echo $row['book_name']; ?></span>
+<span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>
+  </div>
+  <?php }?>
+
+
+</div>
+  </section>
   <script src="../../JS/profile.js"></script>
 
 </body>
