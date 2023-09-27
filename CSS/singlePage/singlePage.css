@@ -3,19 +3,19 @@ body {
     font-family: 'Helvetica', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Light gray background */
-    color: #333; /* Dark text color  */
-    background-image: url('/assets/background-pattern.png'); /* Background pattern */
+    background-color: #f8f8f8; /* Light gray */
+    color: #333; 
+    background-image: url('/assets/background-pattern.png'); 
     background-repeat: repeat;
     overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
-/* Header container  */
+/* Header container */
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    background-color: #4A90E2; /* Blue background */
+    background-color: #000; /* Black background */
     color: #fff; /* White text color */
     padding: 10px;
 }
@@ -25,19 +25,19 @@ body {
     grid-column: 1 / span 1;
 }
 
-/* Header item 2  */
+/* Header item 2 */
 .item2 {
     grid-column: 2 / span 1;
     text-align: center;
 }
 
-/* Header item 3  */
+/* Header item 3 */
 .item3 {
     grid-column: 3 / span 1;
     text-align: right;
 }
 
-/* Navigation  */
+/* Navigation */
 ul {
     list-style-type: none;
     padding: 0;
@@ -46,42 +46,46 @@ ul {
 ul li {
     display: inline;
     margin-right: 20px;
-    color: #FF6B6B; 
-    transition: color 0.3s ease; 
+    color: #fff; /* White for link */
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
 ul li:hover {
-    color: #FF4057; 
+    color: #007bff; /* Blue on hover */
 }
-
-@keyframes slideRightToLeft {
+@keyframes pulseAnimation {
     0% {
-        transform: translateX(100%);
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
     }
     100% {
-        transform: translateX(-100%);
+        transform: scale(1);
     }
 }
 
+
 .sale {
-    background-color: #FF4057; /* Coral background color */
+    background-color: navy;
     text-align: center;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px; /* Smaller border radius */
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-    animation: slideRightToLeft 15s linear infinite alternate; /* Slide animation */
+    animation: pulseAnimation 2s ease-in-out infinite;
 }
+
 
 .sale h3 {
     font-size: 2rem;
-    margin-bottom: 10px;
-    color: #fff; /* White text color */
+    margin-bottom: 5px;
+    color: #fff; 
 }
 
-/* Background color */
+/* Background color for content */
 .photo {
-    background-color: #F1C40F; /* Bright yellow background color */
+    background-color: #fff; 
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     max-width: 800px;
@@ -92,66 +96,65 @@ ul li:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: background-color 0.3s ease; /* Smooth color transition */
+    transition: background-color 0.3s ease; 
 }
 
+/* Change background color on hover */
 .photo:hover {
-    background-color: #FFD700; /* Darker yellow on hover */
+    background-color: #f4f4f4; /* Light gray  */
 }
 
 
 .book-title {
-    font-size: 2rem; /* Font size */
-    font-family: 'Courier New', Courier, monospace, sans-serif; 
+    font-size: 2rem; 
+    font-family: 'Arial', sans-serif; 
     margin-bottom: 10px;
-    color: #333; 
+    color: #000; /* Black text color */
     text-align: center;
 }
-
 
 /* Book info container */
 .book-info {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Space between image and details */
+    justify-content: space-between; 
     align-items: center;
     margin-top: 20px;
 }
 
-/* Book image */
+
 .book-image img {
     margin-right: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
-/* Zoom in on the book image on hover */
+
 .book-image img:hover {
-    transform: scale(1.05); 
-    transition: transform 0.3s ease-in-out; 
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Book price and location container */
+
 .book-price-location {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center vertically */
+    justify-content: center; 
     text-align: center;
     margin-top: 20px;
 }
 
-/* Book price */
+
 .book-price {
     font-size: 1.5rem;
-    color: #333; /* Dark text color */
+    color: #000; 
 }
 
-/* Book location */
 .book-location {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
-    color: #555; 
+    color: #555; /* Slightly darker text color */
 }
 
 /* Location icon */
@@ -163,11 +166,11 @@ ul li:hover {
 
 /* Add to Favorites button */
 button {
-    background-color: #4A90E2; /* Blue background */
+    background-color: #000; 
     border: none;
-    color: #fff; 
+    color: #fff;
     padding: 10px 20px;
-    border-radius: 50px; 
+    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     font-size: 1.5rem;
@@ -176,10 +179,10 @@ button {
 
 /* Change button background color on hover */
 button:hover {
-    background-color: #357ABD; /* Darker*/
+    background-color: #333; 
 }
 
-/* Style for the book description */
+
 .book-description {
     margin-top: 20px;
     text-align: left;
@@ -188,5 +191,5 @@ button:hover {
 .book-description p {
     margin: 5px 0;
     font-size: 1.2rem;
-    color: #555; /* Color - description text */
+    color: #555; 
 }
