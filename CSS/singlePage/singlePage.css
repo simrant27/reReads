@@ -1,16 +1,14 @@
-
 body {
     font-family: 'Helvetica', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f8f8; /* Light gray */
-    color: #333; 
-    background-image: url('/assets/background-pattern.png'); 
+    color: #333;
+    background-image: url('/assets/background-pattern.png');
     background-repeat: repeat;
-    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-x: hidden;
 }
 
-/* Header container */
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -19,6 +17,7 @@ body {
     color: #fff; /* White text color */
     padding: 10px;
 }
+
 
 /* Header item 1 */
 .item1 {
@@ -53,6 +52,7 @@ ul li {
 ul li:hover {
     color: #007bff; /* Blue on hover */
 }
+
 @keyframes pulseAnimation {
     0% {
         transform: scale(1);
@@ -65,7 +65,7 @@ ul li:hover {
     }
 }
 
-
+/* Sale box animation */
 .sale {
     background-color: navy;
     text-align: center;
@@ -74,8 +74,8 @@ ul li:hover {
     border-radius: 5px; /* Smaller border radius */
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
     animation: pulseAnimation 2s ease-in-out infinite;
+    filter: blur(0.2px);
 }
-
 
 .sale h3 {
     font-size: 2rem;
@@ -86,7 +86,7 @@ ul li:hover {
 /* Background color for content */
 .photo {
     background-color: #fff; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2), 0px 0px 5px rgba(0, 0, 0, 0.1); /* Two levels of box shadow */
     border-radius: 10px;
     max-width: 800px;
     margin: 0 auto;
@@ -96,14 +96,13 @@ ul li:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: background-color 0.3s ease; 
+    transition: background-color 0.3s ease; /* Smooth color transition */
 }
 
 /* Change background color on hover */
 .photo:hover {
-    background-color: #f4f4f4; /* Light gray  */
+    background-color: #f4f4f8; /* Light gray  */
 }
-
 
 .book-title {
     font-size: 2rem; 
@@ -122,19 +121,19 @@ ul li:hover {
     margin-top: 20px;
 }
 
-
+/* Book image */
 .book-image img {
     margin-right: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
-
+/* Zoom in on the book image on hover */
 .book-image img:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
+    transform: scale(1.05); 
+    transition: transform 0.3s ease-in-out; 
 }
 
-
+/* Book price and location container */
 .book-price-location {
     display: flex;
     flex-direction: column;
@@ -144,12 +143,13 @@ ul li:hover {
     margin-top: 20px;
 }
 
-
+/* Book price */
 .book-price {
     font-size: 1.5rem;
     color: #000; 
 }
 
+/* Book location */
 .book-location {
     display: flex;
     align-items: center;
@@ -182,14 +182,30 @@ button:hover {
     background-color: #333; 
 }
 
-
+/* Book description */
 .book-description {
     margin-top: 20px;
     text-align: left;
 }
 
-.book-description p {
-    margin: 5px 0;
-    font-size: 1.2rem;
-    color: #555; 
+/* Text color change on hover */
+.book-description p:hover {
+    color: #007bff; /* Blue on hover */
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Single column layout for small screens */
+        text-align: center; /* Center-align content for small screens */
+    }
+
+    .item1, .item2, .item3 {
+        grid-column: auto; /* Reset grid column for header items */
+    }
+
+    .sale {
+        margin-top: 20px; /* Increase top margin for the sale box on small screens */
+    }
+
+    /* Adjust other styles as needed for smaller screens */
 }
