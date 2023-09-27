@@ -216,25 +216,26 @@ if (isset($_POST["upload_book"])) {
 
     </div>
   </div>
-  <section class="booklist">
-
-<div class="your_uploads">
   <h3>Uploads</h3>
-  <?php while ($row = $upload_result->fetch_assoc()) {?>
-
-  <div class="singlebook">
-
-<img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
+  <section class="booklist">
+      <?php while ($row = $upload_result->fetch_assoc()) {?>
 
 
-<span class="bookname"><?php echo $row['book_name']; ?></span>
-<span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>
-  </div>
-  <?php }?>
+      <div class="singlebook">
+
+        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
 
 
-</div>
-  </section>
+        <span class="bookname"><?php echo $row['book_name']; ?></span>
+
+
+
+      </div>
+
+<?php }?>
+
+      </div>
+    </section>
   <script src="../../JS/profile.js"></script>
 
 </body>
