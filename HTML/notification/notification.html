@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../CSS/notification/notification.css"> 
+    <link rel="stylesheet" href="../../CSS/notification/notification.css">
     <title>Notification System</title>
 </head>
 <body>
     <div class="header">
-        
         <label for="notification-toggle" class="notification-icon">bell</label>
         <input type="checkbox" id="notification-toggle" class="notification-toggle">
         <div class="notification-dropdown">
+            <h3 class="notification-title">Notifications</h3> 
             <ul>
                 <li>
-                    <img src="../../assets/notification/simran.jpg" alt="User 1 Avatar">
+                    <img src="../../assets/notification/simran.jpg" alt="User 1 ">
                     <a href="book-details.html">You've uploaded a new book</a>
+                    <button class="delete-button" onclick="deleteNotification(this)">Delete</button>
                 </li>
                 <li>
-                    <img src="../../assets/notification/asmita.jpg" alt="User 2 Avatar">
+                    <img src="../../assets/notification/asmita.jpg" alt="User 2 ">
                     <a href="book-details.html">1 book uploaded</a>
+                    <button class="delete-button" onclick="deleteNotification(this)">Delete</button>
                 </li>
                 <li>
-                    <img src="../../assets/notification/316962449_1326660321482108_7742947422449348448_n.jpg" alt="User 3 Avatar">
+                    <img src="../../assets/notification/316962449_1326660321482108_7742947422449348448_n.jpg" alt="User 3 ">
                     <a href="book-details.html">ma tw khi upload gardai na bai</a>
+                    <button class="delete-button" onclick="deleteNotification(this)">Delete</button>
                 </li>
+               
             </ul>
         </div>
     </div>
+    <script src="../../JS/notification/notification.js"></script>
 </body>
 </html>

@@ -1,50 +1,68 @@
+/* Styling for the notification title */
+.notification-title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    padding: 15px 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-family: 'Arial', sans-serif; /* Layout font */
+}
 
+/* Styling for the notification icon */
 .notification-icon {
     cursor: pointer;
     font-size: 24px;
     position: relative;
-    color: #0078d4; 
+    color: #0078d4;
     transition: color 0.2s;
 }
 
 .notification-icon:hover {
-    color: #004b8c; 
+    color: #004b8c;
 }
 
+/* Hide the notification toggle checkbox */
 .notification-toggle {
     display: none;
 }
 
+/* Styling for the notification dropdown */
 .notification-dropdown {
     display: block;
     position: absolute;
-    top: 40px; 
-    right: 10px; 
-    background-color: #f5f5f5; /* Light gray  */
+    top: 40px;
+    right: 10px;
+    background-color: #f5f5f5;
     border: 1px solid #ccc;
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2); /* No shadow initially */
-    transition: transform 0.2s, box-shadow 0.2s; 
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
     z-index: 1;
     width: 320px;
-    border-radius: 10px; /* Rc */
+    border-radius: 10px;
     overflow: hidden;
-    font-family: 'Arial', sans-serif; 
-    color: #333; 
-    transform-origin: top right; 
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    transform-origin: top right;
     transform: scale(0);
 }
 
+/* Styling for the notification list */
 .notification-dropdown ul {
     list-style-type: none;
     padding: 0;
 }
 
 .notification-dropdown ul li {
-    padding: 15px;
+    padding: 15px 20px;
     border-bottom: 1px solid #e0e0e0;
     display: flex;
     align-items: center;
     transition: background-color 0.2s;
+    cursor: pointer;
+    position: relative;
 }
 
 .notification-dropdown ul li:last-child {
@@ -53,37 +71,83 @@
 
 /* Show dropdown when checkbox is checked */
 .notification-toggle:checked + .notification-dropdown {
-    transform: scale(1); 
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); 
+    transform: scale(1);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Style for user image */
+/* Styling for user avatars */
 .notification-dropdown ul li img {
-    width: 48px; 
+    width: 48px;
     height: 48px;
     border-radius: 50%;
-    margin-right: 20px; 
-    border: 2px solid #0078d4; 
+    margin-right: 20px;
+    border: 2px solid #0078d4;
 }
 
-/* Style for notification messages */
+/* Styling for notification messages */
 .notification-dropdown ul li a {
     text-decoration: none;
     transition: color 0.2s;
-    flex-grow: 1; 
-    font-weight: bold; 
-    color: #333; /* Text color */
+    flex-grow: 1;
+    font-weight: bold;
+    color: #333;
+    overflow: hidden;
+    white-space: normal;
 }
 
 .notification-dropdown ul li a:hover {
     text-decoration: underline;
-    color: #0078d4; 
+    color: #0078d4;
 }
 
-/* Style for notification item on hover */
+/* Styling for notification item on hover */
 .notification-dropdown ul li:hover {
-    background-color: #e0e0e0; 
+    background-color: #e0e0e0;
     transform: translateX(4px);
-    border-left: 4px solid #0078d4; 
+    border-left: 4px solid #0078d4;
     transition: background-color 0.2s;
 }
+
+/* Hide the scrollbar */
+.notification-dropdown ul {
+    max-height: 200px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: calc(100% + 8px);
+    margin-left: -4px;
+    padding-right: 4px;
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.notification-dropdown ul::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+/* Styling for the delete button */
+.delete-button {
+    background-color: #ff4d4d; /* Red background color */
+    border: none;
+    cursor: pointer;
+    color: white; /* Text color */
+    font-size: 16px;
+    margin-left: auto; /* Push the button to the right */
+    padding: 8px 16px; /* Padding for better appearance */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.2s, color 0.2s; /* Smooth transition */
+
+    /* Optional: Add a hover effect */
+}
+
+.delete-button:hover {
+    background-color: #ff3333; /* Darker red on hover */
+    color: white; /* Text color on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+  
+  
+
+
+
+
