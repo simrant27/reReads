@@ -1,17 +1,16 @@
-/* Styling for the notification title */
+
 .notification-title {
     margin: 0;
     font-size: 24px;
-    color: #333;
     padding: 15px 20px;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #ccc;
+    background-color: #0078d4;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    font-family: 'Arial', sans-serif; /* Layout font */
+    font-family: 'Arial', sans-serif;
+    color: white;
 }
 
-/* Styling for the notification icon */
+/* notification icon */
 .notification-icon {
     cursor: pointer;
     font-size: 24px;
@@ -29,7 +28,7 @@
     display: none;
 }
 
-/* Styling for the notification dropdown */
+/* notification dropdown */
 .notification-dropdown {
     display: block;
     position: absolute;
@@ -37,7 +36,7 @@
     right: 10px;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s, box-shadow 0.2s;
     z-index: 1;
     width: 320px;
@@ -49,7 +48,7 @@
     transform: scale(0);
 }
 
-/* Styling for the notification list */
+/* notification list */
 .notification-dropdown ul {
     list-style-type: none;
     padding: 0;
@@ -75,7 +74,7 @@
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Styling for user avatars */
+/* user image */
 .notification-dropdown ul li img {
     width: 48px;
     height: 48px;
@@ -84,25 +83,17 @@
     border: 2px solid #0078d4;
 }
 
-/* Styling for notification messages */
-.notification-dropdown ul li a {
-    text-decoration: none;
-    transition: color 0.2s;
-    flex-grow: 1;
+/* notification message */
+.notification-dropdown ul li .notification-message {
     font-weight: bold;
     color: #333;
-    overflow: hidden;
-    white-space: normal;
+    font-size: 16px;
+    line-height: 1.4;
 }
 
-.notification-dropdown ul li a:hover {
-    text-decoration: underline;
-    color: #0078d4;
-}
-
-/* Styling for notification item on hover */
+/* notification item on hover */
 .notification-dropdown ul li:hover {
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
     transform: translateX(4px);
     border-left: 4px solid #0078d4;
     transition: background-color 0.2s;
@@ -124,30 +115,46 @@
     width: 0;
     height: 0;
 }
-/* Styling for the delete button */
+
+/* delete button */
 .delete-button {
-    background-color: #ff4d4d; /* Red background color */
+    background-color: #ff4d4d;
     border: none;
     cursor: pointer;
-    color: white; /* Text color */
+    color: white;
     font-size: 16px;
-    margin-left: auto; /* Push the button to the right */
-    padding: 8px 16px; /* Padding for better appearance */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.2s, color 0.2s; /* Smooth transition */
-
-    /* Optional: Add a hover effect */
+    margin-left: auto;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .delete-button:hover {
-    background-color: #ff3333; /* Darker red on hover */
-    color: white; /* Text color on hover */
-    text-decoration: none; /* Remove underline on hover */
+    background-color: #ff3333;
+    color: white;
+    text-decoration: none;
 }
 
-  
-  
 
+
+
+
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #1877f2; 
+    font-size: 16px;
+}
+
+.notification-time {
+    color: #808080; 
+    font-size: 12px;
+}
 
 
 
