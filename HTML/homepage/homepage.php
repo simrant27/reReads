@@ -15,6 +15,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['user_id'])) {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
         $user_name = $row['fullName'];
+
     }
 }
 

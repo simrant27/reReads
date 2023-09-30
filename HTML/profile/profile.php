@@ -36,33 +36,58 @@ $upload_result = $stmt_upload->get_result();
 
 //edit and update database
 if (isset($_POST['update_profile'])) {
-    echo "Name " . "<br>";
+    // echo "Name " . "<br>";
 
     $user_id = $_SESSION['user_id'];
     $name = $_POST['edit-name'];
     $number = $_POST['edit-number'];
-    $email = $_POST['edit-email'];
+
     $address = $_POST['edit-address'];
 
-// Perform the SQL update query
-    $sql_update = "UPDATE users SET fullName=?, email=?, address=?, phoneNo=? WHERE user_id=?";
-
-    $stmt_update = $conn->prepare($sql_update);
-    $stmt_update->bind_param("ssssi", $name, $email, $address, $number, $user_id);
-
-    if ($stmt_update->execute()) {
-        // Update successful
-        header("Location: profile.php"); // Redirect back to the profile page
-        exit;
+    //profile pic
+    if ($_FILES["edit-photo"]["error"] === 4) {
+        echo
+            "<script> alert('Image Does Not Exist'); </script>";
     } else {
-        // Error occurred during the update
-        // You can handle the error accordingly, for example:
-        echo "Error updating user profile: " . $stmt_update->error;
-    }
+        $fileName = $_FILES["edit-photo"]["name"];
+        $fileSize = $_FILES["edit-photo"]["size"];
+        $tmpName = $_FILES["edit-photo"]["tmp_name"];
 
-    // Close the statement for the UPDATE query
-    $stmt_update->close();
-}
+        $validImageExtension = ['jpg', 'jpeg', 'png'];
+        $imageExtension = explode('.', $fileName);
+        $imageExtension = strtolower(end($imageExtension));
+
+        if (!in_array($imageExtension, $validImageExtension)) {
+            echo
+                "<script> alert('Invalid image extension'); </script>";
+        } else if ($fileSize > 1000000) {
+            echo
+                "<script> alert('Image size is too large'); </script>";
+        } else {
+            $newImageName = uniqid();
+            $newImageName .= '.' . $imageExtension;
+
+            move_uploaded_file($tmpName, '../../assets/profile_picture/' . $newImageName);
+
+// Perform the SQL update query
+            $sql_update = "UPDATE users SET  fullName=?, address=?, phoneNo=?, user_img=? WHERE user_id=?";
+
+            $stmt_update = $conn->prepare($sql_update);
+            $stmt_update->bind_param("ssssi", $name, $address, $number, $newImageName, $user_id);
+
+            if ($stmt_update->execute()) {
+                // Update successful
+                header("Location: profile.php"); // Redirect back to the profile page
+                exit;
+            } else {
+                // Error occurred during the update
+                // You can handle the error accordingly, for example:
+                echo "Error updating user profile: " . $stmt_update->error;
+            }
+
+            // Close the statement for the UPDATE query
+            $stmt_update->close();
+        }}}
 
 if (isset($_POST["upload_book"])) {
 
@@ -142,11 +167,13 @@ if (isset($_POST["upload_book"])) {
   <div class="container">
     <div class="profile">
       <div class="profile-image">
-      <img src="<?php echo $user_photo ?>" alt="Profile Photo" id="profile-photo">
-        <!-- <label for="profile-photo-input" class="edit-icon">
+      <img src="../../assets/profile_picture/ <?echo $profile_image ?>" alt="Profile Photo" id="profile-photo">
+        <label for="profile-photo-input" class="edit-icon">
           <input type="file" id="profile-photo-input" accept="image/*" onchange="handleProfilePhotoChange(event)">
           <i class="fas fa-camera"></i>
-        </label> -->
+        </label>
+
+
       </div>
       <div class="profile-details" id="profile-details">
 
@@ -237,6 +264,8 @@ if (isset($_POST["upload_book"])) {
       </div>
     </section>
   <script src="../../JS/profile.js"></script>
+
+
 
 </body>
 <script src="../../JS/homepage/open-menu.js"></script>
