@@ -132,7 +132,7 @@ $donate_result = $conn->query($donate_sql);
       <div class="navbar lower-nav">
         <ul class="lower-nav nav-list">
           <li><a href="#home"> Home</a></li>
-          <li><a href="#aboutus">About us</a></li>
+          <li><a href="../AboutUs/aboutUs.php">About us</a></li>
           <li><a href="#addBooks">Add Books</a></li>
         </ul>
       </div>

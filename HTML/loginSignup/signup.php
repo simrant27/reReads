@@ -173,9 +173,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <div class="row">
         <div class="col-md-6 side-image">
           <!-- Image -->
-          <!-- <img src="" alt="Image1" id="Imagecontainer" /> -->
+           <!-- <img src="../../assets/side_img.jpg" alt="Image1" id="Imagecontainer" />  -->
           <div class="text">
-            <p>Join the community of developers <i>- ludiflex</i></p>
+            <p>“Books are the mirrors of the soul.” <br><i>- Virginia Woolf</i></p>
           </div>
         </div>
 

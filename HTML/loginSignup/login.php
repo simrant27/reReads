@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <!-- Image -->
           <!-- <img src="" alt="Image1" id="Imagecontainer" /> -->
           <div class="text">
-            <p>Join the community of developers <i>- ludiflex</i></p>
+            <p>"Books are windows to new worlds, donate yours to help someone see beyond their own."  <i>- Unknown</i></p>
           </div>
         </div>
 

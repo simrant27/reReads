@@ -4,7 +4,7 @@ if (isset($_GET['email'])) {
     // Now, $email contains the email passed from signup.php
 } else {
     // Handle the case when the email parameter is not provided in the URL
-    echo "Email parameter missing.";
+   $error_message = "Email parameter missing.";
 }
 
 
@@ -33,7 +33,7 @@ if (isset($_POST["verify"])) {
                 exit;
             }
         } else {
-            $error_message = "Email not found in the database $email sksjd" ;
+            $error_message = "Email not found in the database" ;
         }
     } else {
         $error_message = "Error executing SQL query: " . mysqli_error($conn);
