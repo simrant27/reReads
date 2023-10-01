@@ -1,25 +1,34 @@
 <?php
-// Sample PHP code to fetch notifications with unique images
-$notifications = [
-    [
-        'user' => 'Simran',
-        'time' => '2 mins ago',
-        'message' => 'uploaded book',
-        'image' => '../../assets/notification/simran.jpg',
-    ],
-    [
-        'user' => 'Asmita',
-        'time' => '5 mins ago',
-        'message' => 'book uploaded',
-        'image' => '../../assets/notification/asmita.jpg',
-    ],
-    [
-        'user' => 'Anmol',
-        'time' => '10 mins ago',
-        'message' => 'book uploaded',
-        'image' => '../../assets/notification/316962449_1326660321482108_7742947422449348448_n.jpg',
-    ],
-];
+include "../../References/connection.php";
+
+// Function to fetch notifications from the database
+function fetchNotifications($conn) {
+    $notifications = array();
+
+    // Query to fetch notifications for newly added books
+    $query = "SELECT users.fullName AS user,
+                    users.user_img As image, 
+                     books.book_name AS message, 
+                     DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') AS time 
+              FROM books
+              JOIN users ON books.user_id = users.user_id
+              ORDER BY books.book_id DESC
+              LIMIT 5"; // You can adjust the limit as needed
+
+    $result = $conn->query($query);
+
+    if ($result) {
+        $count = $result->num_rows; // Count the number of notifications
+        while ($row = $result->fetch_assoc()) {
+            $notifications[] = $row;
+        }
+    }
+
+    return array($notifications, $count);
+}
+
+// Fetch notifications and count
+list($notifications, $count) = fetchNotifications($conn);
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +41,10 @@ $notifications = [
 </head>
 <body>
     <div class="header">
-        <label for="notification-toggle" class="notification-icon">bell</label>
+        <label for="notification-toggle" class="notification-icon icon-button">
+            <span class="material-icons">notifications</span>
+            <span class="icon-button__badge"><?php echo $count; ?></span>
+        </label>
         <input type="checkbox" id="notification-toggle" class="notification-toggle">
         <div class="notification-dropdown">
             <h3 class="notification-title">Notifications</h3>
@@ -46,7 +58,7 @@ $notifications = [
                                 <span class="notification-time"><?php echo $notification['time']; ?></span>
                             </div>
                         </div>
-                        <a href="book-details.html"><?php echo $notification['message']; ?></a>
+                        <a href="book-details.html"><?php echo $notification['message']; ?> was Uploded</a>
                         <button class="delete-button" onclick="deleteNotification(this)">Delete</button>
                     </li>
                 <?php endforeach; ?>

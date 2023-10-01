@@ -74,10 +74,8 @@ $donate_result = $conn->query($donate_sql);
   </form>
 </div>
 <div class="notification">
-<button type="button" class="icon-button">
-    <span class="material-icons">notifications</span>
-    <span class="icon-button__badge">2</span>
-  </button>
+        <?php include "../notification/notification.php"; ?>
+
 
 </div>
 
