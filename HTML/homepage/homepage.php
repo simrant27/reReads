@@ -114,7 +114,7 @@ $user_id = $row['user_id'];
 
 while ($row = $donate_result->fetch_assoc()) {?>
       <div class="singlebook">
-<a href="../singlepage/singlepage.php?book_id=<?php echo $row['book_id']; ?>">>
+<a href="../singlepage/singlepage.php?book_id=<?php echo $row['book_id']; ?>">
       <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
 </a>
 

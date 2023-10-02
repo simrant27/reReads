@@ -48,7 +48,7 @@ if (isset($_GET['logout'])) {
   <title>navbar</title>
 </head>
 <body>
-            <?php
+ <?php
 if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $profile_image)) {
     // If $profile_image is not empty and the file exists, display the user's profile image
     $image_source = '../../assets/profile_picture/' . $profile_image;

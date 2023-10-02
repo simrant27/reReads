@@ -41,7 +41,7 @@ if (isset($_GET['book_id'])) {
         $actualPrice = $book['actual_price'];
         $sellingPrice = $book['selling_price'];
         $address = $book['address'];
-        $isDonate = $book['address'];
+        $isDonate = $book['donate'];
 
         // Now you can use these variables to display the book information in your HTML
     } else {
@@ -118,19 +118,18 @@ if ($isDonate) {?>
 
         <div class="book-price-location">
             <div class="book-price">
-            <?php
-if (!$isDonate) {?>
+                <?php
+if ($isDonate) {?>
 
-                <span>Price: Rs.<?php echo $sellingPrice ?>/-</span>
 
-    <?php
+<?php
 } else {?>
+    <span>Price: Rs.<?php echo $sellingPrice ?>/-</span>
 
     <?php
 
 }
 ?>
-
             </div>
 
             <div class="book-location">
