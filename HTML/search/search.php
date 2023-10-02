@@ -19,76 +19,9 @@ include "../../References/connection.php";
 <body>
 
 <nav class="navbar">
-      <div class="navbar upper-nav">
-        <div class="logo">
-          <span class="re">re</span> <span class="Reads">Reads</span>
-        </div>
-        <div class="search">
-  <form action="../search/search.php" method="post">
-
-      <input type="text" name="search" id="search" placeholder="search" />
-      <button type="submit" class="btn" name="submit"><i class="fa fa-search search-icon"></i></button>
-
-  </form>
-</div>
-
-
-        <div class="profile">
-          <!-- <i class="fa fa-user search-icon"></i> -->
-
-          <img
-        src="../../Assets/IMG_0523.jpeg"
-        alt=""
-        class="userpic"
-        <?php if (isset($_SESSION['email']) && isset($_SESSION['user_id'])): ?>
-            onclick="toggleMenu()"
-        <?php else: ?>
-            onclick="redirectToLogin()"
-        <?php endif;?>
-    />
-          <div class="sub-menu-wrap" id="subMenu">
-            <div class="sub-menu">
-            <?php if (isset($_SESSION['email']) && isset($_SESSION['user_id'])): ?>
-                <div class="user-info">
-                    <img src="../../Assets/IMG_0523.jpeg" alt="" />
-                    <h3><?php echo $user_name; ?></h3>
-
-              </div>
-              <hr />
-              <a href="../profile/profile.php" class="sub-menu-link">
-                <p>Your profile</p>
-                <span>></span>
-              </a>
-              <a href="#" class="sub-menu-link">
-                <p>Favourite</p>
-                <span>></span>
-              </a>
-              <a href="#" class="sub-menu-link">
-                <p>Add books</p>
-                <span>></span>
-              </a>
-              <a href="?logout=true" class="sub-menu-link">
-                <p>Logout</p>
-                <span>></span>
-              </a>
-              <?php else: ?>
-                <!-- Show a link to the login page for non-logged-in users -->
-                <a href="../loginSignup/login.php" class="sub-menu-link">
-                    <p>Login</p>
-                    <span>></span>
-                </a>
-            <?php endif;?>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="navbar lower-nav">
-        <ul class="lower-nav nav-list">
-          <li><a href="#home"> Home</a></li>
-          <li><a href="#aboutus">About us</a></li>
-          <li><a href="#addBooks">Add Books</a></li>
-        </ul>
-      </div>
+<?php
+include "../navbar/navbar.php";
+?>
     </nav>
   <div class="container">
     <?php

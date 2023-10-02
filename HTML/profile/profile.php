@@ -185,48 +185,7 @@ $address = $row['address'];
           document.getElementById('upload-profile-picture').submit();
         }
       </script>
-      <?php
-// if (isset($_FILES["user-image"]["name"])) {
-//     $imageName = $_FILES["user-image"]["name"];
-//     $imageSize = $_FILES["user-image"]["size"];
-//     $tmpName = $_FILES["user-image"]["tmp_name"];
 
-// $validImageExtension = ['jpg', 'jpeg', 'png'];
-// $imageExtension = explode('.', $imageName);
-// $imageExtension = strtolower(end($imageExtension));
-
-// if (!in_array($imageExtension, $validImageExtension)) {
-//     echo
-//         "<script> alert('Invalid image extension'); </script>";
-// } else if ($imageSize > 1200000) {
-//     echo
-//         "<script> alert('Image size is too large'); </script>";
-// } else {
-//     $newImageName = $user_name . " - " . date("Y.m.d");
-//     $newImageName .= '.' . $imageExtension;
-
-//     $sql_update = "UPDATE users SET  user_img=? WHERE user_id=?";
-//     // mysqli_query($conn, $sql_update);
-//     $stmt_update = $conn->prepare($sql_update);
-//     $stmt_update->bind_param("si", $newImageName, $user_id);
-
-//     if ($stmt_update->execute()) {
-//         // Update successful
-//         header("Location: profile.php"); // Redirect back to the profile page
-//         exit;
-//     } else {
-//         // Error occurred during the update
-//         // You can handle the error accordingly, for example:
-//         echo "Error updating user profile picture: " . $stmt_update->error;
-//     }
-
-//     // Close the statement for the UPDATE query
-//     $stmt_update->close();
-
-//     move_uploaded_file($tmpName, '../../assets/profile_picture/' . $newImageName);
-
-// }}
-?>
     </div>
 
       <div class="profile-details" id="profile-details">
@@ -246,12 +205,18 @@ $address = $row['address'];
         <button id="edit-button" onclick="openEditForm()">Edit Profile</button>
       </div>
     </div>
-    <div id="uploads" class="uploads">
+    <!-- <div id="uploads" class="uploads">
       <button id="upload-book-button" onclick="openUploadBookForm()">Upload Book</button>
 
-    </div>
+    </div> -->
+    <div class="uploads" class="uploads">
+        <?php
+include "./uploadbook/uploadbook.php";
+?>
 
-    <div id="upload-book-popup" class="popup">
+
+</div>
+    <!-- <div id="upload-book-popup" class="popup">
       <div class="popup-content">
         <h2>Upload Book</h2>
         <form id="upload-book-form" action="" method="post" enctype="multipart/form-data" autocomplete="off">
@@ -273,7 +238,7 @@ $address = $row['address'];
           <button type="button" id="cancel-button" onclick="closeUploadBookPopup()" ">Cancel</button>
         </form>
       </div>
-    </div>
+    </div> -->
 
     <div id="edit-profile-popup" class="popup" >
       <div class="popup-content">
@@ -322,6 +287,6 @@ $address = $row['address'];
 
 
 </body>
-<script src="../../JS/homepage/open-menu.js"></script>
+<!-- <script src="../../JS/homepage/open-menu.js"></script> -->
 
 </html>
