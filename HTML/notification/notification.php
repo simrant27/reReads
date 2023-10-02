@@ -53,7 +53,7 @@ list($notifications, $count) = fetchNotifications($conn);
                 <?php foreach ($notifications as $notification): ?>
                     <li>
                         <div class="notification-user">
-                            <img src="<?php echo $notification['image']; ?>" alt="<?php echo $notification['user']; ?>">
+                            <img src="../../assets/profile_picture/<?php echo $notification['image']; ?>" alt="<?php echo $notification['user']; ?>">
                             <div class="user-details">
                                 <span class="user-name"><?php echo $notification['user']; ?></span>
                                 <span class="notification-time"><?php echo $notification['time']; ?></span>

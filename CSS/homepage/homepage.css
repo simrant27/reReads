@@ -108,11 +108,15 @@ body {
   position: relative;
 }
 .userpic {
-  width: 100px;
-  border-radius: 100%;
+  width: 25px; /* Adjust the width and height as needed */
+  height: 25px;
+  border-radius: 50%; /* Makes it circular */
+  overflow: hidden; /* Hides overflow content outside the circle */
+  border: 2px solid #b0aeae;
   cursor: pointer;
   margin: 0px 20px;
 }
+
 .sub-menu-wrap {
   position: absolute;
   top: 100%;

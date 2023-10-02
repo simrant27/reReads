@@ -141,7 +141,15 @@ if (isset($_POST["upload_book"])) {
     }
 }
 
+if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $profile_image)) {
+    // If $profile_image is not empty and the file exists, display the user's profile image
+    $image_source = '../../assets/profile_picture/' . $profile_image;
+} else {
+    // If $profile_image is empty or the file does not exist, display the default image
+    $image_source = '../../assets/profile_picture/default.png';
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -169,13 +177,21 @@ $email = $row['email'];
 $profile_image = $row['user_img'];
 $phoneNo = $row['phoneNo'];
 $address = $row['address'];
+
+if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $profile_image)) {
+    // If $profile_image is not empty and the file exists, display the user's profile image
+    $image_source = '../../assets/profile_picture/' . $profile_image;
+} else {
+    // If $profile_image is empty or the file does not exist, display the default image
+    $image_source = '../../assets/profile_picture/default.png';
+}
 ?>
     <div class="profile">
 
 
       <form action="" class="upload-profile-picture" id="upload-profile-picture" enctype="multipart/form-data" method="post">
       <div class="profile-image">
-        <img src="../../assets/profile_picture/<?php echo $profile_image ?>" alt="">
+        <img src="<?php echo $image_source ?>" alt="">
 
       </div>
 

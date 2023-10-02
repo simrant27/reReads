@@ -1,4 +1,31 @@
+<?php
 
+// Check if the user is logged in
+if (isset($_SESSION['email']) && isset($_SESSION['user_id'])) {
+    // Get the user's name from the database based on the user_id
+    $user_id = $_SESSION['user_id'];
+    $sql = "SELECT fullName,user_img FROM users WHERE user_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+        $user_name = $row['fullName'];
+        $profile_image = $row['user_img'];
+
+    }
+}
+
+// Logout process
+if (isset($_GET['logout'])) {
+    // Destroy the session and redirect to the login page
+    session_destroy();
+    header("Location: ../../HTML/loginSignup/login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +48,15 @@
   <title>navbar</title>
 </head>
 <body>
+            <?php
+if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $profile_image)) {
+    // If $profile_image is not empty and the file exists, display the user's profile image
+    $image_source = '../../assets/profile_picture/' . $profile_image;
+} else {
+    // If $profile_image is empty or the file does not exist, display the default image
+    $image_source = '../../assets/profile_picture/default.png';
+}
+?>
 <div class="navbar upper-nav">
         <div class="logo">
           <span class="re">re</span> <span class="Reads">Reads</span>
@@ -43,8 +79,11 @@
           <!-- <i class="fa fa-user search-icon"></i> -->
 
 
+
+<div class="user-image">
+
           <img
-        src="../../assets/profile_picture/<?php echo $profile_image ?>"
+        src="<?php echo $image_source ?>"
         alt=""
         class="userpic"
         <?php if (isset($_SESSION['email']) && isset($_SESSION['user_id'])): ?>
@@ -53,11 +92,12 @@
             onclick="redirectToLogin()"
         <?php endif;?>
     />
+</div>
           <div class="sub-menu-wrap" id="subMenu">
             <div class="sub-menu">
             <?php if (isset($_SESSION['email']) && isset($_SESSION['user_id'])): ?>
                 <div class="user-info">
-                    <img src="../../assets/profile_picture/<?php echo $profile_image ?>" alt="" />
+                    <img src="<?php echo $image_source ?>" alt="" class="userpic"/>
                     <h3><?php echo $user_name; ?></h3>
 
               </div>
@@ -97,4 +137,6 @@
         </ul>
       </div>
 </body>
+<script src="../../JS/homepage/open-menu.js"></script>
+  <script src="../../JS/homepage/redirectlogin.js"></script>
 </html>
