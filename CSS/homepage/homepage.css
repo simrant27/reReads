@@ -233,7 +233,7 @@ body {
   flex-direction: column;
 }
 
-.singlebook > img {
+.book_img {
   flex-shrink: 0;
   max-height: 200px;
   min-height: 100px;
@@ -241,6 +241,10 @@ body {
   height: auto;
   box-shadow: #42423e 2px;
 }
+/* .book-image:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+} */
 
 .singlebook .bookname {
   color: #42423e;

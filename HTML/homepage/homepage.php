@@ -38,6 +38,8 @@ $donate_result = $conn->query($donate_sql);
 ?>
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -71,10 +73,10 @@ include "../navbar/navbar.php";
 
 
       <div class="singlebook">
+<a href="../singlepage/singlepage.php?book_id=<?php echo $row['book_id']; ?>">
+        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
 
-        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
-
-
+</a>
         <span class="bookname"><?php echo $row['book_name']; ?></span>
         <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>
         <span class="location">
@@ -112,9 +114,9 @@ $user_id = $row['user_id'];
 
 while ($row = $donate_result->fetch_assoc()) {?>
       <div class="singlebook">
-
-      <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
-
+<a href="../singlepage/singlepage.php?book_id=<?php echo $row['book_id']; ?>">>
+      <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
+</a>
 
         <span class="bookname"><?php echo $row['book_name']; ?></span>
 

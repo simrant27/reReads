@@ -1,211 +1,214 @@
 body {
-    font-family: 'Helvetica', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8; /* Light gray */
-    color: #333;
-    background-image: url('/assets/background-pattern.png');
-    background-repeat: repeat;
-    overflow-x: hidden;
+  font-family: "Helvetica", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8; /* Light gray */
+  color: #333;
+  background-image: url("/assets/background-pattern.png");
+  background-repeat: repeat;
+  overflow-x: hidden;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: center;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text color */
-    padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  background-color: #000; /* Black background */
+  color: #fff; /* White text color */
+  padding: 10px;
 }
-
 
 /* Header item 1 */
 .item1 {
-    grid-column: 1 / span 1;
+  grid-column: 1 / span 1;
 }
 
 /* Header item 2 */
 .item2 {
-    grid-column: 2 / span 1;
-    text-align: center;
+  grid-column: 2 / span 1;
+  text-align: center;
 }
 
 /* Header item 3 */
 .item3 {
-    grid-column: 3 / span 1;
-    text-align: right;
+  grid-column: 3 / span 1;
+  text-align: right;
 }
 
 /* Navigation */
 ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 ul li {
-    display: inline;
-    margin-right: 20px;
-    color: #fff; /* White for link */
-    transition: color 0.3s ease; /* Smooth color transition */
+  display: inline;
+  margin-right: 20px;
+  color: #fff; /* White for link */
+  transition: color 0.3s ease; /* Smooth color transition */
 }
 
 ul li:hover {
-    color: #007bff; /* Blue on hover */
+  color: #007bff; /* Blue on hover */
 }
 
 @keyframes pulseAnimation {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Sale box animation */
 .sale {
-    background-color: navy;
-    text-align: center;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px; /* Smaller border radius */
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-    animation: pulseAnimation 2s ease-in-out infinite;
-    filter: blur(0.2px);
+  background-color: navy;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px; /* Smaller border radius */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  animation: pulseAnimation 2s ease-in-out infinite;
+  filter: blur(0.2px);
 }
 
 .sale h3 {
-    font-size: 2rem;
-    margin-bottom: 5px;
-    color: #fff; 
+  font-size: 2rem;
+  margin-bottom: 5px;
+  color: #fff;
 }
 
 /* Background color for content */
 .photo {
-    background-color: #fff; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2), 0px 0px 5px rgba(0, 0, 0, 0.1); /* Two levels of box shadow */
-    border-radius: 10px;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: background-color 0.3s ease; /* Smooth color transition */
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2), 0px 0px 5px rgba(0, 0, 0, 0.1); /* Two levels of box shadow */
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: background-color 0.3s ease; /* Smooth color transition */
 }
 
 /* Change background color on hover */
 .photo:hover {
-    background-color: #f4f4f8; /* Light gray  */
+  background-color: #f4f4f8; /* Light gray  */
 }
 
 .book-title {
-    font-size: 2rem; 
-    font-family: 'Arial', sans-serif; 
-    margin-bottom: 10px;
-    color: #000; /* Black text color */
-    text-align: center;
+  font-size: 2rem;
+  font-family: "Arial", sans-serif;
+  margin-bottom: 10px;
+  color: #000; /* Black text color */
+  text-align: center;
 }
 
 /* Book info container */
 .book-info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; 
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
 /* Book image */
 .book-image img {
-    margin-right: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  height: 400px;
+  width: 300px;
+  margin-right: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 /* Zoom in on the book image on hover */
 .book-image img:hover {
-    transform: scale(1.05); 
-    transition: transform 0.3s ease-in-out; 
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Book price and location container */
 .book-price-location {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-    text-align: center;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* Book price */
 .book-price {
-    font-size: 1.5rem;
-    color: #000; 
+  font-size: 1.5rem;
+  color: #000;
 }
 
 /* Book location */
 .book-location {
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    color: #555; /* Slightly darker text color */
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #555; /* Slightly darker text color */
 }
 
 /* Location icon */
 .location-icon {
-    width: 15px;
-    height: 15px;
-    margin-right: 5px;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
 }
 
 /* Add to Favorites button */
 button {
-    background-color: #000; 
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    font-size: 1.5rem;
-    margin-top: 20px;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-size: 1.5rem;
+  margin-top: 20px;
 }
 
 /* Change button background color on hover */
 button:hover {
-    background-color: #333; 
+  background-color: #333;
 }
 
 /* Book description */
 .book-description {
-    margin-top: 20px;
-    text-align: left;
+  margin-top: 20px;
+  text-align: left;
 }
 
 /* Text color change on hover */
 .book-description p:hover {
-    color: #007bff; /* Blue on hover */
+  color: #007bff; /* Blue on hover */
 }
 
 @media (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr; /* Single column layout for small screens */
-        text-align: center; /* Center-align content for small screens */
-    }
+  .container {
+    grid-template-columns: 1fr; /* Single column layout for small screens */
+    text-align: center; /* Center-align content for small screens */
+  }
 
-    .item1, .item2, .item3 {
-        grid-column: auto; /* Reset grid column for header items */
-    }
+  .item1,
+  .item2,
+  .item3 {
+    grid-column: auto; /* Reset grid column for header items */
+  }
 
-    .sale {
-        margin-top: 20px; /* Increase top margin for the sale box on small screens */
-    }
+  .sale {
+    margin-top: 20px; /* Increase top margin for the sale box on small screens */
+  }
 
-    /* Adjust other styles as needed for smaller screens */
+  /* Adjust other styles as needed for smaller screens */
 }
