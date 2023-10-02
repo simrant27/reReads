@@ -1,15 +1,16 @@
 <?php
-include "../../References/connection.php";
+// include "../../References/connection.php";
 
 // Function to fetch notifications from the database
-function fetchNotifications($conn) {
+function fetchNotifications($conn)
+{
     $notifications = array();
 
     // Query to fetch notifications for newly added books
     $query = "SELECT users.fullName AS user,
-                    users.user_img As image, 
-                     books.book_name AS message, 
-                     DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') AS time 
+                    users.user_img As image,
+                     books.book_name AS message,
+                     DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') AS time
               FROM books
               JOIN users ON books.user_id = users.user_id
               ORDER BY books.book_id DESC
@@ -61,7 +62,7 @@ list($notifications, $count) = fetchNotifications($conn);
                         <a href="book-details.html"><?php echo $notification['message']; ?> was Uploded</a>
                         <button class="delete-button" onclick="deleteNotification(this)">Delete</button>
                     </li>
-                <?php endforeach; ?>
+                <?php endforeach;?>
             </ul>
         </div>
     </div>

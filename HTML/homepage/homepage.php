@@ -6,7 +6,7 @@ include "../../References/connection.php";
 if (isset($_SESSION['email']) && isset($_SESSION['user_id'])) {
     // Get the user's name from the database based on the user_id
     $user_id = $_SESSION['user_id'];
-    $sql = "SELECT fullName FROM users WHERE user_id = ?";
+    $sql = "SELECT fullName,user_img FROM users WHERE user_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
@@ -15,6 +15,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['user_id'])) {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
         $user_name = $row['fullName'];
+        $profile_image = $row['user_img'];
 
     }
 }
@@ -74,7 +75,7 @@ $donate_result = $conn->query($donate_sql);
   </form>
 </div>
 <div class="notification">
-        <?php include "../notification/notification.php"; ?>
+        <?php include "../notification/notification.php";?>
 
 
 </div>
@@ -82,8 +83,9 @@ $donate_result = $conn->query($donate_sql);
         <div class="profile">
           <!-- <i class="fa fa-user search-icon"></i> -->
 
+
           <img
-        src="../../Assets/IMG_0523.jpeg"
+        src="../../assets/profile_picture/<?php echo $profile_image ?>"
         alt=""
         class="userpic"
         <?php if (isset($_SESSION['email']) && isset($_SESSION['user_id'])): ?>
@@ -96,7 +98,7 @@ $donate_result = $conn->query($donate_sql);
             <div class="sub-menu">
             <?php if (isset($_SESSION['email']) && isset($_SESSION['user_id'])): ?>
                 <div class="user-info">
-                    <img src="../../Assets/IMG_0523.jpeg" alt="" />
+                    <img src="../../assets/profile_picture/<?php echo $profile_image ?>" alt="" />
                     <h3><?php echo $user_name; ?></h3>
 
               </div>
@@ -109,7 +111,7 @@ $donate_result = $conn->query($donate_sql);
                 <p>Favourite</p>
                 <span>></span>
               </a>
-              <a href="#" class="sub-menu-link">
+              <a href="../profile/" class="sub-menu-link">
                 <p>Add books</p>
                 <span>></span>
               </a>

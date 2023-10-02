@@ -18,14 +18,6 @@ $stmt->execute();
 
 $result = $stmt->get_result();
 
-// Fetch the user's information
-$row = $result->fetch_assoc();
-$user_name = $row['fullName'];
-$email = $row['email'];
-$profile_image = $row['user_img'];
-$phoneNo = $row['phoneNo'];
-$address = $row['address'];
-
 //fetching the uploaded books
 
 $upload_sql = "SELECT * FROM books WHERE user_id = ? ORDER BY book_id DESC";
@@ -65,6 +57,8 @@ if (isset($_POST['update_profile'])) {
                 "<script> alert('Image size is too large'); </script>";
         } else {
             $newImageName = uniqid();
+            $newImageName = $name . " - " . date("Y.m.d");
+
             $newImageName .= '.' . $imageExtension;
 
             move_uploaded_file($tmpName, '../../assets/profile_picture/' . $newImageName);
@@ -122,6 +116,8 @@ if (isset($_POST["upload_book"])) {
                 "<script> alert('Image size is too large'); </script>";
         } else {
             $newImageName = uniqid();
+//     $newImageName = $user_name . " - " . date("Y.m.d");
+
             $newImageName .= '.' . $imageExtension;
 
             move_uploaded_file($tmpName, '../../assets/uploads/' . $newImageName);
@@ -164,17 +160,75 @@ if (isset($_POST["upload_book"])) {
 <nav>
     <a href="../homepage/homepage.php">Back to Home</a>
   </nav>
-  <div class="container">
-    <div class="profile">
-      <div class="profile-image">
-      <img src="../../assets/profile_picture/ <?echo $profile_image ?>" alt="Profile Photo" id="profile-photo">
-        <label for="profile-photo-input" class="edit-icon">
-          <input type="file" id="profile-photo-input" accept="image/*" onchange="handleProfilePhotoChange(event)">
-          <i class="fas fa-camera"></i>
-        </label>
+  <div class="profile-container">
 
+  <?php
+$row = $result->fetch_assoc();
+$user_name = $row['fullName'];
+$email = $row['email'];
+$profile_image = $row['user_img'];
+$phoneNo = $row['phoneNo'];
+$address = $row['address'];
+?>
+    <div class="profile">
+
+
+      <form action="" class="upload-profile-picture" id="upload-profile-picture" enctype="multipart/form-data" method="post">
+      <div class="profile-image">
+        <img src="../../assets/profile_picture/<?php echo $profile_image ?>" alt="">
 
       </div>
+
+      </form>
+      <script type="text/javascript">
+        document.getElementById("user-image").onchange = function(){
+          document.getElementById('upload-profile-picture').submit();
+        }
+      </script>
+      <?php
+// if (isset($_FILES["user-image"]["name"])) {
+//     $imageName = $_FILES["user-image"]["name"];
+//     $imageSize = $_FILES["user-image"]["size"];
+//     $tmpName = $_FILES["user-image"]["tmp_name"];
+
+// $validImageExtension = ['jpg', 'jpeg', 'png'];
+// $imageExtension = explode('.', $imageName);
+// $imageExtension = strtolower(end($imageExtension));
+
+// if (!in_array($imageExtension, $validImageExtension)) {
+//     echo
+//         "<script> alert('Invalid image extension'); </script>";
+// } else if ($imageSize > 1200000) {
+//     echo
+//         "<script> alert('Image size is too large'); </script>";
+// } else {
+//     $newImageName = $user_name . " - " . date("Y.m.d");
+//     $newImageName .= '.' . $imageExtension;
+
+//     $sql_update = "UPDATE users SET  user_img=? WHERE user_id=?";
+//     // mysqli_query($conn, $sql_update);
+//     $stmt_update = $conn->prepare($sql_update);
+//     $stmt_update->bind_param("si", $newImageName, $user_id);
+
+//     if ($stmt_update->execute()) {
+//         // Update successful
+//         header("Location: profile.php"); // Redirect back to the profile page
+//         exit;
+//     } else {
+//         // Error occurred during the update
+//         // You can handle the error accordingly, for example:
+//         echo "Error updating user profile picture: " . $stmt_update->error;
+//     }
+
+//     // Close the statement for the UPDATE query
+//     $stmt_update->close();
+
+//     move_uploaded_file($tmpName, '../../assets/profile_picture/' . $newImageName);
+
+// }}
+?>
+    </div>
+
       <div class="profile-details" id="profile-details">
 
         <span>Name: </span>
