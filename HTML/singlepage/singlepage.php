@@ -105,8 +105,18 @@ if ($isDonate) {?>
                     <p><strong>Published:</strong> <?php echo $publishedYear ?></p>
                     <p><strong>Publisher:</strong> <?php echo $publisher ?></p>
                     <p><strong>Phone Number:</strong><?php echo $phoneNumber ?> </p>
-                    <p><strong>Actual Price:</strong> Rs.<?php echo $actualPrice ?>/-</p>
+                    <?php
+if ($isDonate) {?>
 
+
+<?php
+} else {?>
+    <span>Price: Rs.<?php echo $actualPrice ?>/-</span>
+
+    <?php
+
+}
+?>
 
                 </div>
 

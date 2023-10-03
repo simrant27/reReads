@@ -10,6 +10,7 @@ function fetchNotifications($conn)
     $query = "SELECT users.fullName AS user,
                     users.user_img As image,
                      books.book_name AS message,
+                     books.book_id AS bookid,
                      DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') AS time
               FROM books
               JOIN users ON books.user_id = users.user_id
@@ -53,13 +54,19 @@ list($notifications, $count) = fetchNotifications($conn);
                 <?php foreach ($notifications as $notification): ?>
                     <li>
                         <div class="notification-user">
+
                             <img src="../../assets/profile_picture/<?php echo $notification['image']; ?>" alt="<?php echo $notification['user']; ?>">
                             <div class="user-details">
                                 <span class="user-name"><?php echo $notification['user']; ?></span>
-                                <span class="notification-time"><?php echo $notification['time']; ?></span>
+                                <!-- <span class="notification-time">
+                                    <?php
+//  echo $notification['time'];
+?></span> -->
                             </div>
                         </div>
-                        <a href="book-details.html"><?php echo $notification['message']; ?> was Uploded</a>
+
+
+                        <a href="../singlepage/singlepage.php?book_id=<?php echo $notification['bookid']; ?>"><?php echo $notification['message']; ?> was Uploded</a>
                         <button class="delete-button" onclick="deleteNotification(this)">Delete</button>
                     </li>
                 <?php endforeach;?>
