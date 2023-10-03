@@ -1,7 +1,9 @@
-.header {
-  position: absolute;
-
-  margin: 7% 20%;
+.header_user {
+  /* position: absolute; */
+  max-height: 500px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  margin: 5% 25%;
   height: fit-content;
   width: 50%;
   border: #333;
@@ -11,6 +13,7 @@
 
 .users-title {
   margin: 0;
+  width: 200%;
   font-size: 24px;
   padding: 15px 20px;
   background-color: #0078d4;
@@ -37,6 +40,7 @@ ul li:last-child {
 /* user image */
 ul li img {
   width: 48px;
+  /* margin-right: 20px; */
   height: 48px;
   border-radius: 50%;
   margin-right: 20px;
@@ -62,7 +66,12 @@ ul li img {
 }
 
 .user-details {
-  width: 30%;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.user-image {
+  width: 170px;
   display: flex;
   flex-direction: column;
 }
