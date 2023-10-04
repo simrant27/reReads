@@ -69,7 +69,7 @@ header ul li a {
     text-align: center;
 }
 
-/* Ensure the footer sticks to the bottom */
+/*  footer sticks to the bottom */
 body {
     display: flex;
     flex-direction:column;
@@ -91,7 +91,7 @@ body {
     text-align: left; /* Keep the logo at the left side */
 }
 
-/* Styling for the footer logo image */
+/* Styling - footer logo image */
 .footer-logo img {
     width: 100px;
     height: 100px;
@@ -127,7 +127,7 @@ body {
     margin-right: 20px;
 }
 
-/* Styling for footer links */
+/* Styling - footer links */
 .footer-links ul li a {
     text-decoration: none;
     color: #fff;
@@ -154,7 +154,7 @@ body {
     margin-right: 10px;
 }
 
-/* Styling for social media icons */
+/* Styling - social media icons */
 .footer-social ul li a {
     text-decoration: none;
     color: #fff;
@@ -202,12 +202,12 @@ body {
     margin: 0 auto;
 }
 
-/* Styling for form groups within the contact form */
+/* Styling - form groups within the contact form */
 #contact .form-group {
     margin-bottom: 20px;
 }
 
-/* Styling for labels within the contact form */
+/* Styling - labels within the contact form */
 #contact label {
     display: block;
     font-weight: bold;
@@ -215,7 +215,7 @@ body {
     color: #333;
 }
 
-/* Styling for text inputs, email inputs, and textareas within the contact form */
+/* Styling - text inputs, email inputs, and textareas within the contact form */
 #contact input[type="text"],
 #contact input[type="email"],
 #contact textarea {
