@@ -7,8 +7,8 @@ body, ul {
 
 /* Header styles */
 header {
-    background: dark gray;
-    color: white;
+    background:#333;
+    color:#fff;
     padding: 10px 0;
     text-align: center;
 }
