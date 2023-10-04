@@ -43,6 +43,7 @@ header ul li a {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    flex-grow: 1; /* Expand the container to occupy remaining vertical space */
 }
 
 /* Section headings */
@@ -71,14 +72,12 @@ header ul li a {
 /* Ensure the footer sticks to the bottom */
 body {
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     min-height: 100vh;
+    justify-content: space-between;
 }
 
-/* Expand the container to occupy remaining vertical space */
-.container {
-    flex-grow: 1;
-}
+
 
 /* Footer content layout */
 .footer-content {
