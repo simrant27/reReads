@@ -86,26 +86,32 @@ body {
     align-items: center;
 }
 
-/* Footer logo */
+/*  footer logo */
 .footer-logo {
-    text-align: left;
+    text-align: left; /* Keep the logo at the left side */
 }
 
-/* Styling for footer logo image */
+/* Styling for the footer logo image */
 .footer-logo img {
     width: 100px;
     height: 100px;
-    object-fit: cover;
+    object-fit:contain;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Add a background color and padding to create a circular border */
+    background-color:grey;
+    padding: 10px;
 }
 
-/* Hover effect for footer logo image */
+/* Hover effect  footer logo image */
 .footer-logo img:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
+
+
+
 
 /* Footer links list */
 .footer-links ul {
