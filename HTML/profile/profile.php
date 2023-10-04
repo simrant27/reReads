@@ -261,9 +261,10 @@ include "./uploadbook/uploadbook.php";
       <?php while ($row = $upload_result->fetch_assoc()) {?>
 
 
+
       <div class="singlebook">
 
-        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
+        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
 
 
         <span class="bookname"><?php echo $row['book_name']; ?></span>
