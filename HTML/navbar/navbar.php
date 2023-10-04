@@ -119,6 +119,15 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
                 <p>Logout</p>
                 <span>></span>
               </a>
+              <?php 
+            $email =$_SESSION['email'];
+                if($email=="rereads3@gmail.com"):
+              ?>
+              <a href="../admin/users.php" class="sub-menu-link">
+                <p>Users</p>
+                <span>></span>
+              </a>
+               <?php endif;?>
               <?php else: ?>
                 <!-- Show a link to the login page for non-logged-in users -->
                 <a href="../loginSignup/login.php" class="sub-menu-link">

@@ -114,14 +114,14 @@ if ($isDonate) {?>
     <span>Price: Rs.<?php echo $actualPrice ?>/-</span>
 
     <?php
-
 }
 ?>
 
                 </div>
 
 
-                <button id="addToFavorites">Add to Favorites</button>
+                <a href="../favourites/addtofavourites.php? echo $row['book_id']; ?>" class="addToFavorites">Add to Favorites</a>
+
             </div>
         </div>
 

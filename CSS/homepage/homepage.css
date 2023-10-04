@@ -245,7 +245,10 @@ body {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
 } */
-
+.a img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
 .singlebook .bookname {
   color: #42423e;
   font-weight: bold;
