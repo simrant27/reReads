@@ -103,6 +103,10 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
 
               </div>
               <hr />
+               <?php 
+            $email =$_SESSION['email'];
+                if($email!="rereads3@gmail.com"):
+              ?>
               <a href="../profile/profile.php" class="sub-menu-link">
                 <p>Your profile</p>
                 <span>></span>
@@ -114,6 +118,8 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
               <a href="../profile/profile.php" class="sub-menu-link">
                 <p>Add books</p>
                 <span>></span>
+               <?php endif;?>
+
               </a>
               <a href="?logout=true" class="sub-menu-link">
                 <p>Logout</p>
