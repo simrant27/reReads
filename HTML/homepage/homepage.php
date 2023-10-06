@@ -164,6 +164,10 @@ $user_id = $row['user_id'];
 
     </section>
 
+  <?php
+include_once "../footer/footer.php";
+?>
+
   </body>
   <script src="../../JS/homepage/open-menu.js"></script>
   <script src="../../JS/homepage/redirectlogin.js"></script>
