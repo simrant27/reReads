@@ -39,10 +39,10 @@ $result = $stmt->get_result();
 
 <body>
 <nav>
-<div class="logo">
-          <span class="re">re</span> <span class="Reads">Reads</span>
+<div class="logo ">
+          <span class="re logo-profile">re</span> <span class="Reads logo-profile">Reads</span>
         </div>
-<div class="navbar lower-nav">
+<div class="navbar ">
         <ul class="lower-nav nav-list">
           <li><a href="../homepage/homepage.php"> Home</a></li>
           <li><a href="../AboutUs/aboutUs.php">About us</a></li>

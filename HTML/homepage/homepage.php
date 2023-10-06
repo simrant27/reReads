@@ -71,7 +71,7 @@ include "../navbar/navbar.php";
     <section class="booklist">
       <?php while ($row = $sell_result->fetch_assoc()) {?>
 
-
+<div class="singlebook">
       <div class="singlebook">
       <?php
 // Check if the user is logged in
@@ -112,7 +112,7 @@ $user_id = $row['user_id'];
     ?>
         </span>
       </div>
-
+</div>
 <?php }?>
 
       </div>
