@@ -73,8 +73,17 @@ include "../navbar/navbar.php";
 
 
       <div class="singlebook">
-<a href="../singlepage/singlepage.php?book_id=<?php echo $row['book_id']; ?>">
-        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
+      <?php
+// Check if the user is logged in
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+        // If logged in, link to singlepage.php
+        echo '<a href="../singlepage/singlepage.php?book_id=' . $row['book_id'] . '">';
+    } else {
+        // If not logged in, link to the login page
+        echo '<a href="../loginSignup/login.php">';
+    }
+    ?>
+      <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
 
 </a>
         <span class="bookname"><?php echo $row['book_name']; ?></span>
@@ -114,7 +123,16 @@ $user_id = $row['user_id'];
 
 while ($row = $donate_result->fetch_assoc()) {?>
       <div class="singlebook">
-<a href="../singlepage/singlepage.php?book_id=<?php echo $row['book_id']; ?>">
+      <?php
+// Check if the user is logged in
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+        // If logged in, link to singlepage.php
+        echo '<a href="../singlepage/singlepage.php?book_id=' . $row['book_id'] . '">';
+    } else {
+        // If not logged in, link to the login page
+        echo '<a href="../loginSignup/login.php">';
+    }
+    ?>
       <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
 </a>
 

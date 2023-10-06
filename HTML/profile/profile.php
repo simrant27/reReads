@@ -18,14 +18,6 @@ $stmt->execute();
 
 $result = $stmt->get_result();
 
-//fetching the uploaded books
-
-$upload_sql = "SELECT * FROM books WHERE user_id = ? ORDER BY book_id DESC";
-$stmt_upload = $conn->prepare($upload_sql);
-$stmt_upload->bind_param("i", $user_id);
-$stmt_upload->execute();
-$upload_result = $stmt_upload->get_result();
-
 //edit and update database
 if (isset($_POST['update_profile'])) {
     // echo "Name " . "<br>";
@@ -221,10 +213,7 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
         <button id="edit-button" onclick="openEditForm()">Edit Profile</button>
       </div>
     </div>
-    <!-- <div id="uploads" class="uploads">
-      <button id="upload-book-button" onclick="openUploadBookForm()">Upload Book</button>
 
-    </div> -->
     <div class="uploads" class="uploads">
         <?php
 include "./uploadbook/uploadbook.php";
@@ -258,7 +247,16 @@ include "./uploadbook/uploadbook.php";
   </div>
   <h3>Uploads</h3>
   <section class="booklist">
-      <?php while ($row = $upload_result->fetch_assoc()) {?>
+    <?php
+//fetching the uploaded books
+
+$upload_sql = "SELECT * FROM books WHERE user_id = ? ORDER BY book_id DESC";
+$stmt_upload = $conn->prepare($upload_sql);
+$stmt_upload->bind_param("i", $user_id);
+$stmt_upload->execute();
+$upload_result = $stmt_upload->get_result();
+
+while ($row = $upload_result->fetch_assoc()) {?>
 
 
 
@@ -274,6 +272,47 @@ include "./uploadbook/uploadbook.php";
       </div>
 
 <?php }?>
+
+      </div>
+    </section>
+
+<!-- for displaying favourites -->
+<h3>Favourites</h3>
+    <section class="booklist">
+    <?php
+//fetching the favourites books
+
+$favourite_sql = "SELECT book_id FROM favourites WHERE user_id = ?  ";
+$favourite_stmt = $conn->prepare($favourite_sql);
+$favourite_stmt->bind_param("i", $user_id);
+$favourite_stmt->execute();
+$favourite_result = $favourite_stmt->get_result();
+
+while ($row = $favourite_result->fetch_assoc()) {
+    $book_id = $row['book_id'];
+    $book_sql = "SELECT * from books where book_id = ?";
+    $book_stmt = $conn->prepare($book_sql);
+    $book_stmt->bind_param("i", $book_id);
+    $book_stmt->execute();
+    $book_stmt_result = $book_stmt->get_result();
+
+    while ($row1 = $book_stmt_result->fetch_assoc()) {?>
+
+
+      <div class="singlebook">
+      <!-- <a href="../singlepage/singlepage.php?book_id=' . $row1['book_id'] . '">'; -->
+        <a href="../singlepage/singlepage.php"></a>
+        <img src="../../assets/uploads/<?php echo $row1['images']; ?>" alt="book photo" class="book_img"/>
+</a>
+
+        <span class="bookname"><?php echo $row1['book_name']; ?></span>
+
+
+
+      </div>
+
+<?php }}?>
+
 
       </div>
     </section>
