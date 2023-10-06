@@ -2,6 +2,7 @@
 session_start();
 
 include "../../References/connection.php";
+include "./deletebook.php";
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     header("Location: ../homepage/homepage.php");
     exit;
@@ -17,129 +18,8 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 
 $result = $stmt->get_result();
+// Edit and update database
 
-//edit and update database
-if (isset($_POST['update_profile'])) {
-    // echo "Name " . "<br>";
-
-    $user_id = $_SESSION['user_id'];
-    $name = $_POST['edit-name'];
-    $number = $_POST['edit-number'];
-
-    $address = $_POST['edit-address'];
-
-    //profile pic
-    if ($_FILES["edit-photo"]["error"] === 4) {
-        echo
-            "<script> alert('Image Does Not Exist'); </script>";
-    } else {
-        $fileName = $_FILES["edit-photo"]["name"];
-        $fileSize = $_FILES["edit-photo"]["size"];
-        $tmpName = $_FILES["edit-photo"]["tmp_name"];
-
-        $validImageExtension = ['jpg', 'jpeg', 'png'];
-        $imageExtension = explode('.', $fileName);
-        $imageExtension = strtolower(end($imageExtension));
-
-        if (!in_array($imageExtension, $validImageExtension)) {
-            echo
-                "<script> alert('Invalid image extension'); </script>";
-        } else if ($fileSize > 1000000) {
-            echo
-                "<script> alert('Image size is too large'); </script>";
-        } else {
-            $newImageName = uniqid();
-            $newImageName = $name . " - " . date("Y.m.d");
-
-            $newImageName .= '.' . $imageExtension;
-
-            move_uploaded_file($tmpName, '../../assets/profile_picture/' . $newImageName);
-
-// Perform the SQL update query
-            $sql_update = "UPDATE users SET  fullName=?, address=?, phoneNo=?, user_img=? WHERE user_id=?";
-
-            $stmt_update = $conn->prepare($sql_update);
-            $stmt_update->bind_param("ssssi", $name, $address, $number, $newImageName, $user_id);
-
-            if ($stmt_update->execute()) {
-                // Update successful
-                header("Location: profile.php"); // Redirect back to the profile page
-                exit;
-            } else {
-                // Error occurred during the update
-                // You can handle the error accordingly, for example:
-                echo "Error updating user profile: " . $stmt_update->error;
-            }
-
-            // Close the statement for the UPDATE query
-            $stmt_update->close();
-        }}}
-
-if (isset($_POST["upload_book"])) {
-
-    $bookName = $_POST['book-name'];
-    $authorName = $_POST['author-name'];
-    $genre = $_POST['genre'];
-    $publicationYear = $_POST['published-year'];
-    $publication = $_POST['book-publication'];
-    $actualPrice = $_POST['actual-price'];
-    $sellingPrice = $_POST['selling-price'];
-    $user_id = $_SESSION['user_id'];
-
-// Check if the user selected "Donate" or "Sale"
-    $donate = isset($_POST['price-type']) && $_POST['price-type'] === 'donate';
-
-    if ($_FILES["book-photo"]["error"] === 4) {
-        echo
-            "<script> alert('Image Does Not Exist'); </script>";
-    } else {
-        $fileName = $_FILES["book-photo"]["name"];
-        $fileSize = $_FILES["book-photo"]["size"];
-        $tmpName = $_FILES["book-photo"]["tmp_name"];
-
-        $validImageExtension = ['jpg', 'jpeg', 'png'];
-        $imageExtension = explode('.', $fileName);
-        $imageExtension = strtolower(end($imageExtension));
-        if (!in_array($imageExtension, $validImageExtension)) {
-            echo
-                "<script> alert('Invalid image extension'); </script>";
-        } else if ($fileSize > 1000000) {
-            echo
-                "<script> alert('Image size is too large'); </script>";
-        } else {
-            $newImageName = uniqid();
-//     $newImageName = $user_name . " - " . date("Y.m.d");
-
-            $newImageName .= '.' . $imageExtension;
-
-            move_uploaded_file($tmpName, '../../assets/uploads/' . $newImageName);
-
-            $sql = "INSERT INTO books (images,book_name, author, genre, publishedYear, publication,donate,actual_price, selling_price,user_id)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
-            $stmt = $conn->prepare($sql);
-            // Convert boolean $donate to string representation '1' or ''
-            $donateString = $donate ? '1' : '0';
-            $stmt->bind_param("sssssssddi", $newImageName, $bookName, $authorName, $genre, $publicationYear, $publication, $donateString, $actualPrice, $sellingPrice, $user_id);
-            if ($stmt->execute()) {
-                // Book upload successful
-                header("Location: ./profile.php"); // Redirect to a success page
-                exit;
-            } else {
-                // Error occurred during book upload
-                echo "Error uploading book: " . $stmt->error;
-            }
-        }
-
-    }
-}
-
-if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $profile_image)) {
-    // If $profile_image is not empty and the file exists, display the user's profile image
-    $image_source = '../../assets/profile_picture/' . $profile_image;
-} else {
-    // If $profile_image is empty or the file does not exist, display the default image
-    $image_source = '../../assets/profile_picture/default.png';
-}
 ?>
 
 
@@ -216,7 +96,7 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
 
     <div class="uploads" class="uploads">
         <?php
-include "./uploadbook/uploadbook.php";
+include "./uploadbook.php";
 ?>
 
 
@@ -224,26 +104,10 @@ include "./uploadbook/uploadbook.php";
 
 
     <div id="edit-profile-popup" class="popup" >
-      <div class="popup-content">
-        <h2>Edit Profile</h2>
-        <form id="edit-form"  method="post" action="./profile.php" enctype="multipart/form-data">
-          <label for="edit-photo">Profile picture</label>
-        <input type="file" id="edit-photo" name="edit-photo" accept=".jpg, .jpeg, .png" >
+    <?php
+include "./editprofile.php";
+?>
 
-          <label for="edit-name">Name:</label>
-          <input type="text" id="edit-name" name="edit-name">
-          <label for="edit-number">Phone Number:</label>
-          <input type="text" id="edit-number" name="edit-number" placeholder="Phone Number">
-
-          <label for="edit-address"> Address:</label>
-          <input type="text" id="edit-address" name="edit-address" placeholder=" Address" value="<?php echo $address ?>">
-          <button type="submit" name="update_profile">Save Changes</button>
-          <button type="button" onclick="closeEditProfilePopup()">Cancel</button>
-
-        </form>
-      </div>
-
-    </div>
   </div>
   <h3>Uploads</h3>
   <section class="booklist">
@@ -266,8 +130,13 @@ while ($row = $upload_result->fetch_assoc()) {?>
 
 
         <span class="bookname"><?php echo $row['book_name']; ?></span>
+<span>
+<?php
 
+    echo '<a href="./profile.php?b_id=' . $row['book_id'] . '">Delete';
 
+    ?>
+    </span>
 
       </div>
 
@@ -305,6 +174,7 @@ while ($row = $favourite_result->fetch_assoc()) {
     </a>
 
         <span class="bookname"><?php echo $row1['book_name']; ?></span>
+
 
 
 

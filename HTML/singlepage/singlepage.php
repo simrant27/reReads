@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../../References/connection.php";
+include "../profile/deletebook.php";
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../homepage/homepage.php");
@@ -25,6 +26,7 @@ if (isset($_GET['book_id'])) {
 
     if ($result->num_rows > 0) {
         $book = $result->fetch_assoc();
+        $book_id = $book["book_id"];
         $book_image = $book["images"];
         $booktitle = $book['book_name'];
         $author = $book['author'];
@@ -97,10 +99,18 @@ if (isset($_GET['book_id'])) {
                     <p><strong>Price:</strong> <?php echo $actualPrice ?></p>
                 <?php }?>
             </div>
+            <?php
+$email = $_SESSION['email'];
+if ($email == "rereads3@gmail.com") {
 
-            <button id="addToFavorites" onclick="toggleFavorites(<?php echo $book_id; ?>)">
-                <?php echo $button_label ?>
-            </button>
+    echo '<a href="../homepage/homepage.php?b_id=' . $book_id . '">Delete';
+} else {
+    ?>
+
+					            <button id="addToFavorites" onclick="toggleFavorites(<?php echo $book_id; ?>)">
+					                <?php echo $button_label ?>
+					            </button>
+					           <?php }?>
         </div>
     </div>
 

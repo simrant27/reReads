@@ -103,10 +103,10 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
 
               </div>
               <hr />
-               <?php 
-            $email =$_SESSION['email'];
-                if($email!="rereads3@gmail.com"):
-              ?>
+               <?php
+$email = $_SESSION['email'];
+if ($email != "rereads3@gmail.com"):
+?>
               <a href="../profile/profile.php" class="sub-menu-link">
                 <p>Your profile</p>
                 <span>></span>
@@ -125,10 +125,10 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
                 <p>Logout</p>
                 <span>></span>
               </a>
-              <?php 
-            $email =$_SESSION['email'];
-                if($email=="rereads3@gmail.com"):
-              ?>
+              <?php
+$email = $_SESSION['email'];
+if ($email == "rereads3@gmail.com"):
+?>
               <a href="../admin/users.php" class="sub-menu-link">
                 <p>Users</p>
                 <span>></span>
