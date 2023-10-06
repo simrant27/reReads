@@ -1,5 +1,5 @@
 <?php
-include "../../References/connection.php";
+include_once "../../References/connection.php";
 
 // Function to fetch notifications from the database
 function fetchNotifications($conn)

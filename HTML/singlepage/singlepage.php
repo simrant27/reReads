@@ -49,6 +49,42 @@ if (isset($_GET['book_id'])) {
     }
 
 }
+
+if (isset($_POST['addToFavorites'])) {
+    // Check if the user is logged in
+
+    // Get the book ID from the form submission
+    $book_id = $_POST['book_id'];
+
+    // Get the user ID from the session
+    $user_id = $_SESSION['user_id'];
+
+    // Check if the book is already in the user's favorites
+    $check_sql = "SELECT * FROM favourites WHERE user_id = ? AND book_id = ?";
+    $check_stmt = $conn->prepare($check_sql);
+    $check_stmt->bind_param("ii", $user_id, $book_id);
+    $check_stmt->execute();
+    $check_result = $check_stmt->get_result();
+
+    if ($check_result->num_rows === 0) {
+        // Book is not in favorites, so insert it
+        $insert_sql = "INSERT INTO favourites (user_id, book_id) VALUES (?, ?)";
+        $insert_stmt = $conn->prepare($insert_sql);
+        $insert_stmt->bind_param("ii", $user_id, $book_id);
+        $insert_stmt->execute();
+
+    } else {
+        $delete_sql = "DELETE FROM favourites WHERE user_id = ? AND book_id = ?";
+        $delete_stmt = $conn->prepare($delete_sql);
+        $delete_stmt->bind_param("ii", $user_id, $book_id);
+        $delete_stmt->execute();
+
+    }
+
+} else {
+    // Handle the case where the form was not submitted
+    // echo "Form not submitted.";
+}
 ?>
 
 
@@ -111,17 +147,30 @@ if ($isDonate) {?>
 
 <?php
 } else {?>
-    <span>Price: Rs.<?php echo $actualPrice ?>/-</span>
+                    <p><strong>Price:</strong> <?php echo $actualPrice ?></p>
+
 
     <?php
 }
 ?>
 
                 </div>
+                            <form action="" method="post">
+<input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
+    <button id="addToFavorites" type="submit" name="addToFavorites">
+    <?php if ($check_result->num_rows === 0): ?>
+
+        Remove favourites
+        <?php else: ?>
+            Add to Favorites
+
+        <?php endif;?>
 
 
-                <a href="../favourites/addtofavourites.php? echo $row['book_id']; ?>" class="addToFavorites">Add to Favorites</a>
+    </button>
 
+
+<!-- <?php echo $book_id ?> -->
             </div>
         </div>
 
