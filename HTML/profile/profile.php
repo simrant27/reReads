@@ -2,6 +2,7 @@
 session_start();
 
 include "../../References/connection.php";
+
 include "./deletebook.php";
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     header("Location: ../homepage/homepage.php");
@@ -38,7 +39,16 @@ $result = $stmt->get_result();
 
 <body>
 <nav>
-    <a href="../homepage/homepage.php">Back to Home</a>
+<div class="logo">
+          <span class="re">re</span> <span class="Reads">Reads</span>
+        </div>
+<div class="navbar lower-nav">
+        <ul class="lower-nav nav-list">
+          <li><a href="../homepage/homepage.php"> Home</a></li>
+          <li><a href="../AboutUs/aboutUs.php">About us</a></li>
+          <li><a href="#addBooks">Add Books</a></li>
+        </ul>
+      </div>
   </nav>
   <div class="profile-container">
 
