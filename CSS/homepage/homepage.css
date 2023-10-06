@@ -205,13 +205,21 @@ body {
   /* justify-content: space-between; */
 }
 
-.nav-list li a {
+/* CSS for increasing size on hover */
+.lower-nav.nav-list li a {
   text-decoration: none;
+  display: inline-block; /* Needed for the transform to work */
   color: #7c7b76;
+  transition: transform 0.2s ease; /* Add a smooth transition effect */
+}
+
+.lower-nav.nav-list li a:hover {
+  transform: scale(1.1);
+  color: #0e0e0e; /* Increase the size on hover */
 }
 
 .booklist {
-  background-color: #dcdcdc;
+  background-color: #f5f5f5;
   display: flex;
 
   text-align: center;
@@ -224,21 +232,45 @@ body {
   justify-content: flex-start;
   margin: 10px 10px;
 }
+.book-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow elements to wrap to the next line if there's not enough space */
+  justify-content: space-between; /* Distribute space evenly between book elements */
+  gap: 20px; /* Adjust the gap between book elements as needed */
+}
 .singlebook {
-  background-color: #dcdcdc;
-  text-align: center;
+  background-color: #f5f5f5;
 
+  text-align: center;
+  /* width: 200px;
+  height: 300px; */
   margin: 10px 20px;
   display: flex;
   flex-direction: column;
+  border: 1px solid #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.singlebook:hover {
+  /* Add an elevation effect when hovering over .singlebook */
+
+  transform: scale(1.05); /* Scale the element to 105% of its original size */
+  transition: transform 0.3s ease; /* Add a smooth transition effect */
+
+  /* border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+  transition: all 0.3s ease;  */
 }
 
 .book_img {
   flex-shrink: 0;
-  max-height: 200px;
-  min-height: 100px;
-  width: 130px;
-  height: auto;
+
+  /* max-height: 200px;
+  min-height: 200px; */
+  height: 200px;
+  width: 150px;
+  /* height: auto; */
   box-shadow: #42423e 2px;
 }
 /* .book-image:hover {

@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
 
                 ?>
             <div class="singlebook">
-        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" />
+        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
 
 
         <span class="bookname"><?php echo $row['book_name']; ?></span>

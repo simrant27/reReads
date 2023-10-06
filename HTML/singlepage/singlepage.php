@@ -105,12 +105,21 @@ if ($email == "rereads3@gmail.com") {
 
     echo '<a href="../profile/deletebook.php?b_id=' . $book_id . '&source=singlepage">Delete';
 } else {
-    ?>
 
-					            <button id="addToFavorites" onclick="toggleFavorites(<?php echo $book_id; ?>)">
-					                <?php echo $button_label ?>
-					            </button>
-					           <?php }?>
+    if (isset($_SESSION['email']) && isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+
+        // Check if the book is uploaded by the same user
+        if ($user_id !== $book['user_id']) {
+            // Only display the button if it's not the same user's book
+            echo '<button id="addToFavorites" onclick="toggleFavorites(' . $book_id . ')">' . $button_label . '</button>';
+        }
+    }
+}
+?>
+
+
+
         </div>
     </div>
 
