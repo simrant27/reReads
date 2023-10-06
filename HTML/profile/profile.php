@@ -300,10 +300,9 @@ while ($row = $favourite_result->fetch_assoc()) {
 
 
       <div class="singlebook">
-      <!-- <a href="../singlepage/singlepage.php?book_id=' . $row1['book_id'] . '">'; -->
-        <a href="../singlepage/singlepage.php"></a>
+      <a href="../singlepage/singlepage.php?book_id=<?php echo $row1['book_id']; ?>">
         <img src="../../assets/uploads/<?php echo $row1['images']; ?>" alt="book photo" class="book_img"/>
-</a>
+    </a>
 
         <span class="bookname"><?php echo $row1['book_name']; ?></span>
 

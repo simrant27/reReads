@@ -1,25 +1,22 @@
 <?php
 session_start();
-
 include "../../References/connection.php";
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../homepage/homepage.php");
     exit;
 }
 
-?>
+$book_id = null;
+$button_label = 'Add to Favorites';
 
-<?php
-// Check if the book_id parameter is set in the URL
 if (isset($_GET['book_id'])) {
-    // Sanitize and store the book ID
-    $book_id = intval($_GET['book_id']); // Convert to integer for security
-    // echo $book_id;
+    $book_id = intval($_GET['book_id']);
 
-    $sql = "SELECT books.*, users.phoneNo,users.address
-    FROM books
-    INNER JOIN users ON books.user_id = users.user_id
-    WHERE books.book_id = ?";
+    $sql = "SELECT books.*, users.phoneNo, users.address
+            FROM books
+            INNER JOIN users ON books.user_id = users.user_id
+            WHERE books.book_id = ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $book_id);
@@ -28,13 +25,10 @@ if (isset($_GET['book_id'])) {
 
     if ($result->num_rows > 0) {
         $book = $result->fetch_assoc();
-
-        // Extract book details
         $book_image = $book["images"];
         $booktitle = $book['book_name'];
         $author = $book['author'];
         $genre = $book['genre'];
-        // $language = $book['language'];
         $publishedYear = $book['publishedYear'];
         $publisher = $book['publication'];
         $phoneNumber = $book['phoneNo'];
@@ -42,54 +36,26 @@ if (isset($_GET['book_id'])) {
         $sellingPrice = $book['selling_price'];
         $address = $book['address'];
         $isDonate = $book['donate'];
-
-        // Now you can use these variables to display the book information in your HTML
     } else {
-        echo ("failed to get book id");
+        echo "Failed to get book details";
     }
 
-}
-$button_label = 'Add to Favourites';
-if (isset($_POST['addToFavorites'])) {
-    // Check if the user is logged in
-    header("./singlepage.php");
-    // Get the book ID from the form submission
-    $book_id = $_POST['book_id'];
+    // Check if the book is in the user's favorites
+    if (isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+        $check_sql = "SELECT * FROM favourites WHERE user_id = ? AND book_id = ?";
+        $check_stmt = $conn->prepare($check_sql);
+        $check_stmt->bind_param("ii", $user_id, $book_id);
+        $check_stmt->execute();
+        $check_result = $check_stmt->get_result();
 
-    // Get the user ID from the session
-    $user_id = $_SESSION['user_id'];
-    $button_label = 'Add to Favorites';
-
-    // Check if the book is already in the user's favorites
-    $check_sql = "SELECT * FROM favourites WHERE user_id = ? AND book_id = ?";
-    $check_stmt = $conn->prepare($check_sql);
-    $check_stmt->bind_param("ii", $user_id, $book_id);
-    $check_stmt->execute();
-    $check_result = $check_stmt->get_result();
-
-    if ($check_result->num_rows === 0) {
-        // Book is not in favorites, so insert it
-        $insert_sql = "INSERT INTO favourites (user_id, book_id) VALUES (?, ?)";
-        $insert_stmt = $conn->prepare($insert_sql);
-        $insert_stmt->bind_param("ii", $user_id, $book_id);
-        $insert_stmt->execute();
-
-    } else {
-        $delete_sql = "DELETE FROM favourites WHERE user_id = ? AND book_id = ?";
-        $delete_stmt = $conn->prepare($delete_sql);
-        $delete_stmt->bind_param("ii", $user_id, $book_id);
-        $delete_stmt->execute();
-
+        if ($check_result->num_rows > 0) {
+            $button_label = 'Remove from Favorites';
+        }
     }
-    $button_label = ($check_result->num_rows === 0) ? 'Remove favourites' : 'Add to Favourites';
-
-} else {
-    // Handle the case where the form was not submitted
-    // echo "Form not submitted.";
 }
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,108 +64,84 @@ if (isset($_POST['addToFavorites'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/singlePage/singlePage.css">
     <title>pagalbasti</title>
-
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <nav>
-    <?php
-include_once "../navbar/navbar.php"
-?>
+    <?php include_once "../navbar/navbar.php"?>
 </nav>
 
+<div class="sale">
+    <?php if ($isDonate) {?>
+        <h3>Free</h3>
+    <?php } else {?>
+        <h3>Sale</h3>
+    <?php }?>
+</div>
 
-    <div class="sale">
-        <?php
-if ($isDonate) {?>
+<div class="photo">
+    <h2 class="book-title"><?php echo $booktitle ?></h2>
+    <div class="book-info">
+        <div class="book-image">
+            <img src="../../assets/uploads/<?php echo $book_image; ?>" alt="book photo" class="book_img"/>
+        </div>
 
-    <h3>Free</h3>
-    <?php
-} else {?>
-    <h3>Sale</h3>
-    <?php
-
-}
-?>
-
-    </div>
-
-    <div class="photo">
-        <h2 class="book-title"><?php echo $booktitle ?></h2>
-        <div class="book-info">
-
-            <div class="book-image">
-        <img src="../../assets/uploads/<?php echo $book_image; ?>" alt="book photo" class="book_img"/>
-
-            </div>
-
-
-            <div class="book-details">
-
-                <div class="book-description">
-                    <p><strong>Author:</strong><?php echo $author ?> </p>
-                    <p><strong>Genre:</strong> <?php echo $genre ?></p>
-                    <!-- <p><strong>Language:</strong></p> -->
-                    <p><strong>Published:</strong> <?php echo $publishedYear ?></p>
-                    <p><strong>Publisher:</strong> <?php echo $publisher ?></p>
-                    <p><strong>Phone Number:</strong><?php echo $phoneNumber ?> </p>
-                    <?php
-if ($isDonate) {?>
-
-
-<?php
-} else {?>
+        <div class="book-details">
+            <div class="book-description">
+                <p><strong>Author:</strong><?php echo $author ?> </p>
+                <p><strong>Genre:</strong> <?php echo $genre ?></p>
+                <p><strong>Published:</strong> <?php echo $publishedYear ?></p>
+                <p><strong>Publisher:</strong> <?php echo $publisher ?></p>
+                <p><strong>Phone Number:</strong><?php echo $phoneNumber ?> </p>
+                <?php if (!$isDonate) {?>
                     <p><strong>Price:</strong> <?php echo $actualPrice ?></p>
-
-
-    <?php
-}
-?>
-
-                </div>
-                            <form action="" method="post">
-<input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
-    <button id="addToFavorites" type="submit" name="addToFavorites">
-  <?php echo $button_label ?>
-
-    </button>
-                            </form>
-
-
-            </div>
-        </div>
-
-
-        <div class="book-price-location">
-            <div class="book-price">
-                <?php
-if ($isDonate) {?>
-
-
-<?php
-} else {?>
-    <span>Price: Rs.<?php echo $sellingPrice ?>/-</span>
-
-    <?php
-
-}
-?>
+                <?php }?>
             </div>
 
-            <div class="book-location">
-                <span>
-                <a href="#"><i class="fa fa-map-marker"></i></a>
-
-                </span>
-                <span>  <?php echo $address ?></span>
-            </div>
+            <button id="addToFavorites" onclick="toggleFavorites(<?php echo $book_id; ?>)">
+                <?php echo $button_label ?>
+            </button>
         </div>
     </div>
 
-    <script src="/JS/Singlepage/single.js"></script>
+    <div class="book-price-location">
+        <div class="book-price">
+            <?php if (!$isDonate) {?>
+                <span>Price: Rs.<?php echo $sellingPrice ?>/-</span>
+            <?php }?>
+        </div>
+
+        <div class="book-location">
+            <span>
+                <a href="#"><i class="fa fa-map-marker"></i></a>
+            </span>
+            <span><?php echo $address ?></span>
+        </div>
+    </div>
+</div>
+
+<script src="/JS/Singlepage/single.js"></script>
+<script>
+    function toggleFavorites(bookId) {
+        fetch('addToFavorites.php?book_id=' + bookId)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const addToFavoritesButton = document.getElementById('addToFavorites');
+                    if (data.message === 'Added to Favorites') {
+                        addToFavoritesButton.textContent = 'Remove from Favorites';
+                    } else {
+                        addToFavoritesButton.textContent = 'Add to Favorites';
+                    }
+                } else {
+                    console.error(data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+</script>
+
 </body>
 </html>
