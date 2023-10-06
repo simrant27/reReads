@@ -49,15 +49,16 @@ if (isset($_GET['book_id'])) {
     }
 
 }
-
+$button_label = 'Add to Favourites';
 if (isset($_POST['addToFavorites'])) {
     // Check if the user is logged in
-
+    header("./singlepage.php");
     // Get the book ID from the form submission
     $book_id = $_POST['book_id'];
 
     // Get the user ID from the session
     $user_id = $_SESSION['user_id'];
+    $button_label = 'Add to Favorites';
 
     // Check if the book is already in the user's favorites
     $check_sql = "SELECT * FROM favourites WHERE user_id = ? AND book_id = ?";
@@ -80,6 +81,7 @@ if (isset($_POST['addToFavorites'])) {
         $delete_stmt->execute();
 
     }
+    $button_label = ($check_result->num_rows === 0) ? 'Remove favourites' : 'Add to Favourites';
 
 } else {
     // Handle the case where the form was not submitted
@@ -104,7 +106,11 @@ if (isset($_POST['addToFavorites'])) {
     />
 </head>
 <body>
-
+<nav>
+    <?php
+include_once "../navbar/navbar.php"
+?>
+</nav>
 
 
     <div class="sale">
@@ -158,19 +164,12 @@ if ($isDonate) {?>
                             <form action="" method="post">
 <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
     <button id="addToFavorites" type="submit" name="addToFavorites">
-    <?php if ($check_result->num_rows === 0): ?>
-
-        Remove favourites
-        <?php else: ?>
-            Add to Favorites
-
-        <?php endif;?>
-
+  <?php echo $button_label ?>
 
     </button>
+                            </form>
 
 
-<!-- <?php echo $book_id ?> -->
             </div>
         </div>
 
