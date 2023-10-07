@@ -63,9 +63,10 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
           <span class="re">re</span> <span class="Reads">Reads</span>
         </div>
         <div class="search">
+
   <form action="../search/search.php" method="post">
 
-      <input type="text" name="search" id="search" placeholder="search" />
+      <input type="text" name="search" id="search" placeholder="search books..." />
       <button type="submit" class="btn" name="submit"><i class="fa fa-search search-icon"></i></button>
 
   </form>

@@ -68,7 +68,7 @@
                 </div>
                 <div class="footer-social">
                     <ul>
-                        <li><a href="#" class="fab fa-facebook-f"></a></li>
+                        <li><a href="#home" class="fab fa-facebook-f"></a></li>
                         <li><a href="#" class="fab fa-twitter"></a></li>
                         <li><a href="https://github.com/simrant27/reReads" class="fab fa-github"></a></li>
                         <li><a href="#" class="fab fa-instagram"></a></li>

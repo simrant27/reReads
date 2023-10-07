@@ -62,7 +62,7 @@ $donate_result = $conn->query($donate_sql);
     />
     <title>HomePage</title>
   </head>
-  <body>
+  <body id= "home">
     <nav class="navbar">
       <?php
 include "../navbar/navbar.php";
