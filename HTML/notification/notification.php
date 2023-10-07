@@ -58,15 +58,13 @@ list($notifications, $count) = fetchNotifications($conn);
                             <img src="../../assets/profile_picture/<?php echo $notification['image']; ?>" alt="<?php echo $notification['user']; ?>">
                             <div class="user-details">
                                 <span class="user-name"><?php echo $notification['user']; ?></span>
-                                <!-- <span class="notification-time">
-                                    <?php
-//  echo $notification['time'];
-?></span> -->
+                        
+                </span> 
                             </div>
                         </div>
 
 
-                        <a href="../singlepage/singlepage.php?book_id=<?php echo $notification['bookid']; ?>"><?php echo $notification['message']; ?> was Uploded</a>
+                        <a href="../singlepage/singlepage.php?book_id=<?php  echo $notification['bookid']; ?>"><?php echo $notification['message']; ?> was Uploded</a>
                         <button class="delete-button" onclick="deleteNotification(this)">Delete</button>
                     </li>
                 <?php endforeach;?>

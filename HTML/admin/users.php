@@ -5,15 +5,19 @@ include_once "../../References/connection.php";
 function fetchUsers($conn)
 {
     $users = array();
-
     // Query to fetch users
     $query = "SELECT users.fullName AS user_name,
                  users.user_img AS image,
                  users.address AS Address,
                  users.email AS email,
                  users.phoneNo AS Number,
-                 users.user_id AS user_id
+                 users.user_id AS user_id,
+                 books.images AS image_book,
+                 books.book_name AS book_name,
+                 books.user_id AS user_book_id,
+                 books.book_id AS bookid
           FROM users
+          JOIN books 
           WHERE users.email != 'rereads3@gmail.com'
           ORDER BY users.user_id DESC";
 
@@ -30,20 +34,9 @@ function fetchUsers($conn)
     return array($users, $count);
 }
 
-// Function to determine the MIME type of an image
-function getImageMimeType($imageData)
-{
-    $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $mimeType = finfo_buffer($finfo, $imageData);
-    finfo_close($finfo);
-    return $mimeType;
-}
-
 // Function to delete a user
 function deleteUser($conn, $userId)
 {
-    // You should add proper error handling here, e.g., try-catch blocks.
-
     // Use prepared statements to prevent SQL injection
     $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ?");
     $stmt->bind_param("i", $userId);
@@ -72,54 +65,78 @@ if (isset($_POST['delete_user_id'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/admin/users.css">
-    <title>Users </title></head>
-<body   id="bg-img"
-    style="background-image: url('../../assets/backgroundImage/download5.jpeg')">
+    <title>Users</title>
+</head>
+<body id="bg-img" style="background-image: url('../../assets/backgroundImage/download5.jpeg')">
     <nav class="navbar">
-      <?php
-include "../navbar/navbar.php";
-?>
+        <?php include "../navbar/navbar.php"; ?>
     </nav>
     <div class="header_user">
-            <h3 class="users-title">User List: No_of Users:
-              <?php echo$count ?></h3>
+        <h3 class="users-title">User List: No_of Users: <?php echo $count ?></h3>
+        <?php foreach ($users as $user): ?>
             <ul>
-                <?php foreach ($users as $user):?>
-                    <li>
-                      <div class="users-details">
-                         <!-- Determine the MIME type dynamically -->
-                        <?php
-                        $imageData = $user['image'];
-                        $mimeType = getImageMimeType($imageData);
-                        ?>
-                        <img src="data:<?php echo $mimeType; ?>;base64,<?php echo base64_encode($imageData); ?>" alt="<?php echo"image"; ?>">
-                         
-                            <div class="user-image">
-                                <span class="user-name"><?php echo $user['user_name']; ?></span>    
-                            </div>
+                <!-- Inside the <li> for each user -->
+                <li>
+                    <div class="users-details">
+                        <img src="<?php echo ($user['image'] == 0) ? '../../assets/profile_picture/default.png' : '../../assets/profile_picture/' . $user['image']; ?>" alt="<?php echo 'image'; ?>">
+                        <div class="user-image">
+                            <span class="user-name"><?php echo $user['user_name']; ?></span>
                         </div>
+                    </div>
+                    <a href="#" class="user-link" onclick="toggleBookDetails(<?php echo $user['user_id']; ?>)">
                         <div class="user-details">
-                            <div class="user-detail"><?php echo $user['email']; ?></div>    
-                            <div class="user-detail"><?php echo $user['Address']; ?></div> 
-                            <div class="user-detail"><?php echo $user['Number']; ?></div>   
+                            <div class="user-detail"><?php echo $user['email']; ?></div>
+                            <div class="user-detail"><?php echo $user['Address']; ?></div>
+                            <div class="user-detail"><?php echo $user['Number']; ?></div>
                         </div>
-                        <form method="POST">
-                            <input type="hidden" name="delete_user_id" value="<?php echo $user['user_id']; ?>">
-                            <button type="submit" class="delete-button">Delete</button>
-                        </form>
+                    </a>
+                    <form method="POST">
+                        <input type="hidden" name="delete_user_id" value="<?php echo $user['user_id']; ?>">
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
                     </li>
 
-                <?php  endforeach;?>
             </ul>
+                    <?php 
+                    if ($user['user_book_id'] == $user['user_id']): ?>
+                        <!-- Book details container -->
+                        <div class="book-details-container" id="book-details-<?php echo $user['user_id']; ?>">
+                            <ul>
+                                <li>
+                                    <div class="book-user">
+                                        <img src="../../assets/uploads/<?php echo $user['image_book']; ?>" alt="<?php echo $user['user_name']; ?>">
+                                    </div>
+                                    <div class="book-details">
+                                       <a href="../singlepage/singlepage.php?book_id=<?php echo $user['bookid'];?>">
+                                        <span class="book-name"><?php echo $user['book_name']; ?></span>
+                    </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    <?php 
+                endif; ?>
+            
+        <?php endforeach; ?>
     </div>
-        <script src="../../JS/Background/background.js"></script>
+    <script src="../../JS/Background/background.js"></script>
+     <script>
+        function toggleBookDetails(userId) {
+            var bookDetails = document.getElementById('book-details-' + userId);
+            if (bookDetails.style.display === 'none' || bookDetails.style.display === '') {
+                bookDetails.style.display = 'block';
+            } else {
+                bookDetails.style.display = 'none';
+            }
+        }
 
+    </script>
+   
 </body>
 </html>

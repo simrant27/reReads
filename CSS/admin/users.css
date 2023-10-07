@@ -40,10 +40,9 @@ ul li:last-child {
 /* user image */
 ul li img {
   width: 48px;
-  /* margin-right: 20px; */
   height: 48px;
   border-radius: 50%;
-  margin-right: 20px;
+  margin-right: 10px;
   border: 2px solid #0078d4;
 }
 
@@ -69,6 +68,10 @@ ul li img {
   width: 400px;
   display: flex;
   flex-direction: column;
+}
+.book-details {
+  padding-left: 100px;
+  font-size: 20px;
 }
 .user-image {
   width: 170px;
@@ -101,4 +104,22 @@ ul li img {
 body,
 html {
   height: 100%;
+}
+a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Initially hide book details */
+.book-details-container {
+  display: none;
+}
+
+/* Show book details when hovering over user link */
+.user-link:hover + .book-details-container {
+  display: block;
+}
+.book-details-container {
+  margin-left: 100px;
+  background-color: rgb(218, 236, 175);
 }
