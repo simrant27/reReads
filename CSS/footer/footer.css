@@ -1,4 +1,4 @@
-/* Resetting default styles for body and unordered lists or making better style whole body and unorderlist */
+/* setting default styles for body and unordered lists or making better style whole body and unordered list */
 body,
 ul {
   margin: 0;
@@ -37,6 +37,7 @@ header ul li a {
   padding: 60px 0;
   text-align: center;
   display: none;
+  min-height: 100vh;
 }
 
 /* Container for content */
@@ -63,14 +64,19 @@ header ul li a {
 }
 
 /* Footer styles */
+
 .footer {
   background-color: #333;
   color: #fff;
   padding: 30px 0;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
 }
 
-/*  footer sticks to the bottom */
+/* footer sticks to the bottom */
 body {
   display: flex;
   flex-direction: column;
@@ -85,7 +91,7 @@ body {
   align-items: center;
 }
 
-/*  footer logo */
+/* footer logo */
 .footer-logo {
   text-align: left; /* Keep the logo at the left side */
 }
@@ -103,7 +109,7 @@ body {
   padding: 10px;
 }
 
-/* Hover effect  footer logo image */
+/* Hover effect footer logo image */
 .footer-logo img:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -265,3 +271,4 @@ body {
     margin: 0 10px;
   }
 }
+
