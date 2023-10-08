@@ -73,9 +73,11 @@ if (isset($_POST['delete_user_id'])) {
 
     <title>Users</title>
 </head>
-<body id="bg-img" style="background-image: url('../../assets/backgroundImage/download5.jpeg')">
+<body id="bg-img" style="background-color: #f4f2e8">
     <nav>
       <div class="navbar lower-nav">
+        <span class="logo">    <span class="re">re</span> <span class="Reads">Reads</span>
+</span>
         <ul class="lower-nav nav-list">
           <li><a href="../homepage/homepage.php"> Home</a></li>
           <li><a href="../AboutUs/aboutUs.php">About us</a></li>
@@ -113,7 +115,7 @@ if (isset($_POST['delete_user_id'])) {
         <?php endforeach; ?>
     </div>
 
-    <script src="../../JS/Background/background.js"></script>
+    <!-- <script src="../../JS/Background/background.js"></script> -->
     <script>
           function toggleBookDetails(userId) {
             var bookDetails = document.getElementById('book-details-' + userId);

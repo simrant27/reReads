@@ -10,6 +10,20 @@
   background-color: white;
   align-items: center;
 }
+.logo {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  font-size: 28px;
+}
+.logo .re {
+  color: #c3c2bc;
+}
+.logo .Reads {
+  color: #7c7b76;
+}
 
 .users-title {
   margin: 0;
@@ -23,8 +37,9 @@
   color: white;
 }
 .navbar {
-  display: flex;
+  /* display: flex; */
   /* height: fit-content; */
+
   background-color: #f3f2ed;
   padding: 8px;
   position: relative;
