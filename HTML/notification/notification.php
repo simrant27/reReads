@@ -45,7 +45,9 @@ list($notifications, $count) = fetchNotifications($conn);
     <div class="header">
         <label for="notification-toggle" class="notification-icon icon-button">
             <span class="material-icons">notifications</span>
-            <span class="icon-button__badge"><?php echo $count; ?></span>
+            <!-- <span class="icon-button__badge"><?php 
+            // echo $count; ?>
+            </span> -->
         </label>
         <input type="checkbox" id="notification-toggle" class="notification-toggle">
         <div class="notification-dropdown">

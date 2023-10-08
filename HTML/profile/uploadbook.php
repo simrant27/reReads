@@ -69,7 +69,7 @@ if (isset($_POST["upload_book"])) {
 
 </head>
 <body>
-<div id="uploads" class="uploads">
+<div id="uploads" class="uploads" >
       <button id="upload-book-button" onclick="openUploadBookForm()">Upload Book</button>
 
     </div>
