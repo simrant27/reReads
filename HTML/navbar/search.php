@@ -29,32 +29,26 @@ include "../navbar/navbar.php";
     <?php
 
 if (isset($_POST['submit'])) {
-    $search = $_POST['search'];
-    $sql = "SELECT * FROM `books` WHERE book_name like '%$search%' or author like '%$search%' or  genre like '%$search%'";
-    $result = mysqli_query($conn, $sql);
+    $search = mysqli_real_escape_string($conn, $_POST['search']);
 
-    if ($result) {
+    if (!empty($search)) { // Check if the search input is not empty
+        $sql = "SELECT * FROM `books` WHERE book_name like '%$search%' or author like '%$search%' or  genre like '%$search%'";
+        $result = mysqli_query($conn, $sql);
 
-        $num = mysqli_num_rows($result);
-
-        if ($num > 0) {
-
+        if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-
                 ?>
-            <div class="singlebook">
-        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
-
-
-        <span class="bookname"><?php echo $row['book_name']; ?></span>
-        <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>
-            </div>  <?php }
+                <div class="singlebook">
+                    <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
+                    <span class="bookname"><?php echo $row['book_name']; ?></span>
+                    <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>
+                </div>
+                <?php
+}
+        } else {
+            echo "No data found";
         }
-    } else {
-        echo "NO data found";
     }
-} else {
-    echo "Error in the SQL query: " . mysqli_error($conn);
 }
 
 ?>

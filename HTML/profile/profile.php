@@ -143,7 +143,7 @@ while ($row = $upload_result->fetch_assoc()) {?>
 <span>
 <?php
 
-    echo '<a href="./profile.php?b_id=' . $row['book_id'] . '">Delete';
+    echo '<a href="./profile.php?b_id=' . $row['book_id'] . '"class="delete-button">Delete';
 
     ?>
     </span>
@@ -179,7 +179,7 @@ while ($row = $favourite_result->fetch_assoc()) {
 
 
       <div class="singlebook">
-      <a href="../singlepage/singlepage.php?book_id=<?php  $row1['book_id']; ?>">
+      <a href="../singlepage/singlepage.php?book_id=<?php $row1['book_id'];?>">
         <img src="../../assets/uploads/<?php echo $row1['images']; ?>" alt="book photo" class="book_img"/>
     </a>
 

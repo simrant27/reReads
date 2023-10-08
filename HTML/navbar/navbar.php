@@ -64,9 +64,10 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
         </div>
         <div class="search">
 
-  <form action="../search/search.php" method="post">
+  <form action="../navbar/search.php" method="post">
 
-      <input type="text" name="search" id="search" placeholder="search books..." />
+      <input type="textbox" name="search" id="search" placeholder="search books..." />
+
       <button type="submit" class="btn" name="submit"><i class="fa fa-search search-icon"></i></button>
 
   </form>
@@ -148,7 +149,7 @@ if ($email == "rereads3@gmail.com"):
       </div>
       <div class="navbar lower-nav">
         <ul class="lower-nav nav-list">
-        <li><a href="#home">Home</a></li>
+        <li><a href="../homepage/homepage.php">Home</a></li>
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#contact">Contact</a></li>
         </ul>
