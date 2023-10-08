@@ -122,6 +122,7 @@ $user_id = $row['user_id'];
       <?php
 
 while ($row = $donate_result->fetch_assoc()) {?>
+<div class="singlebook">
       <div class="singlebook">
       <?php
 // Check if the user is logged in
@@ -159,6 +160,7 @@ $user_id = $row['user_id'];
     ?>
         </span>
         </div>
+</div>
         <?php }?>
 
 

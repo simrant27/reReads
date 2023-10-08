@@ -148,9 +148,9 @@ if ($email == "rereads3@gmail.com") {
                 if (data.success) {
                     const addToFavoritesButton = document.getElementById('addToFavorites');
                     if (data.message === 'Added to Favorites') {
-                        addToFavoritesButton.textContent = 'Remove from Favorites';
+                        addToFavoritesButton.textContent = 'Remove Favorites';
                     } else {
-                        addToFavoritesButton.textContent = 'Add to Favorites';
+                        addToFavoritesButton.textContent = 'Add Favorites';
                     }
                 } else {
                     console.error(data.error);
