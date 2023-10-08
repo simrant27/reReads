@@ -103,7 +103,7 @@ if (isset($_GET['book_id'])) {
 $email = $_SESSION['email'];
 if ($email == "rereads3@gmail.com") {
 
-    echo '<a href="../profile/deletebook.php?b_id=' . $book_id . '&source=singlepage">Delete';
+    echo '<a href="../profile/deletebook.php?b_id=' . $book_id . '&source=singlepage class = "delete_button"">Delete';
 } else {
 
     if (isset($_SESSION['email']) && isset($_SESSION['user_id'])) {

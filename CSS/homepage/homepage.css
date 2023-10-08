@@ -305,3 +305,7 @@ body {
   margin-left: 40px;
   color: #7c7b76;
 }
+
+.delete_button {
+  background-color: red;
+}
