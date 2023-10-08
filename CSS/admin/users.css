@@ -13,7 +13,7 @@
 
 .users-title {
   margin: 0;
-  width: 200%;
+  width: 100%;
   font-size: 24px;
   padding: 15px 20px;
   background-color: #0078d4;
@@ -21,6 +21,20 @@
   border-top-right-radius: 10px;
   font-family: "Arial", sans-serif;
   color: white;
+}
+.navbar {
+  display: flex;
+  /* height: fit-content; */
+  background-color: #f3f2ed;
+  padding: 8px;
+  position: relative;
+
+  /* ma */
+}
+
+.upper-nav {
+  display: flex;
+  position: relative;
 }
 
 ul li {
@@ -53,7 +67,7 @@ ul li img {
   cursor: pointer;
   color: white;
   font-size: 16px;
-  margin-left: 190%;
+  margin-right: 100%;
   padding: 8px 16px;
   border-radius: 5px;
 }
