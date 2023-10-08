@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once "../../References/connection.php";
 
 // Function to fetch users from the database
@@ -6,27 +7,26 @@ function fetchUsers($conn)
 {
     $users = array();
     // Query to fetch users
-    $query = "SELECT users.fullName AS user_name,
-                 users.user_img AS image,
-                 users.address AS Address,
-                 users.email AS email,
-                 users.phoneNo AS Number,
-                 users.user_id AS user_id,
-                 books.images AS image_book,
-                 books.book_name AS book_name,
-                 books.user_id AS user_book_id,
-                 books.book_id AS bookid
-          FROM users
-          JOIN books 
-          WHERE users.email != 'rereads3@gmail.com'
-          ORDER BY users.user_id DESC";
+    $query = "SELECT DISTINCT users.fullName AS user_name,
+                users.user_img AS image,
+                users.address AS Address,
+                users.email AS email,
+                users.phoneNo AS Number,
+                users.user_id AS user_id,
+                books.images AS image_book,
+                books.book_name AS book_name,
+                books.user_id AS user_book_id,
+                books.book_id AS bookid
+            FROM users
+            LEFT JOIN books ON users.user_id = books.user_id
+            WHERE users.email != 'rereads3@gmail.com'
+            ORDER BY users.user_id DESC";
 
     $result = $conn->query($query);
 
     if ($result) {
         $count = $result->num_rows; // Count the number of users
         while ($row = $result->fetch_assoc()) {
-            $row['image_data'] = base64_decode($row['image']); // Decode base64 image data
             $users[] = $row;
         }
     }
@@ -75,7 +75,7 @@ if (isset($_POST['delete_user_id'])) {
 </head>
 <body id="bg-img" style="background-image: url('../../assets/backgroundImage/download5.jpeg')">
     <nav class="navbar">
-        <?php include "../navbar/navbar.php"; ?>
+        <?php include "../navbar/navbar.php";?>
     </nav>
     <div class="header_user">
         <h3 class="users-title">User List: No_of Users: <?php echo $count ?></h3>
@@ -103,8 +103,8 @@ if (isset($_POST['delete_user_id'])) {
                     </li>
 
             </ul>
-                    <?php 
-                    if ($user['user_book_id'] == $user['user_id']): ?>
+                    <?php
+if ($user['user_book_id'] == $user['user_id']): ?>
                         <!-- Book details container -->
                         <div class="book-details-container" id="book-details-<?php echo $user['user_id']; ?>">
                             <ul>
@@ -113,17 +113,17 @@ if (isset($_POST['delete_user_id'])) {
                                         <img src="../../assets/uploads/<?php echo $user['image_book']; ?>" alt="<?php echo $user['user_name']; ?>">
                                     </div>
                                     <div class="book-details">
-                                       <a href="../singlepage/singlepage.php?book_id=<?php echo $user['bookid'];?>">
+                                       <a href="../singlepage/singlepage.php?book_id=<?php echo $user['bookid']; ?>">
                                         <span class="book-name"><?php echo $user['book_name']; ?></span>
                     </a>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                    <?php 
-                endif; ?>
-            
-        <?php endforeach; ?>
+                    <?php
+endif;?>
+
+        <?php endforeach;?>
     </div>
     <script src="../../JS/Background/background.js"></script>
      <script>
@@ -137,6 +137,6 @@ if (isset($_POST['delete_user_id'])) {
         }
 
     </script>
-   
+
 </body>
 </html>

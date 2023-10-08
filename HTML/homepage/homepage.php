@@ -174,4 +174,5 @@ include_once "../footer/footer.php";
   <script src="../../JS/homepage/open-menu.js"></script>
   <script src="../../JS/homepage/redirectlogin.js"></script>
 
+
 </html>

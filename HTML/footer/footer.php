@@ -27,29 +27,9 @@
 
     <!-- Contact Us Section -->
     <section id="contact" class="section">
-        <div class="container">
-            <h1>Contact Us</h1>
-            <p>If you have any questions, feedback, or inquiries, please feel free to contact us using the form below or through our contact information.</p>
-
-            <!-- Contact Form ) -->
-            <form>
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Send Message</button>
-                </div>
-            </form>
-        </div>
+<?php
+include_once "../footer/contactUs.php"
+?>
     </section>
 
     <!-- Footer -->
@@ -68,7 +48,7 @@
                 </div>
                 <div class="footer-social">
                     <ul>
-                        <li><a href="#home" class="fab fa-facebook-f"></a></li>
+                        <li><a href="#" class="fab fa-facebook-f"></a></li>
                         <li><a href="#" class="fab fa-twitter"></a></li>
                         <li><a href="https://github.com/simrant27/reReads" class="fab fa-github"></a></li>
                         <li><a href="#" class="fab fa-instagram"></a></li>

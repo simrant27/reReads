@@ -148,12 +148,14 @@ if ($email == "rereads3@gmail.com"):
       </div>
       <div class="navbar lower-nav">
         <ul class="lower-nav nav-list">
-          <li><a href="../homepage/homepage.php"> Home</a></li>
-          <li><a href="../AboutUs/aboutUs.php">About us</a></li>
-          <li><a href="#addBooks">Add Books</a></li>
+        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
 </body>
 <script src="../../JS/homepage/open-menu.js"></script>
   <script src="../../JS/homepage/redirectlogin.js"></script>
+  <script src="../../JS/footer/footer.js"></script>
+
 </html>

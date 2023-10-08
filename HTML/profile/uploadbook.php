@@ -98,6 +98,6 @@ if (isset($_POST["upload_book"])) {
     </div>
 </body>
 <script src="../../JS/homepage/open-menu.js"></script>
-<script src="../../JS/profile.js"></script>g
+<script src="../../JS/profile.js"></script>
 
 </html>
