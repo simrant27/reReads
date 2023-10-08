@@ -83,6 +83,11 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
 
           <label for="edit-address"> Address:</label>
           <input type="text" id="edit-address" name="edit-address" placeholder=" Address" value="<?php echo $address ?>">
+
+          <label for="change-password"> Change Password:</label>
+          <input type="text" id="old-password" name="old-password" placeholder=" old password" value="">
+          <input type="text" id="new-password" name="new-password" placeholder=" new password" value="">
+
           <button type="submit" name="update_profile">Save Changes</button>
           <button type="button" onclick="closeEditProfilePopup()">Cancel</button>
 

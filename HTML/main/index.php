@@ -6,6 +6,8 @@
     <title>Document</title>
   </head>
   <body>
-
+<?
+include "../homepage/homepage.php";
+?>
   </body>
 </html>
