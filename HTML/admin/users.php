@@ -15,6 +15,7 @@ function fetchUsers($conn)
     users.phoneNo AS Number,
     users.user_id AS user_id,
     GROUP_CONCAT(books.book_name SEPARATOR ', ') AS book_name,
+     GROUP_CONCAT(books.images SEPARATOR ', ') AS book_img,
     GROUP_CONCAT(books.book_id SEPARATOR ', ') AS bookid
 FROM
     users
@@ -115,14 +116,19 @@ if (isset($_POST['delete_user_id'])) {
                 <!-- Book details container -->
                 <div class="book-details-container" id="book-details-<?php echo $user['user_id']; ?>">
                     <ul>
-                        <li>
-                            
-                            <div class="book-details">
-                                <a href="../singlepage/singlepage.php?book_id=<?php echo $user['bookid'];?>">
-                                    <span class="book-name"><?php echo $user['book_name']; ?></span>
-                                </a>
-                            </div>
-                        </li>
+                       <?php foreach (explode(",", $user['book_img']) as $index => $bookImage): ?>
+    <li>
+        <div class="book-user">
+            <img src="../../assets/uploads/<?php echo trim($bookImage); ?>" alt="image">
+        </div>
+        <div class="book-details">
+            <a href="../singlepage/singlepage.php?book_id=<?php echo $book;?>">
+                <span class="book-name"><?php echo preg_split("/,/",$user['book_name'])[$index]; ?></span>
+            </a>
+        </div>
+    </li>
+<?php endforeach; ?>
+
                     </ul>
                 </div>
             <?php endif; ?>
