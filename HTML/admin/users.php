@@ -84,10 +84,10 @@ if (isset($_POST['delete_user_id'])) {
 </head>
 <body id="bg-img" style="background-image: url('../../assets/backgroundImage/download5.jpeg')">
     <nav class="navbar">
-        <?php include "../navbar/navbar.php"; ?>
+        <?php include "../navbar/navbar.php";?>
     </nav>
     <div class="header_user">
-        <h3 class="users-title">User List: No_of Users: <?php echo $count -1 ?></h3>
+        <h3 class="users-title">User List: No_of Users: <?php echo $count - 1 ?></h3>
         <?php foreach ($users as $user): ?>
             <ul>
                 <!-- Inside the <li> for each user -->
@@ -107,7 +107,7 @@ if (isset($_POST['delete_user_id'])) {
                     </a>
                     <form method="POST">
                         <input type="hidden" name="delete_user_id" value="<?php echo $user['user_id']; ?>">
-                        <button type="submit" class="delete-button">Delete</button>
+                        <button type="submit" class="delete-button" onclick="return confirmDelete()">Delete</button>
                     </form>
                 </li>
 
@@ -122,18 +122,18 @@ if (isset($_POST['delete_user_id'])) {
                                 <img src="../../assets/uploads/<?php echo trim($bookImage); ?>" alt="image">
                             </div>
                             <div class="book-details">
-                                <a href="../singlepage/singlepage.php?book_id=<?php echo preg_split("/,/",$user['bookid'])[$index]; ?>">
-                                    <span class="book-name"><?php echo preg_split("/,/",$user['book_name'])[$index]; ?></span>
+                                <a href="../singlepage/singlepage.php?book_id=<?php echo preg_split("/,/", $user['bookid'])[$index]; ?>">
+                                    <span class="book-name"><?php echo preg_split("/,/", $user['book_name'])[$index]; ?></span>
                                 </a>
                             </div>
                         </li>
-                    <?php endforeach; ?>
+                    <?php endforeach;?>
 
 
                     </ul>
                 </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
+            <?php endif;?>
+        <?php endforeach;?>
     </div>
     <script src="../../JS/Background/background.js"></script>
      <script>
@@ -146,5 +146,6 @@ if (isset($_POST['delete_user_id'])) {
             }
         }
     </script>
+    <script src="../../JS/homepage/conformdelete.js"></script>
 </body>
 </html>

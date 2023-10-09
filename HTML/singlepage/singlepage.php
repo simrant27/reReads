@@ -65,6 +65,8 @@ if (isset($_GET['book_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/singlePage/singlePage.css">
+
+
     <title>pagalbasti</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -103,7 +105,7 @@ if (isset($_GET['book_id'])) {
 $email = $_SESSION['email'];
 if ($email == "rereads3@gmail.com") {
 
-    echo '<a href="../profile/deletebook.php?b_id=' . $book_id . '&source=singlepage" class="delete-button">Delete</a>';
+    echo '<a href="../profile/deletebook.php?b_id=' . $book_id . '&source=singlepage" class="delete-button" onclick="return confirmDelete()">Delete</a>';
 } else {
 
     if (isset($_SESSION['email']) && isset($_SESSION['user_id'])) {
@@ -161,6 +163,6 @@ if ($email == "rereads3@gmail.com") {
             });
     }
 </script>
-
+<script src="../../JS/homepage/conformdelete.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ session_start();
 include "../../References/connection.php";
 
 include "./deletebook.php";
+
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     header("Location: ../homepage/homepage.php");
     exit;
@@ -140,13 +141,11 @@ while ($row = $upload_result->fetch_assoc()) {?>
         <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
 
 
-        <div class="bookname"><?php echo $row['book_name']; ?></div>
-<div class="notification">
-        <?php include "./confirmdelete.php";?>
+        <div class="bookname"><?php echo $row['book_name']; ?></div>  <div>
+        <a href="./profile.php?b_id=<?php echo $row['book_id']; ?>" class="delete-button" onclick="return confirmDelete()">Delete</a>
+    </div>
 
 
-</div>
-    
 
       </div>
 
