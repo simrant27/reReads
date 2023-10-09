@@ -87,7 +87,7 @@ if (isset($_POST['delete_user_id'])) {
         <?php include "../navbar/navbar.php"; ?>
     </nav>
     <div class="header_user">
-        <h3 class="users-title">User List: No_of Users: <?php echo $count ?></h3>
+        <h3 class="users-title">User List: No_of Users: <?php echo $count -1 ?></h3>
         <?php foreach ($users as $user): ?>
             <ul>
                 <!-- Inside the <li> for each user -->
@@ -117,17 +117,18 @@ if (isset($_POST['delete_user_id'])) {
                 <div class="book-details-container" id="book-details-<?php echo $user['user_id']; ?>">
                     <ul>
                        <?php foreach (explode(",", $user['book_img']) as $index => $bookImage): ?>
-                            <li>
-                                <div class="book-user">
-                                    <img src="../../assets/uploads/<?php echo trim($bookImage); ?>" alt="image">
-                                </div>
-                                <div class="book-details">
-                                    <a href="../singlepage/singlepage.php?book_id=<?php echo $user['bookid'];?>">
-                                        <span class="book-name"><?php echo preg_split("/,/",$user['book_name'])[$index]; ?></span>
-                                    </a>
-                                </div>
-                            </li>
-                        <?php endforeach; ?>
+                        <li>
+                            <div class="book-user">
+                                <img src="../../assets/uploads/<?php echo trim($bookImage); ?>" alt="image">
+                            </div>
+                            <div class="book-details">
+                                <a href="../singlepage/singlepage.php?book_id=<?php echo preg_split("/,/",$user['bookid'])[$index]; ?>">
+                                    <span class="book-name"><?php echo preg_split("/,/",$user['book_name'])[$index]; ?></span>
+                                </a>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+
 
                     </ul>
                 </div>
