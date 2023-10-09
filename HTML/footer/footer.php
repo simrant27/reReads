@@ -12,7 +12,13 @@
 
 
 
-
+ <!-- policices Section -->
+ <section id="policies" class="section">
+        <div class="container">
+            <h1>Policies</h1>
+            <p>Welcome to our second-hand books website. </p>
+        </div>
+    </section>
 
     <!-- About Us Section -->
     <section id="about" class="section">
@@ -44,6 +50,7 @@ include_once "../footer/contactUs.php"
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#contact">Contact</a></li>
+                        <li><a href="#policies">Policies</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
