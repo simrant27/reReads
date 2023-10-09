@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include "../../References/connection.php";
 
 ?>
@@ -37,11 +39,31 @@ if (isset($_POST['submit'])) {
 
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
+                $book_id = $row['book_id'];
                 ?>
-                <div class="singlebook">
-                    <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
-                    <span class="bookname"><?php echo $row['book_name']; ?></span>
-                    <span class="bookprice">Rs.<?php echo $row['selling_price']; ?></span>
+                <div class="singlebook search_content">
+                    <?php
+
+                // if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+                //     // If logged in, link to singlepage.php
+                // } else {
+                //     // If not logged in, link to the login page
+                //     echo '<a href="../loginSignup/login.php">';
+                // }
+                //
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {?>
+                    <a href="../singlepage/singlepage.php?book_id=<?php echo $row['book_id']; ?>">
+                        <?php } else {
+
+                    echo '<a href="../loginSignup/login.php">';
+                }
+                ?>
+                        <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
+</a>
+                    <div class="bookname"><?php echo $row['book_name']; ?></div>
+
+                    <div class="bookprice">Rs.<?php echo $row['selling_price']; ?></div>
+
                 </div>
                 <?php
 }

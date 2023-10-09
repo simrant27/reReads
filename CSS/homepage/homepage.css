@@ -309,3 +309,7 @@ body {
 .delete_button {
   background-color: red;
 }
+/* Style for the container holding the books */
+.search_content {
+  display: inline-block;
+}

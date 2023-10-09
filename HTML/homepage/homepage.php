@@ -29,7 +29,7 @@ if (isset($_GET['logout'])) {
 }
 
 //fetching data from the table books
-$sell_sql = "SELECT * FROM books WHERE donate =0 ORDER BY book_id DESC ";
+$sell_sql = "SELECT * FROM books WHERE donate =0 ORDER BY book_id DESC LIMIT 10";
 $sell_result = $conn->query($sell_sql);
 
 $donate_sql = "SELECT * FROM books WHERE donate =1 ORDER BY book_id DESC ";

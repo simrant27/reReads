@@ -85,7 +85,7 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
       </script>
 
     </div>
-    
+
 
       <div class="profile-details" id="profile-details">
 
@@ -105,7 +105,7 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
       </div>
     </div>
 
-    <div class="uploads" id="addBooks"> 
+    <div class="uploads" id="addBooks">
         <?php
 include "./uploadbook.php";
 ?>
