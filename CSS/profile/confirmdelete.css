@@ -1,0 +1,46 @@
+body {
+  /* background-color: aqua; */
+  color: white;
+}
+
+.delete_cont {
+  width: 40%;
+  padding: 2%;
+  margin: 20%;
+  background: black;
+  display: none;
+}
+.delete_actions {
+  display: flex;
+}
+
+.close {
+  font-size: 30px;
+  color: red;
+  font-weight: bolder;
+  float: right;
+  margin-top: -5%;
+  cursor: pointer;
+}
+
+.cancel {
+  width: 50%;
+  height: 5vh;
+  background: white;
+  border: none;
+  color: black;
+  margin-right: 1%;
+}
+
+.delete {
+  width: 50%;
+  height: 5vh;
+  background: red;
+  border: none;
+  color: white;
+  margin-left: 1%;
+}
+
+.delete_action {
+  display: flex;
+}

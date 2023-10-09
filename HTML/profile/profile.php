@@ -140,14 +140,11 @@ while ($row = $upload_result->fetch_assoc()) {?>
         <img src="../../assets/uploads/<?php echo $row['images']; ?>" alt="book photo" class="book_img"/>
 
 
-        <span class="bookname"><?php echo $row['book_name']; ?></span>
-<span>
-<?php
+        <div class="bookname"><?php echo $row['book_name']; ?></div>
+<div>
+<a href="./profile.php?b_id=<?php echo $row['book_id']; ?>" class="delete-button" ">Delete</a>
 
-    echo '<a href="./profile.php?b_id=' . $row['book_id'] . '"class="delete-button">Delete';
-
-    ?>
-    </span>
+    </div>
 
       </div>
 
@@ -201,6 +198,6 @@ while ($row = $favourite_result->fetch_assoc()) {
 
 
 </body>
-<!-- <script src="../../JS/homepage/open-menu.js"></script> -->
+<script src="../../JS/homepage/open-menu.js"></script>
 
 </html>
