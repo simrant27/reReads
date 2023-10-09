@@ -141,10 +141,12 @@ while ($row = $upload_result->fetch_assoc()) {?>
 
 
         <div class="bookname"><?php echo $row['book_name']; ?></div>
-<div>
-<a href="./profile.php?b_id=<?php echo $row['book_id']; ?>" class="delete-button" ">Delete</a>
+<div class="notification">
+        <?php include "./confirmdelete.php";?>
 
-    </div>
+
+</div>
+    
 
       </div>
 
