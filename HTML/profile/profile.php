@@ -45,7 +45,7 @@ $result = $stmt->get_result();
 <div class="navbar ">
         <ul class="lower-nav nav-list">
           <li><a href="../homepage/homepage.php"> Home</a></li>
-          <li><a href="../AboutUs/aboutUs.php">About us</a></li>
+          <li><a href="#">About us</a></li>
           <li><a href="#addBooks">Add Books</a></li>
         </ul>
       </div>
@@ -85,6 +85,7 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
       </script>
 
     </div>
+    
 
       <div class="profile-details" id="profile-details">
 
@@ -104,7 +105,7 @@ if (!empty($profile_image) && file_exists('../../assets/profile_picture/' . $pro
       </div>
     </div>
 
-    <div class="uploads" class="uploads">
+    <div class="uploads" id="addBooks"> 
         <?php
 include "./uploadbook.php";
 ?>

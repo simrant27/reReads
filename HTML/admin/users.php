@@ -110,6 +110,10 @@ if (isset($_POST['delete_user_id'])) {
                         <input type="hidden" name="delete_user_id" value="<?php echo $user['user_id']; ?>">
                         <button type="submit" class="delete-button">Delete</button>
                     </form>
+
+                </li>
+                <li>
+                     
                 </li>
             </ul>
         <?php endforeach; ?>

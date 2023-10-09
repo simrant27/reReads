@@ -48,6 +48,7 @@ if (isset($_GET['user_id'])) {
   <title>Books</title>
 </head>
 <body>
+    <div class="popup-content">
     <?php foreach ($books as $book): ?>
         <!-- Book details container -->
        <div class="book-details-container" id="book-details-<?php echo $user['user_id']; ?>">
@@ -66,5 +67,6 @@ if (isset($_GET['user_id'])) {
         </ul>
     </div>
     <?php endforeach; ?>
+    </div>
 </body>
 </html>
