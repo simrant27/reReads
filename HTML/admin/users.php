@@ -6,18 +6,28 @@ include_once "../../References/connection.php";
 function fetchUsers($conn)
 {
     $users = array();
-    // Query to fetch users with associated books
+    // Query to fetch users
     $query = "SELECT
-                users.fullName AS user_name,
-                users.user_img AS image,
-                users.address AS Address,
-                users.email AS email,
-                users.phoneNo AS Number,
-                users.user_id AS user_id
-            FROM users
-            WHERE users.email != 'rereads3@gmail.com'
-            ORDER BY users.user_id DESC;
-    ";
+    users.fullName AS user_name,
+    users.user_img AS image,
+    users.address AS Address,
+    users.email AS email,
+    users.phoneNo AS Number,
+    users.user_id AS user_id,
+    GROUP_CONCAT(books.book_name SEPARATOR ', ') AS book_name,
+    GROUP_CONCAT(books.book_id SEPARATOR ', ') AS bookid
+FROM
+    users
+LEFT JOIN
+    books ON users.user_id = books.user_id
+WHERE
+    users.email != 'rereads3@gmail.com'
+GROUP BY
+    users.user_id, users.fullName, users.user_img, users.address, users.email, users.phoneNo
+ORDER BY
+    users.user_id DESC;
+
+";
 
     $result = $conn->query($query);
 
@@ -69,23 +79,14 @@ if (isset($_POST['delete_user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/admin/users.css">
-      <link rel="stylesheet" href="../../CSS/homepage/homepage.css" />
-
     <title>Users</title>
 </head>
-<body id="bg-img" style="background-color: #f4f2e8">
-    <nav>
-      <div class="navbar lower-nav">
-        <span class="logo">    <span class="re">re</span> <span class="Reads">Reads</span>
-</span>
-        <ul class="lower-nav nav-list">
-          <li><a href="../homepage/homepage.php"> Home</a></li>
-          <li><a href="../AboutUs/aboutUs.php">About us</a></li>
-        </ul>
-      </div>
-  </nav>
+<body id="bg-img" style="background-image: url('../../assets/backgroundImage/download5.jpeg')">
+    <nav class="navbar">
+        <?php include "../navbar/navbar.php"; ?>
+    </nav>
     <div class="header_user">
-        <h3 class="users-title">User List: No_of Users: <?php echo $count-1?></h3>
+        <h3 class="users-title">User List: No_of Users: <?php echo $count ?></h3>
         <?php foreach ($users as $user): ?>
             <ul>
                 <!-- Inside the <li> for each user -->
@@ -96,32 +97,40 @@ if (isset($_POST['delete_user_id'])) {
                             <span class="user-name"><?php echo $user['user_name']; ?></span>
                         </div>
                     </div>
-                                       
                     <a href="#" class="user-link" onclick="toggleBookDetails(<?php echo $user['user_id']; ?>)">
-
                         <div class="user-details">
                             <div class="user-detail"><?php echo $user['email']; ?></div>
                             <div class="user-detail"><?php echo $user['Address']; ?></div>
                             <div class="user-detail"><?php echo $user['Number']; ?></div>
                         </div>
                     </a>
-
                     <form method="POST">
                         <input type="hidden" name="delete_user_id" value="<?php echo $user['user_id']; ?>">
                         <button type="submit" class="delete-button">Delete</button>
                     </form>
+                </li>
 
-                </li>
-                <li>
-                     
-                </li>
             </ul>
+            <?php if ($user['bookid'] != null): ?>
+                <!-- Book details container -->
+                <div class="book-details-container" id="book-details-<?php echo $user['user_id']; ?>">
+                    <ul>
+                        <li>
+                            
+                            <div class="book-details">
+                                <a href="../singlepage/singlepage.php?book_id=<?php echo $user['bookid'];?>">
+                                    <span class="book-name"><?php echo $user['book_name']; ?></span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            <?php endif; ?>
         <?php endforeach; ?>
     </div>
-
-    <!-- <script src="../../JS/Background/background.js"></script> -->
-    <script>
-          function toggleBookDetails(userId) {
+    <script src="../../JS/Background/background.js"></script>
+     <script>
+        function toggleBookDetails(userId) {
             var bookDetails = document.getElementById('book-details-' + userId);
             if (bookDetails.style.display === 'none' || bookDetails.style.display === '') {
                 bookDetails.style.display = 'block';
